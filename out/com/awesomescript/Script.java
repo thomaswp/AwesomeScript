@@ -2,8 +2,11 @@
 package com.awesomescript;
 
 import java.util.EnumSet;
+import com.awesomescript.importer.ScriptBase;
 
-public abstract class Script {
+public abstract class Script
+    extends ScriptBase
+{
 
 
     protected void resetmissionvariables() {

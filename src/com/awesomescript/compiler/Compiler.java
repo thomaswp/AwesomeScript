@@ -27,7 +27,8 @@ import japa.parser.ast.stmt.Statement;
 import japa.parser.ast.visitor.VoidVisitorAdapter;
 
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.InputStream;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -52,17 +53,12 @@ import com.awesomescript.importer.Method;
 import com.awesomescript.importer.Parameter;
 
 public class Compiler {
-	public final static String SCRIPT = "src/com/awesomescript/test/MyScript.java";
 	public final static String ENTRY_POINT = "onTick";
 	
 	private Domain domain;
 	private HashMap<String, SequenceNode> methods = new HashMap<>();
-	
-	public static void main(String[] args) {
-		new Compiler();
-	}
 
-	Compiler() {
+	public void compile(InputStream is) {
 		try {
 			domain = Importer.parseDomain(Importer.PATH);
 		} catch (Exception e) {
@@ -70,8 +66,7 @@ public class Compiler {
 			return;
 		}
 		try {
-			FileInputStream fis = new FileInputStream(SCRIPT);
-			CompilationUnit cu = JavaParser.parse(fis);
+			CompilationUnit cu = JavaParser.parse(is);
 			
 			final RootNode rootNode = new RootNode();
 			
@@ -79,6 +74,8 @@ public class Compiler {
 				@Override
 		        public void visit(MethodDeclaration n, Object arg) {
 		            if (!n.getName().equals(ENTRY_POINT)) {
+		            	int mods = n.getModifiers();
+		            	if (Modifier.isStatic(mods)) return;
 		            	SequenceNode method = new SequenceNode();
 		            	if (n.getAnnotations() != null) {
 			            	for (AnnotationExpr annotation : n.getAnnotations()) {

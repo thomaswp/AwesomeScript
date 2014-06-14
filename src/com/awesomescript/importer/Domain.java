@@ -23,6 +23,7 @@ public class Domain {
 			JCodeModel model = new JCodeModel();
 			
 			JDefinedClass script = model._class(JMod.ABSTRACT | JMod.PUBLIC, PACKAGE +  ".Script", ClassType.CLASS);
+			script._extends(ScriptBase.class);
 
 			for (Enumeration e : enumerations.values()) {
 				e.write(script);

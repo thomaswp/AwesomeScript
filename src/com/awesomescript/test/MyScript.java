@@ -52,5 +52,9 @@ public class MyScript extends Script {
 		adjustcounter("c", "d", Valueadjust.Add);
 		adjustcounter("e", "f", Valueadjust.Add);
 	}
+	
+	public static void main(String[] args) {
+		new MyScript().compile();
+	}
 
 }
