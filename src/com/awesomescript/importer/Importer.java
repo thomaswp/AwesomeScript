@@ -17,7 +17,7 @@ import org.xml.sax.SAXException;
 public class Importer {
 
 
-	public final static String PATH = "C:/Program Files/Steam/SteamApps/common/Awesomenauts/Data/BehaviourCreator/Blockdefinitions.xml";
+	public final static String PATH = "Blockdefinitions.xml";
 	public final static String OUT = "./out/";
 	
 	public static Domain parseDomain(String path) throws ParserConfigurationException, SAXException, IOException {

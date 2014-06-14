@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<blockdefinitions>
+
+  <predefined_values id="animationLocation">
+    <value>HUD</value>
+    <value>WORLD</value>
+    <value>START_RELATIVE_TO_CHARACTER</value>
+    <value>FOLLOW_CHARACTER</value>
+  </predefined_values>
+
+  <predefined_values id="buttons">
+    <value>FACE_BOTTOM</value>
+    <value>FACE_RIGHT</value>
+    <value>FACE_LEFT</value>
+    <value>FACE_TOP</value>
+    <value>SHOULDER_LEFT</value>
+    <value>SHOULDER_RIGHT</value>
+    <value>TRIGGER_LEFT</value>
+    <value>TRIGGER_RIGHT</value>
+    <value>DPAD_LEFT</value>
+    <value>DPAD_RIGHT</value>
+    <value>DPAD_UP</value>
+    <value>DPAD_DOWN</value>
+    <value>BACK</value>
+  </predefined_values>
+
+  <predefined_values id="collison groups">
+    <value>PLAYERS</value>
+    <value>CREEPS</value>
+    <value>NAMED_AREAS</value>
+    <value>INVINCIBLE_OBSTACLES</value>
+    <value>DESTROYABLE_OBSTACLES</value>
+    <value>PROJECTILES</value>
+    <value>SHOPS</value>
+    <value>JUMPPADS</value>
+  </predefined_values>
+
+  <predefined_values id="missionCompletionDelay">
+    <value>INSTANT</value>
+  </predefined_values>
+
+  <predefined_values id="missionEvent">
+    <value>KILL</value>
+  </predefined_values>
+
+  <predefined_values id="missionTarget">
+    <value>SELF</value>
+    <value>HERO</value>
+    <value>CREEP</value>
+    <value>TURRET</value>
+    <value>BASE</value>
+	<value>WORM</value>
+  </predefined_values>
+
+  <predefined_values id="goldPickupType">
+    <value>ANY</value>
+    <value>PICKUP</value>
+    <value>AI</value>
+    <value>LATEBONUS</value>
+    <value>SHOP</value>
+    <value>DEATH</value>
+  </predefined_values>
+
+  <predefined_values id="distance check">
+    <value>NONE</value>
+    <value>CLOSEST</value>
+    <value>FURTHEST</value>
+  </predefined_values>
+
+  <predefined_values id="ping">
+    <value>ATTACK</value>
+    <value>DEFEND</value>
+    <value>HELP</value>
+    <value>TURRET_UNDER_ATTACK</value>
+    <value>TURRET_ALMOST_DESTROYED</value>
+    <value>BASE_UNDER_ATTACK</value>
+    <value>BASE_ALMOST_DESTROYED</value>
+  </predefined_values>
+
+  <predefined_values id="target groups">
+    <value>PLAYERS</value>
+    <value>CREEPS</value>
+    <value>DESTROYABLE_OBSTACLES</value>
+  </predefined_values>
+
+  <predefined_values id="target receive groups">
+    <value>PLAYERS</value>
+    <value>CREEPS</value>
+  </predefined_values>
+  
+  <predefined_values id="directions">
+    <value>UP</value>
+    <value>DOWN</value>
+    <value>LEFT</value>
+    <value>RIGHT</value>
+    <value>FORWARD</value>
+    <value>BACKWARD</value>
+  </predefined_values>
+
+  <predefined_values id="offsetposition">
+    <value>ABOVE</value>
+    <value>BACK</value>
+    <value>FRONT</value>
+    <value>BELOW</value>
+    <value>HORIZONTAL EQUAL</value>
+    <value>VERTICAL EQUAL</value>
+  </predefined_values>
+
+  <predefined_values id="forwardbackward">
+    <value>FORWARD</value>
+    <value>BACKWARD</value>
+  </predefined_values>
+
+  <predefined_values id="frontback">
+    <value>FRONT</value>
+    <value>BACK</value>
+  </predefined_values>
+
+  <predefined_values id="leftright">
+    <value>LEFT</value>
+    <value>RIGHT</value>
+  </predefined_values>
+
+  <predefined_values id="ownenemy">
+    <value>OWN_TEAM</value>
+    <value>ENEMY_TEAM</value>
+  </predefined_values>
+
+  <predefined_values id="teams">
+    <value>OWN_TEAM</value>
+    <value>ENEMY_TEAM</value>
+    <value>NEUTRAL_TEAM</value>
+  </predefined_values>
+
+  <predefined_values id="teamswithtarget">
+    <value>OWN_TEAM</value>
+    <value>ENEMY_TEAM</value>
+    <value>NEUTRAL_TEAM</value>
+    <value>TARGET</value>
+  </predefined_values>
+
+  <predefined_values id="teamswithnumbers">
+    <value>OWN_TEAM</value>
+    <value>ENEMY_TEAM</value>
+    <value>NEUTRAL_TEAM</value>
+    <value>ZERO_TEAM</value>
+    <value>ONE_TEAM</value>
+  </predefined_values>
+
+  <predefined_values id="timeunits">
+    <value>seconds</value>
+    <value>minutes</value>
+    <value>milliseconds</value>
+    <value>hours</value>
+  </predefined_values>
+  
+  <predefined_values id="yesno">
+    <value>no</value>
+    <value>yes</value>        
+  </predefined_values>
+
+  <predefined_values id="targetself">
+    <value>self</value>
+    <value>target</value>
+  </predefined_values>
+
+  <predefined_values id="flagtoggle">
+    <value>no</value>
+    <value>yes</value>
+    <value>toggle</value>
+  </predefined_values>
+
+  <predefined_values id="scoretype">
+    <value>KILLS</value>
+    <value>DEATHS</value>
+    <value>CREEPKILLS</value>
+  </predefined_values>
+
+	<predefined_values id="valuecompare">
+		<value>less</value>
+		<value>less or equal</value>
+		<value>equal</value>
+		<value>greater or equal</value>
+		<value>greater</value>
+	</predefined_values>
+
+  <predefined_values id="valuecompare2">
+    <value>less</value>
+    <value>less or equal</value>
+    <value>equal</value>
+    <value>greater or equal</value>
+    <value>greater</value>
+    <value>lowest</value>
+    <value>highest</value>
+  </predefined_values>
+
+  <predefined_values id="valueadjust">
+    <value>set</value>
+    <value>add</value>
+    <value>multiply</value>
+    <value>divide</value>
+  </predefined_values>
+
+  <predefined_values id="charactervaluesAdjustable">
+    <value>health</value>
+    <value>health percentage</value>
+    <value>gold</value>
+    <value>goldWithoutXp</value>
+  </predefined_values>
+
+  <predefined_values id="charactervaluesCheckable">
+    <value>health</value>
+    <value>health percentage</value>
+    <value>gold</value>
+    <value>AI skill</value>
+	<value>health minus dot</value>
+	<value>health minus dot percentage</value>
+  </predefined_values>
+
+  <predefined_values id="targetvalues">
+    <value>not important</value>
+    <value>lowest health</value>
+    <value>highest health</value>
+    <value>lowest gold</value>
+    <value>highest gold</value>
+  </predefined_values>
+
+  <predefined_values id="emitvalues">
+    <value>health</value>
+    <value>gold</value>
+  </predefined_values>
+
+  <predefined_values id="characterflags">
+    <value>isSilenced</value>
+    <value>isStunned</value>
+    <value>isBlinded</value>
+    <value>isSlowed</value>
+    <value>isUnderAnyEffect</value>
+	<value>IsStealth</value>
+  </predefined_values>
+
+  <actions>
+    
+    <action name="adjustCounter">
+      <string name="id"/>
+      <string name="value"/>
+      <string name="adjust method" values="valueadjust" defaultvalue="set"/>
+    </action>
+
+    <action name="adjustMissionCounter">
+      <string name="id"/>
+      <string name="value"/>
+      <string name="adjust method" values="valueadjust" defaultvalue="set"/>
+    </action>
+
+    <action name="adjustCharacterValue">
+      <string name="property" values="charactervaluesAdjustable" defaultvalue="health"/>
+      <float name="value"/>
+      <string name="adjust method" values="valueadjust" defaultvalue="set"/>
+    </action>
+
+    <action name="aimStickAtTarget">
+      <float name="duration seconds" />
+      <string name="only aim when needed" values="yesno" defaultvalue="no"/>
+    </action>
+
+    <action name="buyUpgrade">
+      <string name="upgrade name"/>
+    </action>
+
+    <action name="completeMission">
+      <string name="delay" values="missionCompletionDelay" defaultvalue="INSTANT"/>
+    </action>
+
+    <action name="enableUpgrade">
+      <string name="condition" values="yesno" defaultvalue="yes"/>
+      <string name="upgrade name"/>
+    </action>
+
+    <action name="emitMessageInArea">
+      <string name="id"/>
+      <string name="receive groups" values="target receive groups" multiselect="true"/>
+      <string name="teams" values="teamswithtarget" multiselect="true"/>
+      <float name="xOffset"/>
+      <float name="yOffset"/>
+      <float name="width"/>
+      <float name="height"/>
+	  <string name="ignore invisibility" values="yesno" defaultvalue="yes"/>
+	  <string name="check line of sight" values="yesno" defaultvalue="no"/>	  
+    </action>
+
+    <action name="emitTargetInArea">
+      <string name="receive groups" values="target receive groups" multiselect="true"/>
+      <string name="teams" values="teams" multiselect="true"/>
+      <float name="xOffset"/>
+      <float name="yOffset"/>
+      <float name="width"/>
+      <float name="height"/>
+    </action>
+
+    <action name="executeBehaviourTree">
+      <string name="fileName"/>
+    </action>
+
+    <action name="missionGetScore">
+      <string name="class"/>
+      <string name="team" values="teamswithnumbers" defaultvalue="OWN_TEAM"/>
+      <string name="type" values="scoretype" defaultvalue="KILLS"/>
+      <string name="store in"/>
+    </action>
+
+    <action name="log">
+      <string name="text"/>
+      <string name="counter"/>
+      <string name="bool"/>
+    </action>
+
+    <action name="pauseGame">
+      <string name="endOnButtonPress" values="yesno" defaultvalue="yes"/>
+      <string name="endOnAnimationFinished" values="yesno" defaultvalue="no"/>
+      <string name="endOnTimeElapsed" values="yesno" defaultvalue="no"/>
+	  <float name="endOnTimeElapsedTime"/>
+      <string name="animationName"/>
+      <string name="loopAnimation" values="yesno" defaultvalue="no"/>
+      <float name="animationXPosition"/>
+      <float name="animationYPosition"/>
+      <float name="animationSize"/>
+      <string name="animationNameBasedOnInputHardware" values="yesno" defaultvalue="no"/>
+      <string name="animationTextsBasedOnInputHardware" values="yesno" defaultvalue="yes"/>
+    </action>
+
+    <action name="playAnimation">
+      <string name="animationName"/>
+      <string name="location" values="animationLocation" defaultvalue="HUD"/>
+      <float name="xPosition"/>
+      <float name="yPosition"/>
+      <float name="scale"/>
+      <float name="depth"/>
+      <string name="mirrorX" values="yesno" defaultvalue="no"/>
+      <string name="team" values="teams" defaultvalue="OWN_TEAM"/>
+    </action>
+
+    <action name="playSound">
+      <string name="soundGroup"/>
+    </action>
+
+    <action name="pressButton">
+      <string name="button" values="buttons" defaultvalue = "FACE_BOTTOM"/>
+      <float name="duration in seconds"/>
+    </action>
+
+    <action name="pressStick">
+      <string name="direction" values="directions" defaultvalue ="UP"/>
+      <float name="duration in seconds"/>
+    </action>
+
+    <action name="randomizeMissionCounter">
+      <string name="id"/>
+      <string name="low"/>
+      <string name="high"/>
+    </action>
+
+    <action name="receiveTarget">
+    </action>
+
+    <action name="resetMissionVariables">
+    </action>
+
+    <action name="removeTarget">
+    </action>
+
+    <action name="selectDestWaypoint">
+      <string name="name"/>
+      <string name="team" values="ownenemy" defaultvalue="ENEMY_TEAM"/>
+    </action>
+
+    <action name="selectTarget">
+      <string name="groups to select" values="target groups" multiselect="true"/>
+      <string name="teams" values="teams" multiselect="true"/>
+      <string name="class"/>
+      <string name="remove if not found" values="yesno" defaultvalue="no"/>
+      <float name="xOffset"/>
+      <float name="yOffset"/>
+      <float name="width"/>
+      <float name="height"/>
+      <string name="compare method" values="valuecompare2" defaultvalue="greater or equal"/>
+      <float name="health value"/>
+      <string name="distance check" values="distance check" defaultvalue="NONE"/>
+      <string name="check line of sight" values="yesno" defaultvalue="no"/>
+      <string name="ignore invisibility" values="yesno" defaultvalue="no"/>
+    </action>
+
+    <action name="selectPingWaypoint">
+      <string name="ping" values="ping" defaultvalue="ATTACK"/>
+    </action>
+
+    <action name="selectTargetWaypoint">
+    </action>
+
+    <action name="setBool">
+      <string name="id"/>
+      <string name="value" values="flagtoggle" defaultvalue="no"/>
+    </action>
+
+    <action name="setMissionBool">
+      <string name="id"/>
+      <string name="value" values="flagtoggle" defaultvalue="no"/>
+    </action>
+
+    <action name="wait">
+      <float name="time"/>
+    </action>
+
+    <action name="writeToTextbox">
+      <string name="localizationID"/>
+      <float name="transparency"/>
+      <string name="texture"/>
+      <float name="duration"/>
+    </action>
+
+  </actions>
+
+  <conditions>
+
+    <condition name="areGoldCoinsInArea">
+      <float name="compare value" />
+      <string name="compare method" values="valuecompare" defaultvalue="greater or equal" />
+      <float name="xOffset"/>
+      <float name="yOffset"/>
+      <float name="width"/>
+      <float name="height"/>
+      <string name="check line of sight" values="yesno" defaultvalue="no"/>
+    </condition>
+
+    <conditions name="canPayUpgrade">
+      <string name="upgrade name"/>
+    </conditions>
+	
+    <condition name="checkCharacterValue">
+      <string name="property" values="charactervaluesCheckable" defaultvalue="health"/>
+      <float name="value"/>
+      <string name="compare method" values="valuecompare" defaultvalue="equal"/>
+      <string name="check on" values="targetself" defaultvalue="self"/>
+    </condition>
+
+    <condition name="checkCharacterFlag">
+      <string name="property" values="characterflags" defaultvalue="isUnderAnyEffect"/>
+      <string name="condition" values="yesno" defaultvalue="yes"/>
+      <string name="check on" values="targetself" defaultvalue="self"/>
+    </condition>
+	  
+	<condition name="checkClass">
+		<string name="check on" values="targetself" defaultvalue="self"/>
+		<string name="class"/>
+	</condition>
+
+    <condition name="checkCounter">
+      <string name="id"/>
+      <string name="value"/>
+      <string name="compare method" values="valuecompare" defaultvalue="equal"/>
+    </condition>
+
+    <condition name="checkGameTime">
+      <float name="time in seconds"/>
+      <string name="compare method" values="valuecompare" defaultvalue="equal"/>
+    </condition>
+
+    <condition name="checkMissionCounter">
+      <string name="id"/>
+      <string name="value"/>
+      <string name="compare method" values="valuecompare" defaultvalue="equal"/>
+    </condition>
+
+    <condition name="compareBools">
+      <string name="id1"/>
+      <string name="id2"/>
+    </condition>
+
+    <condition name="compareMissionBools">
+      <string name="id1"/>
+      <string name="id2"/>
+    </condition>
+
+    <condition name="doesClassExist">
+      <string name="teams" values="teams" multiselect="true"/>
+      <string name="class"/>
+    </condition>
+    
+    <condition name="directionToEnemyBase">
+      <string name="direction" values="forwardbackward" defaultvalue="FORWARD"/>
+    </condition>
+
+    <condition name="getBoolEquals">
+      <string name="id"/>
+      <string name="value" values="yesno" defaultvalue="no"/>
+    </condition>
+
+    <condition name="getMissionBoolEquals">
+      <string name="id"/>
+      <string name="value" values="yesno" defaultvalue="no"/>
+    </condition>
+
+    <conditions name="hasDestWaypoint">
+    </conditions>
+
+    <conditions name="hasTarget">
+      <string name="condition" values="yesno" defaultvalue="yes"/>
+    </conditions>
+
+	<conditions name="hasUpgrade">
+		<string name="class"/>
+		<string name="team" values="teamswithnumbers" defaultvalue="OWN_TEAM"/>
+		<string name="upgrade name"/>
+	</conditions>
+
+    <conditions name="isAtDestWaypoint">
+    </conditions>
+
+    <condition name="isButtonDown">
+      <string name="button" values="buttons" defaultvalue="FACE_BOTTOM" />
+    </condition>
+
+    <condition name="isButtonPressed">
+      <string name="button" values="buttons" defaultvalue="FACE_BOTTOM" />
+    </condition>
+
+    <condition name="isButtonReleased">
+      <string name="button" values="buttons" defaultvalue="FACE_BOTTOM"/>
+    </condition>
+
+    <conditions name="isCharacterInArea">
+      <string name="groups" values="target receive groups" multiselect="true"/>
+      <string name="teams" values="teams" multiselect="true"/>
+      <string name="class"/>
+      <string name="condition" values="charactervaluesCheckable" defaultvalue="health"/>
+      <string name="comparison" values="valuecompare" defaultvalue="greater or equal"/>
+      <float name="value"/>
+      <string name="character minimum"/>
+      <float name="xOffset"/>
+      <float name="yOffset"/>
+      <float name="width"/>
+      <float name="height"/>
+      <string name="check line of sight" values="yesno" defaultvalue="no"/>
+    </conditions>
+
+    <condition name="isFromTeam">
+      <string name="team" values="teamswithnumbers" defaultvalue="OWN_TEAM"/>
+      <string name="check on" values="targetself" defaultvalue="self"/>
+    </condition>
+    
+    <condition name="isInArea">
+      <string name="condition" values="yesno" defaultvalue="yes"/>
+      <string name="collision groups" values="collison groups" multiselect="true"/>
+      <string name="check green obstacles only" values="yesno" defaultvalue="no"/>
+      <string name="teams" values="teams" multiselect="true"/>
+      <string name="areaName" defaultvalue=""/>
+      <float name="xOffset"/>
+      <float name="yOffset"/>
+      <float name="width"/>
+      <float name="height"/>
+      <string name="check line of sight" values="yesno" defaultvalue="no"/>
+      <string name="ignore invisibility" values="yesno" defaultvalue="no"/>
+    </condition>
+
+    <condition name="isInNamedArea">
+      <string name="area name" />
+      <string name="team" values="ownenemy" defaultvalue="OWN_TEAM" />
+      <string name="who" values="targetself" defaultvalue="self" />
+    </condition>
+
+    <conditions name="isNextWaypointInArea">
+      <float name="xOffset"/>
+      <float name="yOffset"/>
+      <float name="width"/>
+      <float name="height"/>
+    </conditions>
+
+    <condition name="isNextWaypointPosition">
+      <string name="position" values="offsetposition" defaultvalue="back"/>
+    </condition>
+
+    <conditions name="isOnGround">
+      <string name="condition" values="yesno" defaultvalue="yes"/>
+      <string name="check on" values="targetself" defaultvalue="self"/>
+    </conditions>
+
+    <condition name="isOnCreepTurner">
+      <string name="condition" values="yesno" defaultvalue="yes"/>
+      <string name="direction" values="forwardbackward" defaultvalue="FORWARD"/>
+    </condition>
+
+    <condition name="isPickupAtWaypoint">
+      <string name="name"/>
+      <string name="team" values="ownenemy" defaultvalue="ENEMY_TEAM"/>
+    </condition>
+
+    <condition name="isSkillOnButtonAvailable">
+      <string name="button" values="buttons" defaultvalue="FACE_BOTTOM"/>
+    </condition>
+
+    <conditions name="isTargetInArea">
+      <string name="condition" values="yesno" defaultvalue="yes"/>
+      <float name="xOffset"/>
+      <float name="yOffset"/>
+      <float name="width"/>
+      <float name="height"/>
+      <string name="check line of sight" values="yesno" defaultvalue="no"/>
+      <string name="ignore invisibility" values="yesno" defaultvalue="no"/>
+    </conditions>
+
+    <conditions name="isTargetPosition">
+      <string name="condition" values="yesno" defaultvalue="yes"/>
+      <string name="target position" values="offsetposition" defaultvalue="back"/>
+    </conditions>
+
+    <conditions name="isTargetType">
+      <string name="condition" values="yesno" defaultvalue="yes"/>
+      <string name="target groups" values="target groups" multiselect="true"/>
+    </conditions>
+
+    <conditions name="isTurretInArea">
+      <string name="teams" values="teams" multiselect="true"/>
+      <string name="health comparison" values="valuecompare" defaultvalue="less"/>
+      <float name="health"/>
+      <float name="xOffset"/>
+      <float name="yOffset"/>
+      <float name="width"/>
+      <float name="height"/>
+      <string name="check line of sight" values="yesno" defaultvalue="no"/>
+    </conditions>
+
+    <conditions name="isUpgradeEnabled">
+      <string name="condition" values="yesno" defaultvalue="yes"/>
+      <string name="upgrade name"/>
+    </conditions>
+
+    <conditions name="once">
+    </conditions>
+	  
+	<condition name="onGameStarted">
+    </condition>
+	  
+    <condition name="onGoldCollected">
+      <string name="collector" values="missionTarget" defaultvalue="SELF"/>
+      <string name="team" values="teamswithnumbers" defaultvalue="OWN_TEAM"/>
+      <string name="class"/>
+      <string name="type" values="goldPickupType" defaultvalue="ANY"/>
+      <string name="compare method" values="valuecompare" defaultvalue="greater"/>
+      <string name="value" defaultvalue="0"/>
+      <string name="store in"/>
+    </condition>
+
+    <condition name="onKill">
+      <string name="killer" values="missionTarget" defaultvalue="SELF"/>
+      <string name="killer team" values="teamswithnumbers" defaultvalue="OWN_TEAM"/>
+      <string name="killer class"/>
+      <string name="victim" values="missionTarget" defaultvalue="HERO"/>
+      <string name="victim team" values="teamswithnumbers" defaultvalue="ENEMY_TEAM"/>
+      <string name="victim class"/>
+      <string name="compare method" values="valuecompare" defaultvalue="greater"/>
+      <string name="value" defaultvalue="0"/>
+      <string name="store in"/>
+    </condition>
+
+	<condition name="onPrestige">
+	</condition>
+
+    <condition name="onWin">
+      <string name="team" values="teamswithnumbers" defaultvalue="OWN_TEAM"/>
+    </condition>
+    
+    <condition name="random">
+      <string name="amount"/>
+    </condition>
+
+    <condition name="receivedMessage">
+      <string name="id"/>
+    </condition>
+
+    <condition name="receivedPing">
+      <string name="ping" values="ping" defaultvalue="ATTACK"/>
+    </condition>
+
+    <condition name="receivedTarget">
+      <string name="if of group" values="target groups" multiselect="true"/>
+    </condition>
+
+    <condition name="timePassed">
+      <string name="timeunit" values="timeunits" defaultvalue="seconds"/>
+      <float name="time"/>
+    </condition>
+    
+    <condition name="timer">
+      <string name="timeunit" values="timeunits" defaultvalue="seconds"/>
+      <float name="time"/>
+	  <string name="execute first time" values="yesno" defaultvalue="no"/>
+    </condition>
+
+    <condition name="isOnlineMatch"/>
+
+  </conditions>
+  
+</blockdefinitions>
