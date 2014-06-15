@@ -21,7 +21,7 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected void wait(float time) {
+    protected void wait(double time) {
         throw new UnsupportedOperationException();
     }
 
@@ -29,7 +29,7 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected void pressstick(Script.Directions direction, float durationInSeconds) {
+    protected void pressstick(Script.Directions direction, double durationInSeconds) {
         throw new UnsupportedOperationException();
     }
 
@@ -41,7 +41,7 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected void adjustcharactervalue(Script.CharactervaluesAdjustable property, float value, Script.Valueadjust adjustMethod) {
+    protected void adjustcharactervalue(Script.CharactervaluesAdjustable property, double value, Script.Valueadjust adjustMethod) {
         throw new UnsupportedOperationException();
     }
 
@@ -57,7 +57,7 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected void emittargetinarea(EnumSet<Script.TargetReceiveGroups> receiveGroups, EnumSet<Script.Teams> teams, float xoffset, float yoffset, float width, float height) {
+    protected void emittargetinarea(EnumSet<Script.TargetReceiveGroups> receiveGroups, EnumSet<Script.Teams> teams, double xoffset, double yoffset, double width, double height) {
         throw new UnsupportedOperationException();
     }
 
@@ -65,11 +65,11 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected void writetotextbox(String localizationid, float transparency, String texture, float duration) {
+    protected void writetotextbox(String localizationid, double transparency, String texture, double duration) {
         throw new UnsupportedOperationException();
     }
 
-    protected void aimstickattarget(float durationSeconds, Script.Yesno onlyAimWhenNeeded) {
+    protected void aimstickattarget(double durationSeconds, Script.Yesno onlyAimWhenNeeded) {
         throw new UnsupportedOperationException();
     }
 
@@ -93,11 +93,11 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected void emitmessageinarea(String id, EnumSet<Script.TargetReceiveGroups> receiveGroups, EnumSet<Script.Teamswithtarget> teams, float xoffset, float yoffset, float width, float height, Script.Yesno ignoreInvisibility, Script.Yesno checkLineOfSight) {
+    protected void emitmessageinarea(String id, EnumSet<Script.TargetReceiveGroups> receiveGroups, EnumSet<Script.Teamswithtarget> teams, double xoffset, double yoffset, double width, double height, Script.Yesno ignoreInvisibility, Script.Yesno checkLineOfSight) {
         throw new UnsupportedOperationException();
     }
 
-    protected void pausegame(Script.Yesno endonbuttonpress, Script.Yesno endonanimationfinished, Script.Yesno endontimeelapsed, float endontimeelapsedtime, String animationname, Script.Yesno loopanimation, float animationxposition, float animationyposition, float animationsize, Script.Yesno animationnamebasedoninputhardware, Script.Yesno animationtextsbasedoninputhardware) {
+    protected void pausegame(Script.Yesno endonbuttonpress, Script.Yesno endonanimationfinished, Script.Yesno endontimeelapsed, double endontimeelapsedtime, String animationname, Script.Yesno loopanimation, double animationxposition, double animationyposition, double animationsize, Script.Yesno animationnamebasedoninputhardware, Script.Yesno animationtextsbasedoninputhardware) {
         throw new UnsupportedOperationException();
     }
 
@@ -105,11 +105,11 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected void selecttarget(EnumSet<Script.TargetGroups> groupsToSelect, EnumSet<Script.Teams> teams, String clazz, Script.Yesno removeIfNotFound, float xoffset, float yoffset, float width, float height, Script.Valuecompare2 compareMethod, float healthValue, Script.DistanceCheck distanceCheck, Script.Yesno checkLineOfSight, Script.Yesno ignoreInvisibility) {
+    protected void selecttarget(EnumSet<Script.TargetGroups> groupsToSelect, EnumSet<Script.Teams> teams, String clazz, Script.Yesno removeIfNotFound, double xoffset, double yoffset, double width, double height, Script.Valuecompare2 compareMethod, double healthValue, Script.DistanceCheck distanceCheck, Script.Yesno checkLineOfSight, Script.Yesno ignoreInvisibility) {
         throw new UnsupportedOperationException();
     }
 
-    protected void pressbutton(Script.Buttons button, float durationInSeconds) {
+    protected void pressbutton(Script.Buttons button, double durationInSeconds) {
         throw new UnsupportedOperationException();
     }
 
@@ -121,7 +121,7 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected void playanimation(String animationname, Script.AnimationLocation location, float xposition, float yposition, float scale, float depth, Script.Yesno mirrorx, Script.Teams team) {
+    protected void playanimation(String animationname, Script.AnimationLocation location, double xposition, double yposition, double scale, double depth, Script.Yesno mirrorx, Script.Teams team) {
         throw new UnsupportedOperationException();
     }
 
@@ -153,7 +153,7 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected boolean checkgametime(float timeInSeconds, Script.Valuecompare compareMethod) {
+    protected boolean checkgametime(double timeInSeconds, Script.Valuecompare compareMethod) {
         throw new UnsupportedOperationException();
     }
 
@@ -165,7 +165,7 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected boolean timer(Script.Timeunits timeunit, float time, Script.Yesno executeFirstTime) {
+    protected boolean timer(Script.Timeunits timeunit, double time, Script.Yesno executeFirstTime) {
         throw new UnsupportedOperationException();
     }
 
@@ -209,7 +209,7 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected boolean timepassed(Script.Timeunits timeunit, float time) {
+    protected boolean timepassed(Script.Timeunits timeunit, double time) {
         throw new UnsupportedOperationException();
     }
 
@@ -233,7 +233,7 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected boolean aregoldcoinsinarea(float compareValue, Script.Valuecompare compareMethod, float xoffset, float yoffset, float width, float height, Script.Yesno checkLineOfSight) {
+    protected boolean aregoldcoinsinarea(double compareValue, Script.Valuecompare compareMethod, double xoffset, double yoffset, double width, double height, Script.Yesno checkLineOfSight) {
         throw new UnsupportedOperationException();
     }
 
@@ -253,7 +253,7 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected boolean checkcharactervalue(Script.CharactervaluesCheckable property, float value, Script.Valuecompare compareMethod, Script.Targetself checkOn) {
+    protected boolean checkcharactervalue(Script.CharactervaluesCheckable property, double value, Script.Valuecompare compareMethod, Script.Targetself checkOn) {
         throw new UnsupportedOperationException();
     }
 
@@ -261,7 +261,7 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected boolean isinarea(Script.Yesno condition, EnumSet<Script.CollisonGroups> collisionGroups, Script.Yesno checkGreenObstaclesOnly, EnumSet<Script.Teams> teams, String areaname, float xoffset, float yoffset, float width, float height, Script.Yesno checkLineOfSight, Script.Yesno ignoreInvisibility) {
+    protected boolean isinarea(Script.Yesno condition, EnumSet<Script.CollisonGroups> collisionGroups, Script.Yesno checkGreenObstaclesOnly, EnumSet<Script.Teams> teams, String areaname, double xoffset, double yoffset, double width, double height, Script.Yesno checkLineOfSight, Script.Yesno ignoreInvisibility) {
         throw new UnsupportedOperationException();
     }
 

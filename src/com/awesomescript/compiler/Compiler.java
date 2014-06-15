@@ -45,6 +45,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import com.awesomescript.Script;
 import com.awesomescript.importer.Action;
 import com.awesomescript.importer.Condition;
 import com.awesomescript.importer.Domain;
@@ -52,6 +53,10 @@ import com.awesomescript.importer.Enumeration;
 import com.awesomescript.importer.Importer;
 import com.awesomescript.importer.Method;
 import com.awesomescript.importer.Parameter;
+import com.sun.codemodel.JCodeModel;
+import com.sun.codemodel.JDefinedClass;
+import com.sun.codemodel.JMethod;
+import com.sun.codemodel.JMod;
 
 public class Compiler {
 	public final static String ENTRY_POINT = "onTick";
@@ -59,13 +64,37 @@ public class Compiler {
 	private Domain domain;
 	private HashMap<String, SequenceNode> methods = new HashMap<>();
 
-	public void compile(InputStream is, OutputStream os) {
+	private boolean loadDomain() {
+		if (domain != null) return true;
 		try {
 			domain = Importer.parseDomain(Importer.PATH);
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return;
+			return false;
 		}
+	}
+	
+	public void decompile(String name, InputStream is, File out) {
+	}
+	
+	private void decompile(String name, RootNode root, File out) {
+		loadDomain();
+		
+		try {
+			JCodeModel model = new JCodeModel();
+			JDefinedClass script = model._class(Domain.PACKAGE + "." + name);
+			script._extends(Script.class);
+			JMethod onTick = script.method(JMod.PUBLIC, void.class, Domain.ENTRY_POINT);
+			root.writeJava(model, script, onTick.body());
+			model.build(out);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void compile(InputStream is, OutputStream os) {
+		loadDomain();
 		try {
 			CompilationUnit cu = JavaParser.parse(is);
 			
@@ -122,7 +151,7 @@ public class Compiler {
 			Element behaviorNode = doc.createElement("behaviour");
 			enemyNode.appendChild(behaviorNode);
 			
-			rootNode.write(doc, behaviorNode);
+			rootNode.writeXML(doc, behaviorNode);
 			
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
@@ -133,6 +162,8 @@ public class Compiler {
 			StreamResult result = new StreamResult(os);
 	 
 			transformer.transform(source, result);
+			
+			decompile("TestScript", rootNode, new File("./out"));
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -323,9 +354,9 @@ public class Compiler {
 			if (exp instanceof StringLiteralExpr) {
 				String value = ((StringLiteralExpr) exp).getValue();
 				if (exp instanceof DoubleLiteralExpr) value = value.replace("f", "");
-				node.parameters.add(value);
+				node.arguments.add(value);
 			} else if (exp instanceof FieldAccessExpr) {
-				node.parameters.add(parseEnumValue(exp, param));
+				node.arguments.add(parseEnumValue(exp, param));
 			} else if (exp instanceof NameExpr) { 
 				unknowType(exp);
 			} else if (exp instanceof MethodCallExpr) {
@@ -348,7 +379,7 @@ public class Compiler {
 						for (String check : checks) {
 							value += check + ";;";
 						}
-						node.parameters.add(value);
+						node.arguments.add(value);
 					} else {
 						unknowType(expScope);
 					}
@@ -356,7 +387,7 @@ public class Compiler {
 					unknowType(expScope);
 				}
 			} else if (exp instanceof NullLiteralExpr) {
-				node.parameters.add("");
+				node.arguments.add("");
 			} else {
 				unknowType(exp);
 			}

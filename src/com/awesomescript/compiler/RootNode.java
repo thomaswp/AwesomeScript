@@ -6,6 +6,10 @@ import java.util.List;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import com.sun.codemodel.JBlock;
+import com.sun.codemodel.JCodeModel;
+import com.sun.codemodel.JDefinedClass;
+
 
 public class RootNode extends Node {
 	public int x = 110, y = 40;
@@ -31,7 +35,15 @@ public class RootNode extends Node {
 		parent.appendChild(normal);
 		
 		for (Node node : normals) {
-			node.write(doc, normal);
+			node.writeXML(doc, normal);
+		}
+	}
+
+	@Override
+	public void writeJava(JCodeModel model, JDefinedClass script, JBlock body) {
+		super.writeJava(model, script, body);
+		for (Node node : normals) {
+			node.writeJava(model, script, body);
 		}
 	}
 

@@ -27,7 +27,7 @@ public class Parameter {
 				method.param(String.class, name);
 			}
 		} else if (type.equalsIgnoreCase("float")) {
-			method.param(float.class, name);
+			method.param(double.class, name);
 		} else {
 			throw new RuntimeException("Unknown parameter type: " + type);
 		}
