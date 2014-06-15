@@ -10,6 +10,7 @@ public class MyScript extends Script {
 	
 	@Override
 	protected void onTick() {
+		
 		//comment
 		adjustcharactervalue(CharactervaluesAdjustable.HealthPercentage, 12, Valueadjust.Set);
 		/*
@@ -42,9 +43,14 @@ public class MyScript extends Script {
 		blockingThings();
 		
 	}
+
+	void things2() {
+		adjustcounter("a1", "b2", Valueadjust.Add);
+	}
 	
 	void things() {
 		adjustcounter("a", "b", Valueadjust.Add);
+		things2();
 	}
 	
 	@Sequence( blocking = true )
@@ -54,7 +60,7 @@ public class MyScript extends Script {
 	}
 	
 	public static void main(String[] args) {
-		new MyScript().compile();
+		new MyScript().compile("MyScript.xml");
 	}
 
 }

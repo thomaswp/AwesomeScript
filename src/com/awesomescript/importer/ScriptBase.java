@@ -1,15 +1,17 @@
 package com.awesomescript.importer;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import com.awesomescript.compiler.Compiler;
 
 public class ScriptBase {
-	protected void compile() {
+	protected void compile(String outputPath) {
 		try {
 			FileInputStream fis = new FileInputStream(getPath());
-			new Compiler().compile(fis);
+			FileOutputStream fos = new FileOutputStream(outputPath);
+			new Compiler().compile(fis, fos);
 			fis.close();
 		} catch (IOException e) {
 			e.printStackTrace();

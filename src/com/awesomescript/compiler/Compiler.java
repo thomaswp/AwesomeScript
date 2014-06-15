@@ -28,6 +28,7 @@ import japa.parser.ast.visitor.VoidVisitorAdapter;
 
 import java.io.File;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,7 +59,7 @@ public class Compiler {
 	private Domain domain;
 	private HashMap<String, SequenceNode> methods = new HashMap<>();
 
-	public void compile(InputStream is) {
+	public void compile(InputStream is, OutputStream os) {
 		try {
 			domain = Importer.parseDomain(Importer.PATH);
 		} catch (Exception e) {
@@ -129,7 +130,7 @@ public class Compiler {
 			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 			
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File("behaviour.xml"));
+			StreamResult result = new StreamResult(os);
 	 
 			transformer.transform(source, result);
 			

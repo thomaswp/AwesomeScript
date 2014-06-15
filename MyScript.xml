@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<enemy>
+    <behaviour>
+        <root x="110" y="40">
+            <normal>
+                <action id="adjustCharacterValue">
+                    <string id="Comment">comment</string>
+                    <string id="property" values="charactervaluesAdjustable">health percentage</string>
+                    <float id="value">12</float>
+                    <string id="adjust method" values="valueadjust">set</string>
+                </action>
+                <action id="adjustCounter">
+                    <string id="Comment">block &gt;&lt; blocity block</string>
+                    <string id="id">moo</string>
+                    <string id="value">3</string>
+                    <string id="adjust method" values="valueadjust">add</string>
+                </action>
+                <condition id="isInArea">
+                    <string id="Comment">c1</string>
+                    <string id="condition" values="yesno">yes</string>
+                    <string id="collision groups" multiselect="true" values="collison groups">CREEPS;;DESTROYABLE_OBSTACLES;;</string>
+                    <string id="check green obstacles only" values="yesno">no</string>
+                    <string id="teams" multiselect="true" values="teams"/>
+                    <string id="areaName">name</string>
+                    <float id="xOffset">0</float>
+                    <float id="yOffset">0</float>
+                    <float id="width">10</float>
+                    <float id="height">10</float>
+                    <string id="check line of sight" values="yesno">yes</string>
+                    <string id="ignore invisibility" values="yesno">no</string>
+                    <normal/>
+                    <else/>
+                </condition>
+                <action id="adjustCounter">
+                    <string id="id">a</string>
+                    <string id="value">b</string>
+                    <string id="adjust method" values="valueadjust">add</string>
+                </action>
+                <action id="adjustCounter">
+                    <string id="id">a1</string>
+                    <string id="value">b2</string>
+                    <string id="adjust method" values="valueadjust">add</string>
+                </action>
+                <andblock>
+                    <normal>
+                        <action id="log">
+                            <string id="Comment">c3</string>
+                            <string id="text">Hello</string>
+                            <string id="counter">counter1</string>
+                            <string id="bool">bool1</string>
+                        </action>
+                    </normal>
+                    <else>
+                        <condition id="checkCharacterFlag">
+                            <string id="property" values="characterflags">isBlinded</string>
+                            <string id="condition" values="yesno">no</string>
+                            <string id="check on" values="targetself">target</string>
+                            <normal>
+                                <action id="log">
+                                    <string id="text">Hello2</string>
+                                    <string id="counter">counter1</string>
+                                    <string id="bool">bool1</string>
+                                </action>
+                            </normal>
+                            <else>
+                                <action id="log">
+                                    <string id="text">Hello</string>
+                                    <string id="counter">counter1</string>
+                                    <string id="bool">bool1</string>
+                                </action>
+                            </else>
+                        </condition>
+                    </else>
+                    <or>
+                        <condition id="areGoldCoinsInArea">
+                            <float id="compare value">5</float>
+                            <string id="compare method" values="valuecompare">less</string>
+                            <float id="xOffset">4</float>
+                            <float id="yOffset">10</float>
+                            <float id="width">20</float>
+                            <float id="height">20</float>
+                            <string id="check line of sight" values="yesno">yes</string>
+                            <normal/>
+                            <else/>
+                        </condition>
+                        <condition id="checkClass">
+                            <string id="check on" values="targetself">self</string>
+                            <string id="class">me</string>
+                            <normal/>
+                            <else/>
+                        </condition>
+                        <condition id="checkClass">
+                            <string id="check on" values="targetself">target</string>
+                            <string id="class">boo</string>
+                            <normal/>
+                            <else/>
+                        </condition>
+                    </or>
+                </andblock>
+                <action id="adjustCounter">
+                    <string id="id">a</string>
+                    <string id="value">b</string>
+                    <string id="adjust method" values="valueadjust">add</string>
+                </action>
+                <action id="adjustCounter">
+                    <string id="id">a1</string>
+                    <string id="value">b2</string>
+                    <string id="adjust method" values="valueadjust">add</string>
+                </action>
+                <sequence>
+                    <string name="Is blocking">yes</string>
+                    <normal>
+                        <action id="adjustCounter">
+                            <string id="id">c</string>
+                            <string id="value">d</string>
+                            <string id="adjust method" values="valueadjust">add</string>
+                        </action>
+                        <action id="adjustCounter">
+                            <string id="id">e</string>
+                            <string id="value">f</string>
+                            <string id="adjust method" values="valueadjust">add</string>
+                        </action>
+                    </normal>
+                </sequence>
+            </normal>
+        </root>
+    </behaviour>
+</enemy>
