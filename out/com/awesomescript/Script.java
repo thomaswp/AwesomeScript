@@ -9,79 +9,7 @@ public abstract class Script
 {
 
 
-    protected void resetmissionvariables() {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void setbool(String id, Script.Flagtoggle value) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void adjustmissioncounter(String id, String value, Script.Valueadjust adjustMethod) {
-        throw new UnsupportedOperationException();
-    }
-
     protected void wait(double time) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void selectpingwaypoint(Script.Ping ping) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void pressstick(Script.Directions direction, double durationInSeconds) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void removetarget() {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void enableupgrade(Script.Yesno condition, String upgradeName) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void adjustcharactervalue(Script.CharactervaluesAdjustable property, double value, Script.Valueadjust adjustMethod) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void adjustcounter(String id, String value, Script.Valueadjust adjustMethod) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void selecttargetwaypoint() {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void randomizemissioncounter(String id, String low, String high) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void emittargetinarea(EnumSet<Script.TargetReceiveGroups> receiveGroups, EnumSet<Script.Teams> teams, double xoffset, double yoffset, double width, double height) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void selectdestwaypoint(String name, Script.Ownenemy team) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void writetotextbox(String localizationid, double transparency, String texture, double duration) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void aimstickattarget(double durationSeconds, Script.Yesno onlyAimWhenNeeded) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void buyupgrade(String upgradeName) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void missiongetscore(String clazz, Script.Teamswithnumbers team, Script.Scoretype type, String storeIn) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void completemission(Script.MissionCompletionDelay delay) {
         throw new UnsupportedOperationException();
     }
 
@@ -89,23 +17,7 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected void playsound(String soundgroup) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void emitmessageinarea(String id, EnumSet<Script.TargetReceiveGroups> receiveGroups, EnumSet<Script.Teamswithtarget> teams, double xoffset, double yoffset, double width, double height, Script.Yesno ignoreInvisibility, Script.Yesno checkLineOfSight) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void pausegame(Script.Yesno endonbuttonpress, Script.Yesno endonanimationfinished, Script.Yesno endontimeelapsed, double endontimeelapsedtime, String animationname, Script.Yesno loopanimation, double animationxposition, double animationyposition, double animationsize, Script.Yesno animationnamebasedoninputhardware, Script.Yesno animationtextsbasedoninputhardware) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void setmissionbool(String id, Script.Flagtoggle value) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected void selecttarget(EnumSet<Script.TargetGroups> groupsToSelect, EnumSet<Script.Teams> teams, String clazz, Script.Yesno removeIfNotFound, double xoffset, double yoffset, double width, double height, Script.Valuecompare2 compareMethod, double healthValue, Script.DistanceCheck distanceCheck, Script.Yesno checkLineOfSight, Script.Yesno ignoreInvisibility) {
+    protected void resetmissionvariables() {
         throw new UnsupportedOperationException();
     }
 
@@ -113,11 +25,75 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected void receivetarget() {
+    protected void adjustmissioncounter(String id, String value, Script.Valueadjust adjustMethod) {
         throw new UnsupportedOperationException();
     }
 
-    protected void executebehaviourtree(String filename) {
+    protected void selectdestwaypoint(String name, Script.Ownenemy team) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected void adjustcounter(String id, String value, Script.Valueadjust adjustMethod) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected void emittargetinarea(EnumSet<Script.TargetReceiveGroups> receiveGroups, EnumSet<Script.Teams> teams, double xoffset, double yoffset, double width, double height) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected void adjustcharactervalue(Script.CharactervaluesAdjustable property, double value, Script.Valueadjust adjustMethod) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected void aimstickattarget(double durationSeconds, Script.Yesno onlyAimWhenNeeded) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected void writetotextbox(String localizationid, double transparency, String texture, double duration) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected void emitmessageinarea(String id, EnumSet<Script.TargetReceiveGroups> receiveGroups, EnumSet<Script.Teamswithtarget> teams, double xoffset, double yoffset, double width, double height, Script.Yesno ignoreInvisibility, Script.Yesno checkLineOfSight) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected void playsound(String soundgroup) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected void completemission(Script.MissionCompletionDelay delay) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected void missiongetscore(String clazz, Script.Teamswithnumbers team, Script.Scoretype type, String storeIn) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected void selecttarget(EnumSet<Script.TargetGroups> groupsToSelect, EnumSet<Script.Teams> teams, String clazz, Script.Yesno removeIfNotFound, double xoffset, double yoffset, double width, double height, Script.Valuecompare2 compareMethod, double healthValue, Script.DistanceCheck distanceCheck, Script.Yesno checkLineOfSight, Script.Yesno ignoreInvisibility) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected void selectpingwaypoint(Script.Ping ping) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected void pausegame(Script.Yesno endonbuttonpress, Script.Yesno endonanimationfinished, Script.Yesno endontimeelapsed, double endontimeelapsedtime, String animationname, Script.Yesno loopanimation, double animationxposition, double animationyposition, double animationsize, Script.Yesno animationnamebasedoninputhardware, Script.Yesno animationtextsbasedoninputhardware) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected void setbool(String id, Script.Flagtoggle value) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected void randomizemissioncounter(String id, String low, String high) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected void enableupgrade(Script.Yesno condition, String upgradeName) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected void pressstick(Script.Directions direction, double durationInSeconds) {
         throw new UnsupportedOperationException();
     }
 
@@ -125,87 +101,27 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected boolean isinnamedarea(String areaName, Script.Ownenemy team, Script.Targetself who) {
+    protected void executebehaviourtree(String filename) {
         throw new UnsupportedOperationException();
     }
 
-    protected boolean isbuttonpressed(Script.Buttons button) {
+    protected void setmissionbool(String id, Script.Flagtoggle value) {
         throw new UnsupportedOperationException();
     }
 
-    protected boolean ongoldcollected(Script.MissionTarget collector, Script.Teamswithnumbers team, String clazz, Script.GoldPickupType type, Script.Valuecompare compareMethod, String value, String storeIn) {
+    protected void buyupgrade(String upgradeName) {
         throw new UnsupportedOperationException();
     }
 
-    protected boolean receivedping(Script.Ping ping) {
+    protected void receivetarget() {
         throw new UnsupportedOperationException();
     }
 
-    protected boolean isfromteam(Script.Teamswithnumbers team, Script.Targetself checkOn) {
+    protected void selecttargetwaypoint() {
         throw new UnsupportedOperationException();
     }
 
-    protected boolean receivedtarget(EnumSet<Script.TargetGroups> ifOfGroup) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean getboolequals(String id, Script.Yesno value) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean checkgametime(double timeInSeconds, Script.Valuecompare compareMethod) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean checkcharacterflag(Script.Characterflags property, Script.Yesno condition, Script.Targetself checkOn) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean comparemissionbools(String id1, String id2) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean timer(Script.Timeunits timeunit, double time, Script.Yesno executeFirstTime) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean ispickupatwaypoint(String name, Script.Ownenemy team) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean checkcounter(String id, String value, Script.Valuecompare compareMethod) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean onkill(Script.MissionTarget killer, Script.Teamswithnumbers killerTeam, String killerClass, Script.MissionTarget victim, Script.Teamswithnumbers victimTeam, String victimClass, Script.Valuecompare compareMethod, String value, String storeIn) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean comparebools(String id1, String id2) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean isskillonbuttonavailable(Script.Buttons button) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean onprestige() {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean getmissionboolequals(String id, Script.Yesno value) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean isnextwaypointposition(Script.Offsetposition position) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean ongamestarted() {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean random(String amount) {
+    protected void removetarget() {
         throw new UnsupportedOperationException();
     }
 
@@ -213,31 +129,7 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected boolean doesclassexist(EnumSet<Script.Teams> teams, String clazz) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean checkmissioncounter(String id, String value, Script.Valuecompare compareMethod) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean isbuttonreleased(Script.Buttons button) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean isoncreepturner(Script.Yesno condition, Script.Forwardbackward direction) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean isonlinematch() {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean aregoldcoinsinarea(double compareValue, Script.Valuecompare compareMethod, double xoffset, double yoffset, double width, double height, Script.Yesno checkLineOfSight) {
-        throw new UnsupportedOperationException();
-    }
-
-    protected boolean receivedmessage(String id) {
+    protected boolean ongoldcollected(Script.MissionTarget collector, Script.Teamswithnumbers team, String clazz, Script.GoldPickupType type, Script.Valuecompare compareMethod, String value, String storeIn) {
         throw new UnsupportedOperationException();
     }
 
@@ -245,11 +137,31 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
-    protected boolean onwin(Script.Teamswithnumbers team) {
+    protected boolean isskillonbuttonavailable(Script.Buttons button) {
         throw new UnsupportedOperationException();
     }
 
-    protected boolean checkclass(Script.Targetself checkOn, String clazz) {
+    protected boolean isnextwaypointposition(Script.Offsetposition position) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean isbuttonreleased(Script.Buttons button) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean isupgradeenabled(Script.Yesno condition, String upgradeName) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean isturretinarea(EnumSet<Script.Teams> teams, Script.Valuecompare healthComparison, double health, double xoffset, double yoffset, double width, double height, Script.Yesno checkLineOfSight) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean isinarea(Script.Yesno condition, EnumSet<Script.CollisonGroups> collisionGroups, Script.Yesno checkGreenObstaclesOnly, EnumSet<Script.Teams> teams, String areaname, double xoffset, double yoffset, double width, double height, Script.Yesno checkLineOfSight, Script.Yesno ignoreInvisibility) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean getmissionboolequals(String id, Script.Yesno value) {
         throw new UnsupportedOperationException();
     }
 
@@ -257,11 +169,155 @@ public abstract class Script
         throw new UnsupportedOperationException();
     }
 
+    protected boolean hastarget(Script.Yesno condition) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean isnextwaypointinarea(double xoffset, double yoffset, double width, double height) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean isbuttonpressed(Script.Buttons button) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean checkcounter(String id, String value, Script.Valuecompare compareMethod) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean isonlinematch() {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean onwin(Script.Teamswithnumbers team) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean once() {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean comparemissionbools(String id1, String id2) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean getboolequals(String id, Script.Yesno value) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean canpayupgrade(String upgradeName) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean onkill(Script.MissionTarget killer, Script.Teamswithnumbers killerTeam, String killerClass, Script.MissionTarget victim, Script.Teamswithnumbers victimTeam, String victimClass, Script.Valuecompare compareMethod, String value, String storeIn) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean isinnamedarea(String areaName, Script.Ownenemy team, Script.Targetself who) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean onprestige() {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean receivedping(Script.Ping ping) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean random(String amount) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean receivedmessage(String id) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean timer(Script.Timeunits timeunit, double time, Script.Yesno executeFirstTime) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean ongamestarted() {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean aregoldcoinsinarea(double compareValue, Script.Valuecompare compareMethod, double xoffset, double yoffset, double width, double height, Script.Yesno checkLineOfSight) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean istargettype(Script.Yesno condition, EnumSet<Script.TargetGroups> targetGroups) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean checkclass(Script.Targetself checkOn, String clazz) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean checkmissioncounter(String id, String value, Script.Valuecompare compareMethod) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean checkcharacterflag(Script.Characterflags property, Script.Yesno condition, Script.Targetself checkOn) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean isoncreepturner(Script.Yesno condition, Script.Forwardbackward direction) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean doesclassexist(EnumSet<Script.Teams> teams, String clazz) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean receivedtarget(EnumSet<Script.TargetGroups> ifOfGroup) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean istargetinarea(Script.Yesno condition, double xoffset, double yoffset, double width, double height, Script.Yesno checkLineOfSight, Script.Yesno ignoreInvisibility) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean hasdestwaypoint() {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean isfromteam(Script.Teamswithnumbers team, Script.Targetself checkOn) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean ischaracterinarea(EnumSet<Script.TargetReceiveGroups> groups, EnumSet<Script.Teams> teams, String clazz, Script.CharactervaluesCheckable condition, Script.Valuecompare comparison, double value, String characterMinimum, double xoffset, double yoffset, double width, double height, Script.Yesno checkLineOfSight) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean ispickupatwaypoint(String name, Script.Ownenemy team) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean isatdestwaypoint() {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean isonground(Script.Yesno condition, Script.Targetself checkOn) {
+        throw new UnsupportedOperationException();
+    }
+
     protected boolean isbuttondown(Script.Buttons button) {
         throw new UnsupportedOperationException();
     }
 
-    protected boolean isinarea(Script.Yesno condition, EnumSet<Script.CollisonGroups> collisionGroups, Script.Yesno checkGreenObstaclesOnly, EnumSet<Script.Teams> teams, String areaname, double xoffset, double yoffset, double width, double height, Script.Yesno checkLineOfSight, Script.Yesno ignoreInvisibility) {
+    protected boolean istargetposition(Script.Yesno condition, Script.Offsetposition targetPosition) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean checkgametime(double timeInSeconds, Script.Valuecompare compareMethod) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean comparebools(String id1, String id2) {
+        throw new UnsupportedOperationException();
+    }
+
+    protected boolean hasupgrade(String clazz, Script.Teamswithnumbers team, String upgradeName) {
         throw new UnsupportedOperationException();
     }
 

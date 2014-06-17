@@ -3,6 +3,7 @@ package com.awesomescript.compiler;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import com.awesomescript.xml.XmlUtils;
 import com.sun.codemodel.JBlock;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JDefinedClass;
@@ -38,5 +39,29 @@ public abstract class Node {
 
 	public void writeJava(JCodeModel model, JDefinedClass script, JBlock body) {
 		writeComment(body);
+	}
+		
+	public void readXmlArgs(org.w3c.dom.Node node) {
+		iterateAttributes(node, new Reader() {
+			@Override
+			public void read(String id, String text) {
+				if (id.equals("Comment")) comment = text;
+			}
+		});
+	}
+	
+	protected void iterateAttributes(org.w3c.dom.Node node, Reader reader) { 
+		for (org.w3c.dom.Node child : XmlUtils.iterate(node.getChildNodes())) {
+			if (!(child instanceof Element)) continue;
+			String name = child.getNodeName();
+			if (name.equals("string") || name.equals("float")) {
+				String id = child.getAttributes().getNamedItem("id").getNodeValue();
+				reader.read(id, child.getTextContent());
+			}
+		}
+	}
+	
+	protected interface Reader {
+		void read(String id, String text);
 	}
 }

@@ -10,6 +10,7 @@ import org.w3c.dom.Element;
 import com.awesomescript.importer.Enumeration;
 import com.awesomescript.importer.Method;
 import com.awesomescript.importer.Parameter;
+import com.awesomescript.xml.XmlUtils;
 import com.sun.codemodel.JBlock;
 import com.sun.codemodel.JClass;
 import com.sun.codemodel.JCodeModel;
@@ -93,5 +94,27 @@ public abstract class MethodNode extends Node {
 
 		}
 		return call;
+	}
+
+
+	public void readXmlArgs(org.w3c.dom.Node node) {
+		super.readXmlArgs(node);
+		String args[] = new String[method.parameters.size()];
+		int successes = 0;
+		for (org.w3c.dom.Node child : XmlUtils.iterate(node.getChildNodes())) {
+			if (!(child instanceof Element)) continue;
+			String name = child.getNodeName();
+			if (name.equals("string") || name.equals("float")) {
+				String id = child.getAttributes().getNamedItem("id").getNodeValue();
+				for (int i = 0; i < args.length; i++) {
+					if (method.parameters.get(i).name.equals(id)) {
+						args[i] = child.getTextContent();
+						successes++;
+					}
+				}
+			}
+		}
+		if (successes < args.length) System.err.println("Not enough args for " + method.name + ": " + successes + " < " + args.length);
+		for (String arg : args) arguments.add(arg == null ? "" : arg);
 	}
 }

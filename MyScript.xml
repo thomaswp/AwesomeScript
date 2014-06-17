@@ -108,7 +108,7 @@
                     <string id="adjust method" values="valueadjust">add</string>
                 </action>
                 <sequence>
-                    <string name="Is blocking">yes</string>
+                    <string id="Is blocking">yes</string>
                     <normal>
                         <action id="adjustCounter">
                             <string id="id">c</string>

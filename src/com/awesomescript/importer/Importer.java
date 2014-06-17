@@ -1,7 +1,8 @@
 package com.awesomescript.importer;
+import static com.awesomescript.xml.XmlUtils.iterate;
+
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -10,7 +11,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 
@@ -64,6 +64,15 @@ public class Importer {
 			}	
 		}
 		
+		for (Node conditionNode : iterate(doc.getElementsByTagName("conditions"))) {
+			if (conditionNode.getNodeType() == Node.ELEMENT_NODE) {
+				if (conditionNode.getAttributes().getNamedItem("name") == null) continue;
+				Condition condition = new Condition();
+				populateMethod(domain, conditionNode, condition);
+				domain.conditions.put(condition.name, condition);
+			}	
+		}
+		
 		return domain;
 	}
 	
@@ -101,33 +110,4 @@ public class Importer {
 			}
 		}
 	}
-	
-	private static Iterable<Node> iterate(final NodeList nodeList) {
-		return new Iterable<Node>() {
-			@Override
-			public Iterator<Node> iterator() {
-				
-				return new Iterator<Node>() {
-				
-					int index = 0;
-					
-					@Override
-					public void remove() {
-						throw new UnsupportedOperationException();
-					}
-					
-					@Override
-					public Node next() {
-						return nodeList.item(index++);
-					}
-					
-					@Override
-					public boolean hasNext() {
-						return index < nodeList.getLength();
-					}
-				};
-			}
-		};
-	}
-
 }

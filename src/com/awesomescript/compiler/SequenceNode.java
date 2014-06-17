@@ -33,7 +33,7 @@ public class SequenceNode extends Node {
 		
 		Element b = doc.createElement("string");
 		parent.appendChild(b);
-		b.setAttribute("name", "Is blocking");
+		b.setAttribute("id", "Is blocking");
 		b.setTextContent(blocking ? "yes" : "no");
 		
 		Element normal = doc.createElement("normal");
@@ -49,10 +49,9 @@ public class SequenceNode extends Node {
 		if (sequence) {
 			int i = 0;
 			for (JMethod method : script.methods()) {
-				if (!method.name().equals(DEFAULT_METHOD_NAME + i)) {
-					break;
+				if (method.name().equals(DEFAULT_METHOD_NAME + i)) {
+					i++;
 				}
-				i++;
 			}
 			JMethod method = script.method(JMod.NONE, void.class, DEFAULT_METHOD_NAME + i);
 			JAnnotationUse annotation = method.annotate(Sequence.class);
@@ -65,6 +64,17 @@ public class SequenceNode extends Node {
 		for (Node node : normals) {
 			node.writeJava(model, script, body);
 		}
+	}
+
+	public void readXmlArgs(org.w3c.dom.Node node) {
+		super.readXmlArgs(node);
+		sequence = true;
+		iterateAttributes(node, new Reader() {
+			@Override
+			public void read(String id, String text) {
+				if (id.equals("Is blocking")) blocking = text.equals("yes");
+			}
+		});
 	}
 
 }

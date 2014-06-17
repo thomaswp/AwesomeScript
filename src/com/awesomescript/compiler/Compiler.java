@@ -1,5 +1,6 @@
 package com.awesomescript.compiler;
 
+import static com.awesomescript.xml.XmlUtils.iterate;
 import japa.parser.JavaParser;
 import japa.parser.ast.CompilationUnit;
 import japa.parser.ast.body.MethodDeclaration;
@@ -53,6 +54,7 @@ import com.awesomescript.importer.Enumeration;
 import com.awesomescript.importer.Importer;
 import com.awesomescript.importer.Method;
 import com.awesomescript.importer.Parameter;
+import com.awesomescript.xml.XmlUtils;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JDefinedClass;
 import com.sun.codemodel.JMethod;
@@ -76,6 +78,66 @@ public class Compiler {
 	}
 	
 	public void decompile(String name, InputStream is, File out) {
+		try {
+			loadDomain();
+			
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(is);
+			doc.getDocumentElement().normalize();
+
+			for (org.w3c.dom.Node rootElement : iterate(doc.getElementsByTagName("root"))) {
+				RootNode root = new RootNode();
+				org.w3c.dom.Node normals = XmlUtils.getChildWithTagName(rootElement, "normal");
+				parseXmlNodes(normals, root.normals);
+				decompile(name, root, out);
+				break;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	private void parseXmlNodes(org.w3c.dom.Node parent, List<Node> list) {
+		if (parent == null) return;
+		for (org.w3c.dom.Node child : iterate(parent.getChildNodes())) {
+			if (!(child instanceof Element)) continue;
+			String childName = child.getNodeName();
+			if (childName.equals("condition")) {
+				ConditionNode node = new ConditionNode();
+				list.add(node);
+				String id = child.getAttributes().getNamedItem("id").getNodeValue();
+				node.method = domain.conditions.get(id);
+				if (node.method == null) throw new RuntimeException("No method for " + id);
+				node.readXmlArgs(child);
+				parseXmlNodes(XmlUtils.getChildWithTagName(child, "normal"), node.normals);
+				parseXmlNodes(XmlUtils.getChildWithTagName(child, "else"), node.elses);
+			} else if (childName.equals("action")) {
+				ActionNode node = new ActionNode();
+				list.add(node);
+				String id = child.getAttributes().getNamedItem("id").getNodeValue();
+				node.method = domain.actions.get(id);
+				if (node.method == null) throw new RuntimeException("No method for " + id);
+				node.readXmlArgs(child);
+			} else if (childName.equals("orblock") || childName.equals("andblock")) {
+				OpNode node = childName.equals("orblock") ? new OrNode() : new AndNode();
+				list.add(node);
+				List<Node> conds = new ArrayList<>();
+				parseXmlNodes(XmlUtils.getChildWithTagName(child, "or"), conds);
+				for (Node n : conds) node.operands.add((ConditionNode) n);
+				parseXmlNodes(XmlUtils.getChildWithTagName(child, "normal"), node.normals);
+				parseXmlNodes(XmlUtils.getChildWithTagName(child, "else"), node.elses);
+			} else if (childName.equals("sequence")) {
+				SequenceNode node = new SequenceNode();
+				list.add(node);
+				node.readXmlArgs(child);
+				parseXmlNodes(XmlUtils.getChildWithTagName(child, "normal"), node.normals);
+			} else {
+				throw new RuntimeException("Unknown tag: " + childName);
+			}
+		}
 	}
 	
 	private void decompile(String name, RootNode root, File out) {
