@@ -51,6 +51,9 @@ public abstract class MethodNode extends Node {
 	@Override
 	public void writeJava(JCodeModel model, JDefinedClass script, JBlock body) {
 		super.writeJava(model, script, body);
+//		if (method != null && method.name.equals("set)) {
+//			
+//		}
 		JInvocation call = body.invoke(Method.getMethodName(method.name));
 		addArgs(model, call);
 	}

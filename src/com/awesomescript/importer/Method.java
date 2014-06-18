@@ -33,10 +33,10 @@ public abstract class Method {
 		String name = "";
 		for (String part : parts) {
 			if (name.length() == 0) {
-				name += part.toLowerCase();
+				name += part;
 			} else if (part.length() > 0) {
 				name += part.substring(0, 1).toUpperCase() + 
-						part.substring(1).toLowerCase();
+						part.substring(1);
 			}
 		}
 		if (name.equals("class")) name = "clazz";

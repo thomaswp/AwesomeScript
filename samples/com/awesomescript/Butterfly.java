@@ -8,8 +8,8 @@ public class Butterfly
 
 
     public void onTick() {
-        executebehaviourtree("HeroCode");
-        executebehaviourtree("StatusEffects");
+        executeBehaviourTree("HeroCode");
+        executeBehaviourTree("StatusEffects");
     }
 
 }

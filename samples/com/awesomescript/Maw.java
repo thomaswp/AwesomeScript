@@ -9,251 +9,251 @@ public class Maw
 
 
     public void onTick() {
-        executebehaviourtree("StatusEffects");
-        executebehaviourtree("HeroCode");
+        executeBehaviourTree("StatusEffects");
+        executeBehaviourTree("HeroCode");
         if (once()) {
             // set max chunks
-            if (isupgradeenabled(Yesno.Yes, "MawTurretCheaper1")) {
-                adjustcounter("TurretChunks", "3", Valueadjust.Set);
+            if (isUpgradeEnabled(Yesno.Yes, "MawTurretCheaper1")) {
+                adjustCounter("TurretChunks", "3", Valueadjust.Set);
             } else {
-                adjustcounter("TurretChunks", "5", Valueadjust.Set);
+                adjustCounter("TurretChunks", "5", Valueadjust.Set);
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "MawBiteHit")||isupgradeenabled(Yesno.Yes, "MawBiteHitCreeps")) {
+        if (isUpgradeEnabled(Yesno.Yes, "MawBiteHit")||isUpgradeEnabled(Yesno.Yes, "MawBiteHitCreeps")) {
             log("Eating!", "", "");
-            if (isupgradeenabled(Yesno.Yes, "MawTurret")) {
-                adjustcounter("TurretChunks", "1", Valueadjust.Add);
+            if (isUpgradeEnabled(Yesno.Yes, "MawTurret")) {
+                adjustCounter("TurretChunks", "1", Valueadjust.Add);
             }
-            if (isupgradeenabled(Yesno.Yes, "MawShotSpeedUp")) {
-                enableupgrade(Yesno.Yes, "MawSpeedUp");
-                adjustcounter("SpeedUpTimer", "6", Valueadjust.Set);
+            if (isUpgradeEnabled(Yesno.Yes, "MawShotSpeedUp")) {
+                enableUpgrade(Yesno.Yes, "MawSpeedUp");
+                adjustCounter("SpeedUpTimer", "6", Valueadjust.Set);
             }
-            enableupgrade(Yesno.No, "MawBiteHitCreeps");
-            enableupgrade(Yesno.No, "MawBiteHit");
+            enableUpgrade(Yesno.No, "MawBiteHitCreeps");
+            enableUpgrade(Yesno.No, "MawBiteHit");
         }
-        if (checkcounter("SpeedUpTimer", "0", Valuecompare.Greater)) {
+        if (checkCounter("SpeedUpTimer", "0", Valuecompare.Greater)) {
             if (timer(Timeunits.Seconds, 0.25D, Yesno.No)) {
-                adjustcounter("SpeedUpTimer", "-1", Valueadjust.Add);
+                adjustCounter("SpeedUpTimer", "-1", Valueadjust.Add);
             }
         } else {
-            if (isupgradeenabled(Yesno.Yes, "MawSpeedUp")) {
-                enableupgrade(Yesno.No, "MawSpeedUp");
+            if (isUpgradeEnabled(Yesno.Yes, "MawSpeedUp")) {
+                enableUpgrade(Yesno.No, "MawSpeedUp");
             }
         }
         // set max chunks
-        if (isupgradeenabled(Yesno.Yes, "MawTurretCheaper1")) {
-            if (checkcounter("TurretChunks", "6", Valuecompare.Greater)) {
-                adjustcounter("TurretChunks", "6", Valueadjust.Set);
+        if (isUpgradeEnabled(Yesno.Yes, "MawTurretCheaper1")) {
+            if (checkCounter("TurretChunks", "6", Valuecompare.Greater)) {
+                adjustCounter("TurretChunks", "6", Valueadjust.Set);
             }
         } else {
-            if (checkcounter("TurretChunks", "10", Valuecompare.Greater)) {
-                adjustcounter("TurretChunks", "10", Valueadjust.Set);
+            if (checkCounter("TurretChunks", "10", Valuecompare.Greater)) {
+                adjustCounter("TurretChunks", "10", Valueadjust.Set);
             }
         }
         // enable turret building
-        if (isupgradeenabled(Yesno.Yes, "MawTurretCheaper1")) {
-            if (checkcounter("TurretChunks", "3", Valuecompare.Less)) {
-                enableupgrade(Yesno.No, "TurretAvailable");
+        if (isUpgradeEnabled(Yesno.Yes, "MawTurretCheaper1")) {
+            if (checkCounter("TurretChunks", "3", Valuecompare.Less)) {
+                enableUpgrade(Yesno.No, "TurretAvailable");
             } else {
-                enableupgrade(Yesno.Yes, "TurretAvailable");
+                enableUpgrade(Yesno.Yes, "TurretAvailable");
             }
         } else {
-            if (checkcounter("TurretChunks", "5", Valuecompare.Less)) {
-                enableupgrade(Yesno.No, "TurretAvailable");
+            if (checkCounter("TurretChunks", "5", Valuecompare.Less)) {
+                enableUpgrade(Yesno.No, "TurretAvailable");
             } else {
-                enableupgrade(Yesno.Yes, "TurretAvailable");
+                enableUpgrade(Yesno.Yes, "TurretAvailable");
             }
         }
         // turret build remove chunks
-        if (isupgradeenabled(Yesno.Yes, "MawTurretCreated")) {
-            enableupgrade(Yesno.No, "MawTurretCreated");
-            if (isupgradeenabled(Yesno.Yes, "MawTurretCheaper1")) {
+        if (isUpgradeEnabled(Yesno.Yes, "MawTurretCreated")) {
+            enableUpgrade(Yesno.No, "MawTurretCreated");
+            if (isUpgradeEnabled(Yesno.Yes, "MawTurretCheaper1")) {
                 sequence0();
             } else {
                 sequence1();
             }
         }
         // set icons
-        if (isupgradeenabled(Yesno.Yes, "MawTurretCheaper1")) {
-            if (checkcounter("TurretChunks", "9", Valuecompare.Equal)) {
-                enableupgrade(Yesno.No, "MawBite0");
-                enableupgrade(Yesno.No, "MawBite1");
-                enableupgrade(Yesno.No, "MawBite2");
-                enableupgrade(Yesno.No, "MawBite3");
-                enableupgrade(Yesno.No, "MawBite4");
-                enableupgrade(Yesno.No, "MawBite5");
-                enableupgrade(Yesno.No, "MawBite6");
-                enableupgrade(Yesno.No, "MawBite7");
-                enableupgrade(Yesno.No, "MawBite8");
-                enableupgrade(Yesno.No, "MawBite9");
-                enableupgrade(Yesno.No, "MawBite10");
-                enableupgrade(Yesno.No, "MawBite11");
-                enableupgrade(Yesno.No, "MawBite12");
-                enableupgrade(Yesno.No, "MawBite13");
-                enableupgrade(Yesno.No, "MawBite14");
-                enableupgrade(Yesno.Yes, "MawBite15");
+        if (isUpgradeEnabled(Yesno.Yes, "MawTurretCheaper1")) {
+            if (checkCounter("TurretChunks", "9", Valuecompare.Equal)) {
+                enableUpgrade(Yesno.No, "MawBite0");
+                enableUpgrade(Yesno.No, "MawBite1");
+                enableUpgrade(Yesno.No, "MawBite2");
+                enableUpgrade(Yesno.No, "MawBite3");
+                enableUpgrade(Yesno.No, "MawBite4");
+                enableUpgrade(Yesno.No, "MawBite5");
+                enableUpgrade(Yesno.No, "MawBite6");
+                enableUpgrade(Yesno.No, "MawBite7");
+                enableUpgrade(Yesno.No, "MawBite8");
+                enableUpgrade(Yesno.No, "MawBite9");
+                enableUpgrade(Yesno.No, "MawBite10");
+                enableUpgrade(Yesno.No, "MawBite11");
+                enableUpgrade(Yesno.No, "MawBite12");
+                enableUpgrade(Yesno.No, "MawBite13");
+                enableUpgrade(Yesno.No, "MawBite14");
+                enableUpgrade(Yesno.Yes, "MawBite15");
             } else {
-                if (checkcounter("TurretChunks", "8", Valuecompare.Equal)) {
-                    enableupgrade(Yesno.No, "MawBite0");
-                    enableupgrade(Yesno.No, "MawBite1");
-                    enableupgrade(Yesno.No, "MawBite2");
-                    enableupgrade(Yesno.No, "MawBite3");
-                    enableupgrade(Yesno.No, "MawBite4");
-                    enableupgrade(Yesno.No, "MawBite5");
-                    enableupgrade(Yesno.No, "MawBite6");
-                    enableupgrade(Yesno.No, "MawBite7");
-                    enableupgrade(Yesno.No, "MawBite8");
-                    enableupgrade(Yesno.No, "MawBite9");
-                    enableupgrade(Yesno.No, "MawBite10");
-                    enableupgrade(Yesno.No, "MawBite11");
-                    enableupgrade(Yesno.No, "MawBite12");
-                    enableupgrade(Yesno.No, "MawBite13");
-                    enableupgrade(Yesno.Yes, "MawBite14");
-                    enableupgrade(Yesno.No, "MawBite15");
+                if (checkCounter("TurretChunks", "8", Valuecompare.Equal)) {
+                    enableUpgrade(Yesno.No, "MawBite0");
+                    enableUpgrade(Yesno.No, "MawBite1");
+                    enableUpgrade(Yesno.No, "MawBite2");
+                    enableUpgrade(Yesno.No, "MawBite3");
+                    enableUpgrade(Yesno.No, "MawBite4");
+                    enableUpgrade(Yesno.No, "MawBite5");
+                    enableUpgrade(Yesno.No, "MawBite6");
+                    enableUpgrade(Yesno.No, "MawBite7");
+                    enableUpgrade(Yesno.No, "MawBite8");
+                    enableUpgrade(Yesno.No, "MawBite9");
+                    enableUpgrade(Yesno.No, "MawBite10");
+                    enableUpgrade(Yesno.No, "MawBite11");
+                    enableUpgrade(Yesno.No, "MawBite12");
+                    enableUpgrade(Yesno.No, "MawBite13");
+                    enableUpgrade(Yesno.Yes, "MawBite14");
+                    enableUpgrade(Yesno.No, "MawBite15");
                 } else {
-                    if (checkcounter("TurretChunks", "7", Valuecompare.Equal)) {
-                        enableupgrade(Yesno.No, "MawBite0");
-                        enableupgrade(Yesno.No, "MawBite1");
-                        enableupgrade(Yesno.No, "MawBite2");
-                        enableupgrade(Yesno.No, "MawBite3");
-                        enableupgrade(Yesno.No, "MawBite4");
-                        enableupgrade(Yesno.No, "MawBite5");
-                        enableupgrade(Yesno.No, "MawBite6");
-                        enableupgrade(Yesno.No, "MawBite7");
-                        enableupgrade(Yesno.No, "MawBite8");
-                        enableupgrade(Yesno.No, "MawBite9");
-                        enableupgrade(Yesno.No, "MawBite10");
-                        enableupgrade(Yesno.No, "MawBite11");
-                        enableupgrade(Yesno.No, "MawBite12");
-                        enableupgrade(Yesno.Yes, "MawBite13");
-                        enableupgrade(Yesno.No, "MawBite14");
-                        enableupgrade(Yesno.No, "MawBite15");
+                    if (checkCounter("TurretChunks", "7", Valuecompare.Equal)) {
+                        enableUpgrade(Yesno.No, "MawBite0");
+                        enableUpgrade(Yesno.No, "MawBite1");
+                        enableUpgrade(Yesno.No, "MawBite2");
+                        enableUpgrade(Yesno.No, "MawBite3");
+                        enableUpgrade(Yesno.No, "MawBite4");
+                        enableUpgrade(Yesno.No, "MawBite5");
+                        enableUpgrade(Yesno.No, "MawBite6");
+                        enableUpgrade(Yesno.No, "MawBite7");
+                        enableUpgrade(Yesno.No, "MawBite8");
+                        enableUpgrade(Yesno.No, "MawBite9");
+                        enableUpgrade(Yesno.No, "MawBite10");
+                        enableUpgrade(Yesno.No, "MawBite11");
+                        enableUpgrade(Yesno.No, "MawBite12");
+                        enableUpgrade(Yesno.Yes, "MawBite13");
+                        enableUpgrade(Yesno.No, "MawBite14");
+                        enableUpgrade(Yesno.No, "MawBite15");
                     } else {
-                        if (checkcounter("TurretChunks", "6", Valuecompare.Equal)) {
-                            enableupgrade(Yesno.No, "MawBite0");
-                            enableupgrade(Yesno.No, "MawBite1");
-                            enableupgrade(Yesno.No, "MawBite2");
-                            enableupgrade(Yesno.No, "MawBite3");
-                            enableupgrade(Yesno.No, "MawBite4");
-                            enableupgrade(Yesno.No, "MawBite5");
-                            enableupgrade(Yesno.No, "MawBite6");
-                            enableupgrade(Yesno.No, "MawBite7");
-                            enableupgrade(Yesno.No, "MawBite8");
-                            enableupgrade(Yesno.No, "MawBite9");
-                            enableupgrade(Yesno.Yes, "MawBite10");
-                            enableupgrade(Yesno.No, "MawBite11");
-                            enableupgrade(Yesno.No, "MawBite12");
-                            enableupgrade(Yesno.No, "MawBite13");
-                            enableupgrade(Yesno.No, "MawBite14");
-                            enableupgrade(Yesno.No, "MawBite15");
+                        if (checkCounter("TurretChunks", "6", Valuecompare.Equal)) {
+                            enableUpgrade(Yesno.No, "MawBite0");
+                            enableUpgrade(Yesno.No, "MawBite1");
+                            enableUpgrade(Yesno.No, "MawBite2");
+                            enableUpgrade(Yesno.No, "MawBite3");
+                            enableUpgrade(Yesno.No, "MawBite4");
+                            enableUpgrade(Yesno.No, "MawBite5");
+                            enableUpgrade(Yesno.No, "MawBite6");
+                            enableUpgrade(Yesno.No, "MawBite7");
+                            enableUpgrade(Yesno.No, "MawBite8");
+                            enableUpgrade(Yesno.No, "MawBite9");
+                            enableUpgrade(Yesno.Yes, "MawBite10");
+                            enableUpgrade(Yesno.No, "MawBite11");
+                            enableUpgrade(Yesno.No, "MawBite12");
+                            enableUpgrade(Yesno.No, "MawBite13");
+                            enableUpgrade(Yesno.No, "MawBite14");
+                            enableUpgrade(Yesno.No, "MawBite15");
                         } else {
-                            if (checkcounter("TurretChunks", "5", Valuecompare.Equal)) {
-                                enableupgrade(Yesno.No, "MawBite0");
-                                enableupgrade(Yesno.No, "MawBite1");
-                                enableupgrade(Yesno.No, "MawBite2");
-                                enableupgrade(Yesno.No, "MawBite3");
-                                enableupgrade(Yesno.No, "MawBite4");
-                                enableupgrade(Yesno.No, "MawBite5");
-                                enableupgrade(Yesno.No, "MawBite6");
-                                enableupgrade(Yesno.No, "MawBite7");
-                                enableupgrade(Yesno.No, "MawBite8");
-                                enableupgrade(Yesno.Yes, "MawBite9");
-                                enableupgrade(Yesno.No, "MawBite10");
-                                enableupgrade(Yesno.No, "MawBite11");
-                                enableupgrade(Yesno.No, "MawBite12");
-                                enableupgrade(Yesno.No, "MawBite13");
-                                enableupgrade(Yesno.No, "MawBite14");
-                                enableupgrade(Yesno.No, "MawBite15");
+                            if (checkCounter("TurretChunks", "5", Valuecompare.Equal)) {
+                                enableUpgrade(Yesno.No, "MawBite0");
+                                enableUpgrade(Yesno.No, "MawBite1");
+                                enableUpgrade(Yesno.No, "MawBite2");
+                                enableUpgrade(Yesno.No, "MawBite3");
+                                enableUpgrade(Yesno.No, "MawBite4");
+                                enableUpgrade(Yesno.No, "MawBite5");
+                                enableUpgrade(Yesno.No, "MawBite6");
+                                enableUpgrade(Yesno.No, "MawBite7");
+                                enableUpgrade(Yesno.No, "MawBite8");
+                                enableUpgrade(Yesno.Yes, "MawBite9");
+                                enableUpgrade(Yesno.No, "MawBite10");
+                                enableUpgrade(Yesno.No, "MawBite11");
+                                enableUpgrade(Yesno.No, "MawBite12");
+                                enableUpgrade(Yesno.No, "MawBite13");
+                                enableUpgrade(Yesno.No, "MawBite14");
+                                enableUpgrade(Yesno.No, "MawBite15");
                             } else {
-                                if (checkcounter("TurretChunks", "4", Valuecompare.Equal)) {
-                                    enableupgrade(Yesno.No, "MawBite0");
-                                    enableupgrade(Yesno.No, "MawBite1");
-                                    enableupgrade(Yesno.No, "MawBite2");
-                                    enableupgrade(Yesno.No, "MawBite3");
-                                    enableupgrade(Yesno.No, "MawBite4");
-                                    enableupgrade(Yesno.No, "MawBite5");
-                                    enableupgrade(Yesno.No, "MawBite6");
-                                    enableupgrade(Yesno.No, "MawBite7");
-                                    enableupgrade(Yesno.Yes, "MawBite8");
-                                    enableupgrade(Yesno.No, "MawBite9");
-                                    enableupgrade(Yesno.No, "MawBite10");
-                                    enableupgrade(Yesno.No, "MawBite11");
-                                    enableupgrade(Yesno.No, "MawBite12");
-                                    enableupgrade(Yesno.No, "MawBite13");
-                                    enableupgrade(Yesno.No, "MawBite14");
-                                    enableupgrade(Yesno.No, "MawBite15");
+                                if (checkCounter("TurretChunks", "4", Valuecompare.Equal)) {
+                                    enableUpgrade(Yesno.No, "MawBite0");
+                                    enableUpgrade(Yesno.No, "MawBite1");
+                                    enableUpgrade(Yesno.No, "MawBite2");
+                                    enableUpgrade(Yesno.No, "MawBite3");
+                                    enableUpgrade(Yesno.No, "MawBite4");
+                                    enableUpgrade(Yesno.No, "MawBite5");
+                                    enableUpgrade(Yesno.No, "MawBite6");
+                                    enableUpgrade(Yesno.No, "MawBite7");
+                                    enableUpgrade(Yesno.Yes, "MawBite8");
+                                    enableUpgrade(Yesno.No, "MawBite9");
+                                    enableUpgrade(Yesno.No, "MawBite10");
+                                    enableUpgrade(Yesno.No, "MawBite11");
+                                    enableUpgrade(Yesno.No, "MawBite12");
+                                    enableUpgrade(Yesno.No, "MawBite13");
+                                    enableUpgrade(Yesno.No, "MawBite14");
+                                    enableUpgrade(Yesno.No, "MawBite15");
                                 } else {
-                                    if (checkcounter("TurretChunks", "3", Valuecompare.Equal)) {
-                                        enableupgrade(Yesno.No, "MawBite0");
-                                        enableupgrade(Yesno.No, "MawBite1");
-                                        enableupgrade(Yesno.No, "MawBite2");
-                                        enableupgrade(Yesno.No, "MawBite3");
-                                        enableupgrade(Yesno.No, "MawBite4");
-                                        enableupgrade(Yesno.Yes, "MawBite5");
-                                        enableupgrade(Yesno.No, "MawBite6");
-                                        enableupgrade(Yesno.No, "MawBite7");
-                                        enableupgrade(Yesno.No, "MawBite8");
-                                        enableupgrade(Yesno.No, "MawBite9");
-                                        enableupgrade(Yesno.No, "MawBite10");
-                                        enableupgrade(Yesno.No, "MawBite11");
-                                        enableupgrade(Yesno.No, "MawBite12");
-                                        enableupgrade(Yesno.No, "MawBite13");
-                                        enableupgrade(Yesno.No, "MawBite14");
-                                        enableupgrade(Yesno.No, "MawBite15");
+                                    if (checkCounter("TurretChunks", "3", Valuecompare.Equal)) {
+                                        enableUpgrade(Yesno.No, "MawBite0");
+                                        enableUpgrade(Yesno.No, "MawBite1");
+                                        enableUpgrade(Yesno.No, "MawBite2");
+                                        enableUpgrade(Yesno.No, "MawBite3");
+                                        enableUpgrade(Yesno.No, "MawBite4");
+                                        enableUpgrade(Yesno.Yes, "MawBite5");
+                                        enableUpgrade(Yesno.No, "MawBite6");
+                                        enableUpgrade(Yesno.No, "MawBite7");
+                                        enableUpgrade(Yesno.No, "MawBite8");
+                                        enableUpgrade(Yesno.No, "MawBite9");
+                                        enableUpgrade(Yesno.No, "MawBite10");
+                                        enableUpgrade(Yesno.No, "MawBite11");
+                                        enableUpgrade(Yesno.No, "MawBite12");
+                                        enableUpgrade(Yesno.No, "MawBite13");
+                                        enableUpgrade(Yesno.No, "MawBite14");
+                                        enableUpgrade(Yesno.No, "MawBite15");
                                     } else {
-                                        if (checkcounter("TurretChunks", "2", Valuecompare.Equal)) {
-                                            enableupgrade(Yesno.No, "MawBite0");
-                                            enableupgrade(Yesno.No, "MawBite1");
-                                            enableupgrade(Yesno.No, "MawBite2");
-                                            enableupgrade(Yesno.No, "MawBite3");
-                                            enableupgrade(Yesno.Yes, "MawBite4");
-                                            enableupgrade(Yesno.No, "MawBite5");
-                                            enableupgrade(Yesno.No, "MawBite6");
-                                            enableupgrade(Yesno.No, "MawBite7");
-                                            enableupgrade(Yesno.No, "MawBite8");
-                                            enableupgrade(Yesno.No, "MawBite9");
-                                            enableupgrade(Yesno.No, "MawBite10");
-                                            enableupgrade(Yesno.No, "MawBite11");
-                                            enableupgrade(Yesno.No, "MawBite12");
-                                            enableupgrade(Yesno.No, "MawBite13");
-                                            enableupgrade(Yesno.No, "MawBite14");
-                                            enableupgrade(Yesno.No, "MawBite15");
+                                        if (checkCounter("TurretChunks", "2", Valuecompare.Equal)) {
+                                            enableUpgrade(Yesno.No, "MawBite0");
+                                            enableUpgrade(Yesno.No, "MawBite1");
+                                            enableUpgrade(Yesno.No, "MawBite2");
+                                            enableUpgrade(Yesno.No, "MawBite3");
+                                            enableUpgrade(Yesno.Yes, "MawBite4");
+                                            enableUpgrade(Yesno.No, "MawBite5");
+                                            enableUpgrade(Yesno.No, "MawBite6");
+                                            enableUpgrade(Yesno.No, "MawBite7");
+                                            enableUpgrade(Yesno.No, "MawBite8");
+                                            enableUpgrade(Yesno.No, "MawBite9");
+                                            enableUpgrade(Yesno.No, "MawBite10");
+                                            enableUpgrade(Yesno.No, "MawBite11");
+                                            enableUpgrade(Yesno.No, "MawBite12");
+                                            enableUpgrade(Yesno.No, "MawBite13");
+                                            enableUpgrade(Yesno.No, "MawBite14");
+                                            enableUpgrade(Yesno.No, "MawBite15");
                                         } else {
-                                            if (checkcounter("TurretChunks", "1", Valuecompare.Equal)) {
-                                                enableupgrade(Yesno.No, "MawBite0");
-                                                enableupgrade(Yesno.No, "MawBite1");
-                                                enableupgrade(Yesno.No, "MawBite2");
-                                                enableupgrade(Yesno.Yes, "MawBite3");
-                                                enableupgrade(Yesno.No, "MawBite4");
-                                                enableupgrade(Yesno.No, "MawBite5");
-                                                enableupgrade(Yesno.No, "MawBite6");
-                                                enableupgrade(Yesno.No, "MawBite7");
-                                                enableupgrade(Yesno.No, "MawBite8");
-                                                enableupgrade(Yesno.No, "MawBite9");
-                                                enableupgrade(Yesno.No, "MawBite10");
-                                                enableupgrade(Yesno.No, "MawBite11");
-                                                enableupgrade(Yesno.No, "MawBite12");
-                                                enableupgrade(Yesno.No, "MawBite13");
-                                                enableupgrade(Yesno.No, "MawBite14");
-                                                enableupgrade(Yesno.No, "MawBite15");
+                                            if (checkCounter("TurretChunks", "1", Valuecompare.Equal)) {
+                                                enableUpgrade(Yesno.No, "MawBite0");
+                                                enableUpgrade(Yesno.No, "MawBite1");
+                                                enableUpgrade(Yesno.No, "MawBite2");
+                                                enableUpgrade(Yesno.Yes, "MawBite3");
+                                                enableUpgrade(Yesno.No, "MawBite4");
+                                                enableUpgrade(Yesno.No, "MawBite5");
+                                                enableUpgrade(Yesno.No, "MawBite6");
+                                                enableUpgrade(Yesno.No, "MawBite7");
+                                                enableUpgrade(Yesno.No, "MawBite8");
+                                                enableUpgrade(Yesno.No, "MawBite9");
+                                                enableUpgrade(Yesno.No, "MawBite10");
+                                                enableUpgrade(Yesno.No, "MawBite11");
+                                                enableUpgrade(Yesno.No, "MawBite12");
+                                                enableUpgrade(Yesno.No, "MawBite13");
+                                                enableUpgrade(Yesno.No, "MawBite14");
+                                                enableUpgrade(Yesno.No, "MawBite15");
                                             } else {
-                                                if (checkcounter("TurretChunks", "0", Valuecompare.Equal)) {
-                                                    enableupgrade(Yesno.Yes, "MawBite0");
-                                                    enableupgrade(Yesno.No, "MawBite1");
-                                                    enableupgrade(Yesno.No, "MawBite2");
-                                                    enableupgrade(Yesno.No, "MawBite3");
-                                                    enableupgrade(Yesno.No, "MawBite4");
-                                                    enableupgrade(Yesno.No, "MawBite5");
-                                                    enableupgrade(Yesno.No, "MawBite6");
-                                                    enableupgrade(Yesno.No, "MawBite7");
-                                                    enableupgrade(Yesno.No, "MawBite8");
-                                                    enableupgrade(Yesno.No, "MawBite9");
-                                                    enableupgrade(Yesno.No, "MawBite10");
-                                                    enableupgrade(Yesno.No, "MawBite11");
-                                                    enableupgrade(Yesno.No, "MawBite12");
-                                                    enableupgrade(Yesno.No, "MawBite13");
-                                                    enableupgrade(Yesno.No, "MawBite14");
-                                                    enableupgrade(Yesno.No, "MawBite15");
+                                                if (checkCounter("TurretChunks", "0", Valuecompare.Equal)) {
+                                                    enableUpgrade(Yesno.Yes, "MawBite0");
+                                                    enableUpgrade(Yesno.No, "MawBite1");
+                                                    enableUpgrade(Yesno.No, "MawBite2");
+                                                    enableUpgrade(Yesno.No, "MawBite3");
+                                                    enableUpgrade(Yesno.No, "MawBite4");
+                                                    enableUpgrade(Yesno.No, "MawBite5");
+                                                    enableUpgrade(Yesno.No, "MawBite6");
+                                                    enableUpgrade(Yesno.No, "MawBite7");
+                                                    enableUpgrade(Yesno.No, "MawBite8");
+                                                    enableUpgrade(Yesno.No, "MawBite9");
+                                                    enableUpgrade(Yesno.No, "MawBite10");
+                                                    enableUpgrade(Yesno.No, "MawBite11");
+                                                    enableUpgrade(Yesno.No, "MawBite12");
+                                                    enableUpgrade(Yesno.No, "MawBite13");
+                                                    enableUpgrade(Yesno.No, "MawBite14");
+                                                    enableUpgrade(Yesno.No, "MawBite15");
                                                 }
                                             }
                                         }
@@ -265,293 +265,293 @@ public class Maw
                 }
             }
         } else {
-            if (checkcounter("TurretChunks", "15", Valuecompare.Equal)) {
-                enableupgrade(Yesno.No, "MawBite0");
-                enableupgrade(Yesno.No, "MawBite1");
-                enableupgrade(Yesno.No, "MawBite2");
-                enableupgrade(Yesno.No, "MawBite3");
-                enableupgrade(Yesno.No, "MawBite4");
-                enableupgrade(Yesno.No, "MawBite5");
-                enableupgrade(Yesno.No, "MawBite6");
-                enableupgrade(Yesno.No, "MawBite7");
-                enableupgrade(Yesno.No, "MawBite8");
-                enableupgrade(Yesno.No, "MawBite9");
-                enableupgrade(Yesno.No, "MawBite10");
-                enableupgrade(Yesno.No, "MawBite11");
-                enableupgrade(Yesno.No, "MawBite12");
-                enableupgrade(Yesno.No, "MawBite13");
-                enableupgrade(Yesno.No, "MawBite14");
-                enableupgrade(Yesno.Yes, "MawBite15");
+            if (checkCounter("TurretChunks", "15", Valuecompare.Equal)) {
+                enableUpgrade(Yesno.No, "MawBite0");
+                enableUpgrade(Yesno.No, "MawBite1");
+                enableUpgrade(Yesno.No, "MawBite2");
+                enableUpgrade(Yesno.No, "MawBite3");
+                enableUpgrade(Yesno.No, "MawBite4");
+                enableUpgrade(Yesno.No, "MawBite5");
+                enableUpgrade(Yesno.No, "MawBite6");
+                enableUpgrade(Yesno.No, "MawBite7");
+                enableUpgrade(Yesno.No, "MawBite8");
+                enableUpgrade(Yesno.No, "MawBite9");
+                enableUpgrade(Yesno.No, "MawBite10");
+                enableUpgrade(Yesno.No, "MawBite11");
+                enableUpgrade(Yesno.No, "MawBite12");
+                enableUpgrade(Yesno.No, "MawBite13");
+                enableUpgrade(Yesno.No, "MawBite14");
+                enableUpgrade(Yesno.Yes, "MawBite15");
             } else {
-                if (checkcounter("TurretChunks", "14", Valuecompare.Equal)) {
-                    enableupgrade(Yesno.No, "MawBite0");
-                    enableupgrade(Yesno.No, "MawBite1");
-                    enableupgrade(Yesno.No, "MawBite2");
-                    enableupgrade(Yesno.No, "MawBite3");
-                    enableupgrade(Yesno.No, "MawBite4");
-                    enableupgrade(Yesno.No, "MawBite5");
-                    enableupgrade(Yesno.No, "MawBite6");
-                    enableupgrade(Yesno.No, "MawBite7");
-                    enableupgrade(Yesno.No, "MawBite8");
-                    enableupgrade(Yesno.No, "MawBite9");
-                    enableupgrade(Yesno.No, "MawBite10");
-                    enableupgrade(Yesno.No, "MawBite11");
-                    enableupgrade(Yesno.No, "MawBite12");
-                    enableupgrade(Yesno.No, "MawBite13");
-                    enableupgrade(Yesno.Yes, "MawBite14");
-                    enableupgrade(Yesno.No, "MawBite15");
+                if (checkCounter("TurretChunks", "14", Valuecompare.Equal)) {
+                    enableUpgrade(Yesno.No, "MawBite0");
+                    enableUpgrade(Yesno.No, "MawBite1");
+                    enableUpgrade(Yesno.No, "MawBite2");
+                    enableUpgrade(Yesno.No, "MawBite3");
+                    enableUpgrade(Yesno.No, "MawBite4");
+                    enableUpgrade(Yesno.No, "MawBite5");
+                    enableUpgrade(Yesno.No, "MawBite6");
+                    enableUpgrade(Yesno.No, "MawBite7");
+                    enableUpgrade(Yesno.No, "MawBite8");
+                    enableUpgrade(Yesno.No, "MawBite9");
+                    enableUpgrade(Yesno.No, "MawBite10");
+                    enableUpgrade(Yesno.No, "MawBite11");
+                    enableUpgrade(Yesno.No, "MawBite12");
+                    enableUpgrade(Yesno.No, "MawBite13");
+                    enableUpgrade(Yesno.Yes, "MawBite14");
+                    enableUpgrade(Yesno.No, "MawBite15");
                 } else {
-                    if (checkcounter("TurretChunks", "13", Valuecompare.Equal)) {
-                        enableupgrade(Yesno.No, "MawBite0");
-                        enableupgrade(Yesno.No, "MawBite1");
-                        enableupgrade(Yesno.No, "MawBite2");
-                        enableupgrade(Yesno.No, "MawBite3");
-                        enableupgrade(Yesno.No, "MawBite4");
-                        enableupgrade(Yesno.No, "MawBite5");
-                        enableupgrade(Yesno.No, "MawBite6");
-                        enableupgrade(Yesno.No, "MawBite7");
-                        enableupgrade(Yesno.No, "MawBite8");
-                        enableupgrade(Yesno.No, "MawBite9");
-                        enableupgrade(Yesno.No, "MawBite10");
-                        enableupgrade(Yesno.No, "MawBite11");
-                        enableupgrade(Yesno.No, "MawBite12");
-                        enableupgrade(Yesno.Yes, "MawBite13");
-                        enableupgrade(Yesno.No, "MawBite14");
-                        enableupgrade(Yesno.No, "MawBite15");
+                    if (checkCounter("TurretChunks", "13", Valuecompare.Equal)) {
+                        enableUpgrade(Yesno.No, "MawBite0");
+                        enableUpgrade(Yesno.No, "MawBite1");
+                        enableUpgrade(Yesno.No, "MawBite2");
+                        enableUpgrade(Yesno.No, "MawBite3");
+                        enableUpgrade(Yesno.No, "MawBite4");
+                        enableUpgrade(Yesno.No, "MawBite5");
+                        enableUpgrade(Yesno.No, "MawBite6");
+                        enableUpgrade(Yesno.No, "MawBite7");
+                        enableUpgrade(Yesno.No, "MawBite8");
+                        enableUpgrade(Yesno.No, "MawBite9");
+                        enableUpgrade(Yesno.No, "MawBite10");
+                        enableUpgrade(Yesno.No, "MawBite11");
+                        enableUpgrade(Yesno.No, "MawBite12");
+                        enableUpgrade(Yesno.Yes, "MawBite13");
+                        enableUpgrade(Yesno.No, "MawBite14");
+                        enableUpgrade(Yesno.No, "MawBite15");
                     } else {
-                        if (checkcounter("TurretChunks", "12", Valuecompare.Equal)) {
-                            enableupgrade(Yesno.No, "MawBite0");
-                            enableupgrade(Yesno.No, "MawBite1");
-                            enableupgrade(Yesno.No, "MawBite2");
-                            enableupgrade(Yesno.No, "MawBite3");
-                            enableupgrade(Yesno.No, "MawBite4");
-                            enableupgrade(Yesno.No, "MawBite5");
-                            enableupgrade(Yesno.No, "MawBite6");
-                            enableupgrade(Yesno.No, "MawBite7");
-                            enableupgrade(Yesno.No, "MawBite8");
-                            enableupgrade(Yesno.No, "MawBite9");
-                            enableupgrade(Yesno.No, "MawBite10");
-                            enableupgrade(Yesno.No, "MawBite11");
-                            enableupgrade(Yesno.Yes, "MawBite12");
-                            enableupgrade(Yesno.No, "MawBite13");
-                            enableupgrade(Yesno.No, "MawBite14");
-                            enableupgrade(Yesno.No, "MawBite15");
+                        if (checkCounter("TurretChunks", "12", Valuecompare.Equal)) {
+                            enableUpgrade(Yesno.No, "MawBite0");
+                            enableUpgrade(Yesno.No, "MawBite1");
+                            enableUpgrade(Yesno.No, "MawBite2");
+                            enableUpgrade(Yesno.No, "MawBite3");
+                            enableUpgrade(Yesno.No, "MawBite4");
+                            enableUpgrade(Yesno.No, "MawBite5");
+                            enableUpgrade(Yesno.No, "MawBite6");
+                            enableUpgrade(Yesno.No, "MawBite7");
+                            enableUpgrade(Yesno.No, "MawBite8");
+                            enableUpgrade(Yesno.No, "MawBite9");
+                            enableUpgrade(Yesno.No, "MawBite10");
+                            enableUpgrade(Yesno.No, "MawBite11");
+                            enableUpgrade(Yesno.Yes, "MawBite12");
+                            enableUpgrade(Yesno.No, "MawBite13");
+                            enableUpgrade(Yesno.No, "MawBite14");
+                            enableUpgrade(Yesno.No, "MawBite15");
                         } else {
-                            if (checkcounter("TurretChunks", "11", Valuecompare.Equal)) {
-                                enableupgrade(Yesno.No, "MawBite0");
-                                enableupgrade(Yesno.No, "MawBite1");
-                                enableupgrade(Yesno.No, "MawBite2");
-                                enableupgrade(Yesno.No, "MawBite3");
-                                enableupgrade(Yesno.No, "MawBite4");
-                                enableupgrade(Yesno.No, "MawBite5");
-                                enableupgrade(Yesno.No, "MawBite6");
-                                enableupgrade(Yesno.No, "MawBite7");
-                                enableupgrade(Yesno.No, "MawBite8");
-                                enableupgrade(Yesno.No, "MawBite9");
-                                enableupgrade(Yesno.No, "MawBite10");
-                                enableupgrade(Yesno.Yes, "MawBite11");
-                                enableupgrade(Yesno.No, "MawBite12");
-                                enableupgrade(Yesno.No, "MawBite13");
-                                enableupgrade(Yesno.No, "MawBite14");
-                                enableupgrade(Yesno.No, "MawBite15");
+                            if (checkCounter("TurretChunks", "11", Valuecompare.Equal)) {
+                                enableUpgrade(Yesno.No, "MawBite0");
+                                enableUpgrade(Yesno.No, "MawBite1");
+                                enableUpgrade(Yesno.No, "MawBite2");
+                                enableUpgrade(Yesno.No, "MawBite3");
+                                enableUpgrade(Yesno.No, "MawBite4");
+                                enableUpgrade(Yesno.No, "MawBite5");
+                                enableUpgrade(Yesno.No, "MawBite6");
+                                enableUpgrade(Yesno.No, "MawBite7");
+                                enableUpgrade(Yesno.No, "MawBite8");
+                                enableUpgrade(Yesno.No, "MawBite9");
+                                enableUpgrade(Yesno.No, "MawBite10");
+                                enableUpgrade(Yesno.Yes, "MawBite11");
+                                enableUpgrade(Yesno.No, "MawBite12");
+                                enableUpgrade(Yesno.No, "MawBite13");
+                                enableUpgrade(Yesno.No, "MawBite14");
+                                enableUpgrade(Yesno.No, "MawBite15");
                             } else {
-                                if (checkcounter("TurretChunks", "10", Valuecompare.Equal)) {
-                                    enableupgrade(Yesno.No, "MawBite0");
-                                    enableupgrade(Yesno.No, "MawBite1");
-                                    enableupgrade(Yesno.No, "MawBite2");
-                                    enableupgrade(Yesno.No, "MawBite3");
-                                    enableupgrade(Yesno.No, "MawBite4");
-                                    enableupgrade(Yesno.No, "MawBite5");
-                                    enableupgrade(Yesno.No, "MawBite6");
-                                    enableupgrade(Yesno.No, "MawBite7");
-                                    enableupgrade(Yesno.No, "MawBite8");
-                                    enableupgrade(Yesno.No, "MawBite9");
-                                    enableupgrade(Yesno.Yes, "MawBite10");
-                                    enableupgrade(Yesno.No, "MawBite11");
-                                    enableupgrade(Yesno.No, "MawBite12");
-                                    enableupgrade(Yesno.No, "MawBite13");
-                                    enableupgrade(Yesno.No, "MawBite14");
-                                    enableupgrade(Yesno.No, "MawBite15");
+                                if (checkCounter("TurretChunks", "10", Valuecompare.Equal)) {
+                                    enableUpgrade(Yesno.No, "MawBite0");
+                                    enableUpgrade(Yesno.No, "MawBite1");
+                                    enableUpgrade(Yesno.No, "MawBite2");
+                                    enableUpgrade(Yesno.No, "MawBite3");
+                                    enableUpgrade(Yesno.No, "MawBite4");
+                                    enableUpgrade(Yesno.No, "MawBite5");
+                                    enableUpgrade(Yesno.No, "MawBite6");
+                                    enableUpgrade(Yesno.No, "MawBite7");
+                                    enableUpgrade(Yesno.No, "MawBite8");
+                                    enableUpgrade(Yesno.No, "MawBite9");
+                                    enableUpgrade(Yesno.Yes, "MawBite10");
+                                    enableUpgrade(Yesno.No, "MawBite11");
+                                    enableUpgrade(Yesno.No, "MawBite12");
+                                    enableUpgrade(Yesno.No, "MawBite13");
+                                    enableUpgrade(Yesno.No, "MawBite14");
+                                    enableUpgrade(Yesno.No, "MawBite15");
                                 } else {
-                                    if (checkcounter("TurretChunks", "9", Valuecompare.Equal)) {
-                                        enableupgrade(Yesno.No, "MawBite0");
-                                        enableupgrade(Yesno.No, "MawBite1");
-                                        enableupgrade(Yesno.No, "MawBite2");
-                                        enableupgrade(Yesno.No, "MawBite3");
-                                        enableupgrade(Yesno.No, "MawBite4");
-                                        enableupgrade(Yesno.No, "MawBite5");
-                                        enableupgrade(Yesno.No, "MawBite6");
-                                        enableupgrade(Yesno.No, "MawBite7");
-                                        enableupgrade(Yesno.No, "MawBite8");
-                                        enableupgrade(Yesno.Yes, "MawBite9");
-                                        enableupgrade(Yesno.No, "MawBite10");
-                                        enableupgrade(Yesno.No, "MawBite11");
-                                        enableupgrade(Yesno.No, "MawBite12");
-                                        enableupgrade(Yesno.No, "MawBite13");
-                                        enableupgrade(Yesno.No, "MawBite14");
-                                        enableupgrade(Yesno.No, "MawBite15");
+                                    if (checkCounter("TurretChunks", "9", Valuecompare.Equal)) {
+                                        enableUpgrade(Yesno.No, "MawBite0");
+                                        enableUpgrade(Yesno.No, "MawBite1");
+                                        enableUpgrade(Yesno.No, "MawBite2");
+                                        enableUpgrade(Yesno.No, "MawBite3");
+                                        enableUpgrade(Yesno.No, "MawBite4");
+                                        enableUpgrade(Yesno.No, "MawBite5");
+                                        enableUpgrade(Yesno.No, "MawBite6");
+                                        enableUpgrade(Yesno.No, "MawBite7");
+                                        enableUpgrade(Yesno.No, "MawBite8");
+                                        enableUpgrade(Yesno.Yes, "MawBite9");
+                                        enableUpgrade(Yesno.No, "MawBite10");
+                                        enableUpgrade(Yesno.No, "MawBite11");
+                                        enableUpgrade(Yesno.No, "MawBite12");
+                                        enableUpgrade(Yesno.No, "MawBite13");
+                                        enableUpgrade(Yesno.No, "MawBite14");
+                                        enableUpgrade(Yesno.No, "MawBite15");
                                     } else {
-                                        if (checkcounter("TurretChunks", "8", Valuecompare.Equal)) {
-                                            enableupgrade(Yesno.No, "MawBite0");
-                                            enableupgrade(Yesno.No, "MawBite1");
-                                            enableupgrade(Yesno.No, "MawBite2");
-                                            enableupgrade(Yesno.No, "MawBite3");
-                                            enableupgrade(Yesno.No, "MawBite4");
-                                            enableupgrade(Yesno.No, "MawBite5");
-                                            enableupgrade(Yesno.No, "MawBite6");
-                                            enableupgrade(Yesno.No, "MawBite7");
-                                            enableupgrade(Yesno.Yes, "MawBite8");
-                                            enableupgrade(Yesno.No, "MawBite9");
-                                            enableupgrade(Yesno.No, "MawBite10");
-                                            enableupgrade(Yesno.No, "MawBite11");
-                                            enableupgrade(Yesno.No, "MawBite12");
-                                            enableupgrade(Yesno.No, "MawBite13");
-                                            enableupgrade(Yesno.No, "MawBite14");
-                                            enableupgrade(Yesno.No, "MawBite15");
+                                        if (checkCounter("TurretChunks", "8", Valuecompare.Equal)) {
+                                            enableUpgrade(Yesno.No, "MawBite0");
+                                            enableUpgrade(Yesno.No, "MawBite1");
+                                            enableUpgrade(Yesno.No, "MawBite2");
+                                            enableUpgrade(Yesno.No, "MawBite3");
+                                            enableUpgrade(Yesno.No, "MawBite4");
+                                            enableUpgrade(Yesno.No, "MawBite5");
+                                            enableUpgrade(Yesno.No, "MawBite6");
+                                            enableUpgrade(Yesno.No, "MawBite7");
+                                            enableUpgrade(Yesno.Yes, "MawBite8");
+                                            enableUpgrade(Yesno.No, "MawBite9");
+                                            enableUpgrade(Yesno.No, "MawBite10");
+                                            enableUpgrade(Yesno.No, "MawBite11");
+                                            enableUpgrade(Yesno.No, "MawBite12");
+                                            enableUpgrade(Yesno.No, "MawBite13");
+                                            enableUpgrade(Yesno.No, "MawBite14");
+                                            enableUpgrade(Yesno.No, "MawBite15");
                                         } else {
-                                            if (checkcounter("TurretChunks", "7", Valuecompare.Equal)) {
-                                                enableupgrade(Yesno.No, "MawBite0");
-                                                enableupgrade(Yesno.No, "MawBite1");
-                                                enableupgrade(Yesno.No, "MawBite2");
-                                                enableupgrade(Yesno.No, "MawBite3");
-                                                enableupgrade(Yesno.No, "MawBite4");
-                                                enableupgrade(Yesno.No, "MawBite5");
-                                                enableupgrade(Yesno.No, "MawBite6");
-                                                enableupgrade(Yesno.Yes, "MawBite7");
-                                                enableupgrade(Yesno.No, "MawBite8");
-                                                enableupgrade(Yesno.No, "MawBite9");
-                                                enableupgrade(Yesno.No, "MawBite10");
-                                                enableupgrade(Yesno.No, "MawBite11");
-                                                enableupgrade(Yesno.No, "MawBite12");
-                                                enableupgrade(Yesno.No, "MawBite13");
-                                                enableupgrade(Yesno.No, "MawBite14");
-                                                enableupgrade(Yesno.No, "MawBite15");
+                                            if (checkCounter("TurretChunks", "7", Valuecompare.Equal)) {
+                                                enableUpgrade(Yesno.No, "MawBite0");
+                                                enableUpgrade(Yesno.No, "MawBite1");
+                                                enableUpgrade(Yesno.No, "MawBite2");
+                                                enableUpgrade(Yesno.No, "MawBite3");
+                                                enableUpgrade(Yesno.No, "MawBite4");
+                                                enableUpgrade(Yesno.No, "MawBite5");
+                                                enableUpgrade(Yesno.No, "MawBite6");
+                                                enableUpgrade(Yesno.Yes, "MawBite7");
+                                                enableUpgrade(Yesno.No, "MawBite8");
+                                                enableUpgrade(Yesno.No, "MawBite9");
+                                                enableUpgrade(Yesno.No, "MawBite10");
+                                                enableUpgrade(Yesno.No, "MawBite11");
+                                                enableUpgrade(Yesno.No, "MawBite12");
+                                                enableUpgrade(Yesno.No, "MawBite13");
+                                                enableUpgrade(Yesno.No, "MawBite14");
+                                                enableUpgrade(Yesno.No, "MawBite15");
                                             } else {
-                                                if (checkcounter("TurretChunks", "6", Valuecompare.Equal)) {
-                                                    enableupgrade(Yesno.No, "MawBite0");
-                                                    enableupgrade(Yesno.No, "MawBite1");
-                                                    enableupgrade(Yesno.No, "MawBite2");
-                                                    enableupgrade(Yesno.No, "MawBite3");
-                                                    enableupgrade(Yesno.No, "MawBite4");
-                                                    enableupgrade(Yesno.No, "MawBite5");
-                                                    enableupgrade(Yesno.Yes, "MawBite6");
-                                                    enableupgrade(Yesno.No, "MawBite7");
-                                                    enableupgrade(Yesno.No, "MawBite8");
-                                                    enableupgrade(Yesno.No, "MawBite9");
-                                                    enableupgrade(Yesno.No, "MawBite10");
-                                                    enableupgrade(Yesno.No, "MawBite11");
-                                                    enableupgrade(Yesno.No, "MawBite12");
-                                                    enableupgrade(Yesno.No, "MawBite13");
-                                                    enableupgrade(Yesno.No, "MawBite14");
-                                                    enableupgrade(Yesno.No, "MawBite15");
+                                                if (checkCounter("TurretChunks", "6", Valuecompare.Equal)) {
+                                                    enableUpgrade(Yesno.No, "MawBite0");
+                                                    enableUpgrade(Yesno.No, "MawBite1");
+                                                    enableUpgrade(Yesno.No, "MawBite2");
+                                                    enableUpgrade(Yesno.No, "MawBite3");
+                                                    enableUpgrade(Yesno.No, "MawBite4");
+                                                    enableUpgrade(Yesno.No, "MawBite5");
+                                                    enableUpgrade(Yesno.Yes, "MawBite6");
+                                                    enableUpgrade(Yesno.No, "MawBite7");
+                                                    enableUpgrade(Yesno.No, "MawBite8");
+                                                    enableUpgrade(Yesno.No, "MawBite9");
+                                                    enableUpgrade(Yesno.No, "MawBite10");
+                                                    enableUpgrade(Yesno.No, "MawBite11");
+                                                    enableUpgrade(Yesno.No, "MawBite12");
+                                                    enableUpgrade(Yesno.No, "MawBite13");
+                                                    enableUpgrade(Yesno.No, "MawBite14");
+                                                    enableUpgrade(Yesno.No, "MawBite15");
                                                 } else {
-                                                    if (checkcounter("TurretChunks", "5", Valuecompare.Equal)) {
-                                                        enableupgrade(Yesno.No, "MawBite0");
-                                                        enableupgrade(Yesno.No, "MawBite1");
-                                                        enableupgrade(Yesno.No, "MawBite2");
-                                                        enableupgrade(Yesno.No, "MawBite3");
-                                                        enableupgrade(Yesno.No, "MawBite4");
-                                                        enableupgrade(Yesno.Yes, "MawBite5");
-                                                        enableupgrade(Yesno.No, "MawBite6");
-                                                        enableupgrade(Yesno.No, "MawBite7");
-                                                        enableupgrade(Yesno.No, "MawBite8");
-                                                        enableupgrade(Yesno.No, "MawBite9");
-                                                        enableupgrade(Yesno.No, "MawBite10");
-                                                        enableupgrade(Yesno.No, "MawBite11");
-                                                        enableupgrade(Yesno.No, "MawBite12");
-                                                        enableupgrade(Yesno.No, "MawBite13");
-                                                        enableupgrade(Yesno.No, "MawBite14");
-                                                        enableupgrade(Yesno.No, "MawBite15");
+                                                    if (checkCounter("TurretChunks", "5", Valuecompare.Equal)) {
+                                                        enableUpgrade(Yesno.No, "MawBite0");
+                                                        enableUpgrade(Yesno.No, "MawBite1");
+                                                        enableUpgrade(Yesno.No, "MawBite2");
+                                                        enableUpgrade(Yesno.No, "MawBite3");
+                                                        enableUpgrade(Yesno.No, "MawBite4");
+                                                        enableUpgrade(Yesno.Yes, "MawBite5");
+                                                        enableUpgrade(Yesno.No, "MawBite6");
+                                                        enableUpgrade(Yesno.No, "MawBite7");
+                                                        enableUpgrade(Yesno.No, "MawBite8");
+                                                        enableUpgrade(Yesno.No, "MawBite9");
+                                                        enableUpgrade(Yesno.No, "MawBite10");
+                                                        enableUpgrade(Yesno.No, "MawBite11");
+                                                        enableUpgrade(Yesno.No, "MawBite12");
+                                                        enableUpgrade(Yesno.No, "MawBite13");
+                                                        enableUpgrade(Yesno.No, "MawBite14");
+                                                        enableUpgrade(Yesno.No, "MawBite15");
                                                     } else {
-                                                        if (checkcounter("TurretChunks", "4", Valuecompare.Equal)) {
-                                                            enableupgrade(Yesno.No, "MawBite0");
-                                                            enableupgrade(Yesno.No, "MawBite1");
-                                                            enableupgrade(Yesno.No, "MawBite2");
-                                                            enableupgrade(Yesno.No, "MawBite3");
-                                                            enableupgrade(Yesno.Yes, "MawBite4");
-                                                            enableupgrade(Yesno.No, "MawBite5");
-                                                            enableupgrade(Yesno.No, "MawBite6");
-                                                            enableupgrade(Yesno.No, "MawBite7");
-                                                            enableupgrade(Yesno.No, "MawBite8");
-                                                            enableupgrade(Yesno.No, "MawBite9");
-                                                            enableupgrade(Yesno.No, "MawBite10");
-                                                            enableupgrade(Yesno.No, "MawBite11");
-                                                            enableupgrade(Yesno.No, "MawBite12");
-                                                            enableupgrade(Yesno.No, "MawBite13");
-                                                            enableupgrade(Yesno.No, "MawBite14");
-                                                            enableupgrade(Yesno.No, "MawBite15");
+                                                        if (checkCounter("TurretChunks", "4", Valuecompare.Equal)) {
+                                                            enableUpgrade(Yesno.No, "MawBite0");
+                                                            enableUpgrade(Yesno.No, "MawBite1");
+                                                            enableUpgrade(Yesno.No, "MawBite2");
+                                                            enableUpgrade(Yesno.No, "MawBite3");
+                                                            enableUpgrade(Yesno.Yes, "MawBite4");
+                                                            enableUpgrade(Yesno.No, "MawBite5");
+                                                            enableUpgrade(Yesno.No, "MawBite6");
+                                                            enableUpgrade(Yesno.No, "MawBite7");
+                                                            enableUpgrade(Yesno.No, "MawBite8");
+                                                            enableUpgrade(Yesno.No, "MawBite9");
+                                                            enableUpgrade(Yesno.No, "MawBite10");
+                                                            enableUpgrade(Yesno.No, "MawBite11");
+                                                            enableUpgrade(Yesno.No, "MawBite12");
+                                                            enableUpgrade(Yesno.No, "MawBite13");
+                                                            enableUpgrade(Yesno.No, "MawBite14");
+                                                            enableUpgrade(Yesno.No, "MawBite15");
                                                         } else {
-                                                            if (checkcounter("TurretChunks", "3", Valuecompare.Equal)) {
-                                                                enableupgrade(Yesno.No, "MawBite0");
-                                                                enableupgrade(Yesno.No, "MawBite1");
-                                                                enableupgrade(Yesno.No, "MawBite2");
-                                                                enableupgrade(Yesno.Yes, "MawBite3");
-                                                                enableupgrade(Yesno.No, "MawBite4");
-                                                                enableupgrade(Yesno.No, "MawBite5");
-                                                                enableupgrade(Yesno.No, "MawBite6");
-                                                                enableupgrade(Yesno.No, "MawBite7");
-                                                                enableupgrade(Yesno.No, "MawBite8");
-                                                                enableupgrade(Yesno.No, "MawBite9");
-                                                                enableupgrade(Yesno.No, "MawBite10");
-                                                                enableupgrade(Yesno.No, "MawBite11");
-                                                                enableupgrade(Yesno.No, "MawBite12");
-                                                                enableupgrade(Yesno.No, "MawBite13");
-                                                                enableupgrade(Yesno.No, "MawBite14");
-                                                                enableupgrade(Yesno.No, "MawBite15");
+                                                            if (checkCounter("TurretChunks", "3", Valuecompare.Equal)) {
+                                                                enableUpgrade(Yesno.No, "MawBite0");
+                                                                enableUpgrade(Yesno.No, "MawBite1");
+                                                                enableUpgrade(Yesno.No, "MawBite2");
+                                                                enableUpgrade(Yesno.Yes, "MawBite3");
+                                                                enableUpgrade(Yesno.No, "MawBite4");
+                                                                enableUpgrade(Yesno.No, "MawBite5");
+                                                                enableUpgrade(Yesno.No, "MawBite6");
+                                                                enableUpgrade(Yesno.No, "MawBite7");
+                                                                enableUpgrade(Yesno.No, "MawBite8");
+                                                                enableUpgrade(Yesno.No, "MawBite9");
+                                                                enableUpgrade(Yesno.No, "MawBite10");
+                                                                enableUpgrade(Yesno.No, "MawBite11");
+                                                                enableUpgrade(Yesno.No, "MawBite12");
+                                                                enableUpgrade(Yesno.No, "MawBite13");
+                                                                enableUpgrade(Yesno.No, "MawBite14");
+                                                                enableUpgrade(Yesno.No, "MawBite15");
                                                             } else {
-                                                                if (checkcounter("TurretChunks", "2", Valuecompare.Equal)) {
-                                                                    enableupgrade(Yesno.No, "MawBite0");
-                                                                    enableupgrade(Yesno.No, "MawBite1");
-                                                                    enableupgrade(Yesno.Yes, "MawBite2");
-                                                                    enableupgrade(Yesno.No, "MawBite3");
-                                                                    enableupgrade(Yesno.No, "MawBite4");
-                                                                    enableupgrade(Yesno.No, "MawBite5");
-                                                                    enableupgrade(Yesno.No, "MawBite6");
-                                                                    enableupgrade(Yesno.No, "MawBite7");
-                                                                    enableupgrade(Yesno.No, "MawBite8");
-                                                                    enableupgrade(Yesno.No, "MawBite9");
-                                                                    enableupgrade(Yesno.No, "MawBite10");
-                                                                    enableupgrade(Yesno.No, "MawBite11");
-                                                                    enableupgrade(Yesno.No, "MawBite12");
-                                                                    enableupgrade(Yesno.No, "MawBite13");
-                                                                    enableupgrade(Yesno.No, "MawBite14");
-                                                                    enableupgrade(Yesno.No, "MawBite15");
+                                                                if (checkCounter("TurretChunks", "2", Valuecompare.Equal)) {
+                                                                    enableUpgrade(Yesno.No, "MawBite0");
+                                                                    enableUpgrade(Yesno.No, "MawBite1");
+                                                                    enableUpgrade(Yesno.Yes, "MawBite2");
+                                                                    enableUpgrade(Yesno.No, "MawBite3");
+                                                                    enableUpgrade(Yesno.No, "MawBite4");
+                                                                    enableUpgrade(Yesno.No, "MawBite5");
+                                                                    enableUpgrade(Yesno.No, "MawBite6");
+                                                                    enableUpgrade(Yesno.No, "MawBite7");
+                                                                    enableUpgrade(Yesno.No, "MawBite8");
+                                                                    enableUpgrade(Yesno.No, "MawBite9");
+                                                                    enableUpgrade(Yesno.No, "MawBite10");
+                                                                    enableUpgrade(Yesno.No, "MawBite11");
+                                                                    enableUpgrade(Yesno.No, "MawBite12");
+                                                                    enableUpgrade(Yesno.No, "MawBite13");
+                                                                    enableUpgrade(Yesno.No, "MawBite14");
+                                                                    enableUpgrade(Yesno.No, "MawBite15");
                                                                 } else {
-                                                                    if (checkcounter("TurretChunks", "1", Valuecompare.Equal)) {
-                                                                        enableupgrade(Yesno.No, "MawBite0");
-                                                                        enableupgrade(Yesno.Yes, "MawBite1");
-                                                                        enableupgrade(Yesno.No, "MawBite2");
-                                                                        enableupgrade(Yesno.No, "MawBite3");
-                                                                        enableupgrade(Yesno.No, "MawBite4");
-                                                                        enableupgrade(Yesno.No, "MawBite5");
-                                                                        enableupgrade(Yesno.No, "MawBite6");
-                                                                        enableupgrade(Yesno.No, "MawBite7");
-                                                                        enableupgrade(Yesno.No, "MawBite8");
-                                                                        enableupgrade(Yesno.No, "MawBite9");
-                                                                        enableupgrade(Yesno.No, "MawBite10");
-                                                                        enableupgrade(Yesno.No, "MawBite11");
-                                                                        enableupgrade(Yesno.No, "MawBite12");
-                                                                        enableupgrade(Yesno.No, "MawBite13");
-                                                                        enableupgrade(Yesno.No, "MawBite14");
-                                                                        enableupgrade(Yesno.No, "MawBite15");
+                                                                    if (checkCounter("TurretChunks", "1", Valuecompare.Equal)) {
+                                                                        enableUpgrade(Yesno.No, "MawBite0");
+                                                                        enableUpgrade(Yesno.Yes, "MawBite1");
+                                                                        enableUpgrade(Yesno.No, "MawBite2");
+                                                                        enableUpgrade(Yesno.No, "MawBite3");
+                                                                        enableUpgrade(Yesno.No, "MawBite4");
+                                                                        enableUpgrade(Yesno.No, "MawBite5");
+                                                                        enableUpgrade(Yesno.No, "MawBite6");
+                                                                        enableUpgrade(Yesno.No, "MawBite7");
+                                                                        enableUpgrade(Yesno.No, "MawBite8");
+                                                                        enableUpgrade(Yesno.No, "MawBite9");
+                                                                        enableUpgrade(Yesno.No, "MawBite10");
+                                                                        enableUpgrade(Yesno.No, "MawBite11");
+                                                                        enableUpgrade(Yesno.No, "MawBite12");
+                                                                        enableUpgrade(Yesno.No, "MawBite13");
+                                                                        enableUpgrade(Yesno.No, "MawBite14");
+                                                                        enableUpgrade(Yesno.No, "MawBite15");
                                                                     } else {
-                                                                        if (checkcounter("TurretChunks", "0", Valuecompare.Equal)) {
-                                                                            enableupgrade(Yesno.Yes, "MawBite0");
-                                                                            enableupgrade(Yesno.No, "MawBite1");
-                                                                            enableupgrade(Yesno.No, "MawBite2");
-                                                                            enableupgrade(Yesno.No, "MawBite3");
-                                                                            enableupgrade(Yesno.No, "MawBite4");
-                                                                            enableupgrade(Yesno.No, "MawBite5");
-                                                                            enableupgrade(Yesno.No, "MawBite6");
-                                                                            enableupgrade(Yesno.No, "MawBite7");
-                                                                            enableupgrade(Yesno.No, "MawBite8");
-                                                                            enableupgrade(Yesno.No, "MawBite9");
-                                                                            enableupgrade(Yesno.No, "MawBite10");
-                                                                            enableupgrade(Yesno.No, "MawBite11");
-                                                                            enableupgrade(Yesno.No, "MawBite12");
-                                                                            enableupgrade(Yesno.No, "MawBite13");
-                                                                            enableupgrade(Yesno.No, "MawBite14");
-                                                                            enableupgrade(Yesno.No, "MawBite15");
+                                                                        if (checkCounter("TurretChunks", "0", Valuecompare.Equal)) {
+                                                                            enableUpgrade(Yesno.Yes, "MawBite0");
+                                                                            enableUpgrade(Yesno.No, "MawBite1");
+                                                                            enableUpgrade(Yesno.No, "MawBite2");
+                                                                            enableUpgrade(Yesno.No, "MawBite3");
+                                                                            enableUpgrade(Yesno.No, "MawBite4");
+                                                                            enableUpgrade(Yesno.No, "MawBite5");
+                                                                            enableUpgrade(Yesno.No, "MawBite6");
+                                                                            enableUpgrade(Yesno.No, "MawBite7");
+                                                                            enableUpgrade(Yesno.No, "MawBite8");
+                                                                            enableUpgrade(Yesno.No, "MawBite9");
+                                                                            enableUpgrade(Yesno.No, "MawBite10");
+                                                                            enableUpgrade(Yesno.No, "MawBite11");
+                                                                            enableUpgrade(Yesno.No, "MawBite12");
+                                                                            enableUpgrade(Yesno.No, "MawBite13");
+                                                                            enableUpgrade(Yesno.No, "MawBite14");
+                                                                            enableUpgrade(Yesno.No, "MawBite15");
                                                                         }
                                                                     }
                                                                 }
@@ -569,56 +569,56 @@ public class Maw
                 }
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "MawTurretCheaper1")) {
-            if (checkcounter("TurretChunks", "3", Valuecompare.Less)) {
-                enableupgrade(Yesno.No, "MawTurretCooldownNoReset");
-                enableupgrade(Yesno.Yes, "MawTurretCooldownReset");
+        if (isUpgradeEnabled(Yesno.Yes, "MawTurretCheaper1")) {
+            if (checkCounter("TurretChunks", "3", Valuecompare.Less)) {
+                enableUpgrade(Yesno.No, "MawTurretCooldownNoReset");
+                enableUpgrade(Yesno.Yes, "MawTurretCooldownReset");
             } else {
-                enableupgrade(Yesno.No, "MawTurretCooldownReset");
-                enableupgrade(Yesno.Yes, "MawTurretCooldownNoReset");
+                enableUpgrade(Yesno.No, "MawTurretCooldownReset");
+                enableUpgrade(Yesno.Yes, "MawTurretCooldownNoReset");
             }
         } else {
-            if (checkcounter("TurretChunks", "5", Valuecompare.Less)) {
-                enableupgrade(Yesno.No, "MawTurretCooldownNoReset");
-                enableupgrade(Yesno.Yes, "MawTurretCooldownReset");
+            if (checkCounter("TurretChunks", "5", Valuecompare.Less)) {
+                enableUpgrade(Yesno.No, "MawTurretCooldownNoReset");
+                enableUpgrade(Yesno.Yes, "MawTurretCooldownReset");
             } else {
-                enableupgrade(Yesno.No, "MawTurretCooldownReset");
-                enableupgrade(Yesno.Yes, "MawTurretCooldownNoReset");
+                enableUpgrade(Yesno.No, "MawTurretCooldownReset");
+                enableUpgrade(Yesno.Yes, "MawTurretCooldownNoReset");
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "MawTurret")) {
+        if (isUpgradeEnabled(Yesno.Yes, "MawTurret")) {
             if (timer(Timeunits.Seconds, 10.0D, Yesno.No)) {
-                adjustcounter("TurretChunks", "1", Valueadjust.Add);
+                adjustCounter("TurretChunks", "1", Valueadjust.Add);
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "MawTurretAttackspeed1")) {
+        if (isUpgradeEnabled(Yesno.Yes, "MawTurretAttackspeed1")) {
             if (once()) {
-                emitmessageinarea("MawTurretAttackspeed1", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 15.0D, 15.0D, Yesno.Yes, Yesno.No);
+                emitMessageInArea("MawTurretAttackspeed1", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 15.0D, 15.0D, Yesno.Yes, Yesno.No);
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "MawTurretAttackspeed2")) {
+        if (isUpgradeEnabled(Yesno.Yes, "MawTurretAttackspeed2")) {
             if (once()) {
-                emitmessageinarea("MawTurretAttackspeed2", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 15.0D, 15.0D, Yesno.Yes, Yesno.No);
+                emitMessageInArea("MawTurretAttackspeed2", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 15.0D, 15.0D, Yesno.Yes, Yesno.No);
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "MawTurretAttackspeed3")) {
+        if (isUpgradeEnabled(Yesno.Yes, "MawTurretAttackspeed3")) {
             if (once()) {
-                emitmessageinarea("MawTurretAttackspeed3", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 15.0D, 15.0D, Yesno.Yes, Yesno.No);
+                emitMessageInArea("MawTurretAttackspeed3", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 15.0D, 15.0D, Yesno.Yes, Yesno.No);
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "MawTurretGrow")) {
+        if (isUpgradeEnabled(Yesno.Yes, "MawTurretGrow")) {
             if (once()) {
-                emitmessageinarea("MawTurretGrow", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 15.0D, 15.0D, Yesno.Yes, Yesno.No);
+                emitMessageInArea("MawTurretGrow", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 15.0D, 15.0D, Yesno.Yes, Yesno.No);
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "MawTurretDamage1")) {
+        if (isUpgradeEnabled(Yesno.Yes, "MawTurretDamage1")) {
             if (once()) {
-                emitmessageinarea("MawTurretDamage1", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 15.0D, 15.0D, Yesno.Yes, Yesno.No);
+                emitMessageInArea("MawTurretDamage1", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 15.0D, 15.0D, Yesno.Yes, Yesno.No);
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "MawTurretDamage2")) {
+        if (isUpgradeEnabled(Yesno.Yes, "MawTurretDamage2")) {
             if (once()) {
-                emitmessageinarea("MawTurretDamage2", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 15.0D, 15.0D, Yesno.Yes, Yesno.No);
+                emitMessageInArea("MawTurretDamage2", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 15.0D, 15.0D, Yesno.Yes, Yesno.No);
             }
         }
     }
@@ -626,13 +626,13 @@ public class Maw
     @Script.Sequence(blocking = false)
     void sequence0() {
         wait(0.4D);
-        adjustcounter("TurretChunks", "-3", Valueadjust.Add);
+        adjustCounter("TurretChunks", "-3", Valueadjust.Add);
     }
 
     @Script.Sequence(blocking = false)
     void sequence1() {
         wait(0.4D);
-        adjustcounter("TurretChunks", "-5", Valueadjust.Add);
+        adjustCounter("TurretChunks", "-5", Valueadjust.Add);
     }
 
 }

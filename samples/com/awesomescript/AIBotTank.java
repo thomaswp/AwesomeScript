@@ -9,26 +9,26 @@ public class AIBotTank
 
 
     public void onTick() {
-        if (getboolequals("init", Yesno.No)) {
-            setbool("Tank", Flagtoggle.Yes);
+        if (getBoolEquals("init", Yesno.No)) {
+            setBool("Tank", Flagtoggle.Yes);
         }
-        executebehaviourtree("Tank");
-        executebehaviourtree("GeneralAI");
-        if (checkcounter("state", "6", Valuecompare.Equal)||checkcounter("state", "1", Valuecompare.Equal)) {
-            setbool("Exploding", Flagtoggle.No);
+        executeBehaviourTree("Tank");
+        executeBehaviourTree("GeneralAI");
+        if (checkCounter("state", "6", Valuecompare.Equal)||checkCounter("state", "1", Valuecompare.Equal)) {
+            setBool("Exploding", Flagtoggle.No);
         } else {
-            if (getboolequals("Exploding", Yesno.Yes)) {
-                selecttarget(EnumSet.of(TargetGroups.PLAYERS), EnumSet.of(Teams.ENEMY_TEAM), "", Yesno.No, 0.0D, 0.0D, 1.0D, 1.0D, Valuecompare2 .GreaterOrEqual, 0.0D, DistanceCheck.NONE, Yesno.No, Yesno.No);
-                setbool("MoveTowardsTarget", Flagtoggle.Yes);
+            if (getBoolEquals("Exploding", Yesno.Yes)) {
+                selectTarget(EnumSet.of(TargetGroups.PLAYERS), EnumSet.of(Teams.ENEMY_TEAM), "", Yesno.No, 0.0D, 0.0D, 1.0D, 1.0D, Valuecompare2 .GreaterOrEqual, 0.0D, DistanceCheck.NONE, Yesno.No, Yesno.No);
+                setBool("MoveTowardsTarget", Flagtoggle.Yes);
             }
             // Bite!
-            if (isupgradeenabled(Yesno.Yes, "LifeSteal")) {
-                if (checkcharactervalue(CharactervaluesCheckable.HealthMinusDotPercentage, 85.0D, Valuecompare.Less, Targetself.Self)) {
-                    if (getboolequals("hasBitten", Yesno.No)) {
-                        if (isinarea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.1D, 0.0D, 0.2D, 0.3D, Yesno.No, Yesno.No)) {
+            if (isUpgradeEnabled(Yesno.Yes, "LifeSteal")) {
+                if (checkCharacterValue(CharactervaluesCheckable.HealthMinusDotPercentage, 85.0D, Valuecompare.Less, Targetself.Self)) {
+                    if (getBoolEquals("hasBitten", Yesno.No)) {
+                        if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.1D, 0.0D, 0.2D, 0.3D, Yesno.No, Yesno.No)) {
                             log("I will bite you!", "", "");
-                            selecttarget(EnumSet.of(TargetGroups.PLAYERS, TargetGroups.CREEPS), EnumSet.of(Teams.ENEMY_TEAM), "", Yesno.No, 0.1D, 0.0D, 0.2D, 0.3D, Valuecompare2 .GreaterOrEqual, 0.0D, DistanceCheck.NONE, Yesno.No, Yesno.No);
-                            setbool("MoveTowardsTarget", Flagtoggle.Yes);
+                            selectTarget(EnumSet.of(TargetGroups.PLAYERS, TargetGroups.CREEPS), EnumSet.of(Teams.ENEMY_TEAM), "", Yesno.No, 0.1D, 0.0D, 0.2D, 0.3D, Valuecompare2 .GreaterOrEqual, 0.0D, DistanceCheck.NONE, Yesno.No, Yesno.No);
+                            setBool("MoveTowardsTarget", Flagtoggle.Yes);
                             sequence0();
                         }
                     }
@@ -36,15 +36,15 @@ public class AIBotTank
             }
             if (timer(Timeunits.Seconds, 1.0D, Yesno.No)) {
                 // Explode!
-                if (isupgradeenabled(Yesno.Yes, "suicide")) {
-                    if (checkcharactervalue(CharactervaluesCheckable.HealthMinusDotPercentage, 70.0D, Valuecompare.Greater, Targetself.Self)) {
-                        if (isinarea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 1.0D, 1.0D, Yesno.No, Yesno.No)) {
-                            if (isinarea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 0.35D, 0.35D, Yesno.No, Yesno.No)) {
+                if (isUpgradeEnabled(Yesno.Yes, "suicide")) {
+                    if (checkCharacterValue(CharactervaluesCheckable.HealthMinusDotPercentage, 70.0D, Valuecompare.Greater, Targetself.Self)) {
+                        if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 1.0D, 1.0D, Yesno.No, Yesno.No)) {
+                            if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 0.35D, 0.35D, Yesno.No, Yesno.No)) {
                                 sequence1();
                             }
                         } else {
-                            if (checkcharactervalue(CharactervaluesCheckable.HealthMinusDotPercentage, 90.0D, Valuecompare.Greater, Targetself.Self)) {
-                                if (ischaracterinarea(EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teams.ENEMY_TEAM), "", CharactervaluesCheckable.Health, Valuecompare.Greater, 80.0D, "0", 0.0D, 0.0D, 0.3D, 0.3D, Yesno.No)) {
+                            if (checkCharacterValue(CharactervaluesCheckable.HealthMinusDotPercentage, 90.0D, Valuecompare.Greater, Targetself.Self)) {
+                                if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teams.ENEMY_TEAM), "", CharactervaluesCheckable.Health, Valuecompare.Greater, 80.0D, "0", 0.0D, 0.0D, 0.3D, 0.3D, Yesno.No)) {
                                     sequence2();
                                 }
                             }
@@ -54,122 +54,122 @@ public class AIBotTank
             }
         }
         // Shoot
-        if (isskillonbuttonavailable(Buttons.FACE_LEFT)) {
+        if (isSkillOnButtonAvailable(Buttons.FACE_LEFT)) {
             // enemy in front -> always shoot
-            if (isinarea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.25D, 0.0D, 0.4D, 0.2D, Yesno.Yes, Yesno.No)) {
-                if (hastarget(Yesno.Yes)) {
-                    if (istargetinarea(Yesno.Yes, 0.25D, 0.0D, 0.4D, 0.2D, Yesno.No, Yesno.No)) {
-                        aimstickattarget(0.1D, Yesno.Yes);
+            if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.25D, 0.0D, 0.4D, 0.2D, Yesno.Yes, Yesno.No)) {
+                if (hasTarget(Yesno.Yes)) {
+                    if (isTargetInArea(Yesno.Yes, 0.25D, 0.0D, 0.4D, 0.2D, Yesno.No, Yesno.No)) {
+                        aimStickAtTarget(0.1D, Yesno.Yes);
                     }
                 }
-                pressbutton(Buttons.FACE_LEFT, 0.0D);
+                pressButton(Buttons.FACE_LEFT, 0.0D);
             } else {
                 // enemy in front -> always shoot
-                if (isinarea(Yesno.Yes, EnumSet.of(CollisonGroups.DESTROYABLE_OBSTACLES), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.25D, 0.0D, 0.4D, 0.1D, Yesno.Yes, Yesno.No)) {
-                    pressbutton(Buttons.FACE_LEFT, 0.0D);
+                if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.DESTROYABLE_OBSTACLES), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.25D, 0.0D, 0.4D, 0.1D, Yesno.Yes, Yesno.No)) {
+                    pressButton(Buttons.FACE_LEFT, 0.0D);
                 }
             }
         }
         // STATES
-        if (getboolequals("false", Yesno.No)) {
+        if (getBoolEquals("false", Yesno.No)) {
             // returnToUpgrade (10)
-            if (checkcounter("state", "10", Valuecompare.Equal)) {
-                setbool("ForceWaypointMovement", Flagtoggle.Yes);
+            if (checkCounter("state", "10", Valuecompare.Equal)) {
+                setBool("ForceWaypointMovement", Flagtoggle.Yes);
                 // at shop
-                if (isatdestwaypoint()) {
-                    if (isupgradeenabled(Yesno.No, "Piggybank")) {
-                        if (canpayupgrade("Piggybank")) {
-                            buyupgrade("Piggybank");
+                if (isAtDestWaypoint()) {
+                    if (isUpgradeEnabled(Yesno.No, "Piggybank")) {
+                        if (canPayUpgrade("Piggybank")) {
+                            buyUpgrade("Piggybank");
                         }
                     }
                     // Bite
-                    if (isupgradeenabled(Yesno.Yes, "LifeSteal")) {
+                    if (isUpgradeEnabled(Yesno.Yes, "LifeSteal")) {
                         if (random("2")) {
                             // skill upgrades
                             if (random("2")) {
-                                if (isupgradeenabled(Yesno.Yes, "TankBiteTargets1")) {
+                                if (isUpgradeEnabled(Yesno.Yes, "TankBiteTargets1")) {
                                     if (random("4")) {
-                                        if (canpayupgrade("TankBiteSnare")) {
-                                            if (isupgradeenabled(Yesno.No, "TankBiteSnare")) {
-                                                buyupgrade("TankBiteSnare");
+                                        if (canPayUpgrade("TankBiteSnare")) {
+                                            if (isUpgradeEnabled(Yesno.No, "TankBiteSnare")) {
+                                                buyUpgrade("TankBiteSnare");
                                             }
                                         }
                                     } else {
                                         if (random("3")) {
-                                            if (isupgradeenabled(Yesno.Yes, "TankBiteDamage2")) {
-                                                if (canpayupgrade("TankBiteDamage3")) {
-                                                    if (isupgradeenabled(Yesno.No, "TankBiteDamage3")) {
-                                                        buyupgrade("TankBiteDamage3");
+                                            if (isUpgradeEnabled(Yesno.Yes, "TankBiteDamage2")) {
+                                                if (canPayUpgrade("TankBiteDamage3")) {
+                                                    if (isUpgradeEnabled(Yesno.No, "TankBiteDamage3")) {
+                                                        buyUpgrade("TankBiteDamage3");
                                                     }
                                                 }
                                             } else {
-                                                if (canpayupgrade("TankBiteDamage2")) {
-                                                    if (isupgradeenabled(Yesno.No, "TankBiteDamage2")) {
-                                                        buyupgrade("TankBiteDamage2");
+                                                if (canPayUpgrade("TankBiteDamage2")) {
+                                                    if (isUpgradeEnabled(Yesno.No, "TankBiteDamage2")) {
+                                                        buyUpgrade("TankBiteDamage2");
                                                     }
                                                 }
                                             }
                                         }
                                     }
                                 } else {
-                                    if (canpayupgrade("TankBiteTargets1")) {
-                                        if (isupgradeenabled(Yesno.No, "TankBiteTargets1")) {
-                                            buyupgrade("TankBiteTargets1");
+                                    if (canPayUpgrade("TankBiteTargets1")) {
+                                        if (isUpgradeEnabled(Yesno.No, "TankBiteTargets1")) {
+                                            buyUpgrade("TankBiteTargets1");
                                         }
                                     }
                                 }
                             } else {
                                 // Self Explode
-                                if (isupgradeenabled(Yesno.Yes, "suicide")) {
-                                    if (isupgradeenabled(Yesno.Yes, "TankExplodeDamage1")) {
+                                if (isUpgradeEnabled(Yesno.Yes, "suicide")) {
+                                    if (isUpgradeEnabled(Yesno.Yes, "TankExplodeDamage1")) {
                                         if (random("4")) {
-                                            if (canpayupgrade("TankExplodeDamage2")) {
-                                                if (isupgradeenabled(Yesno.No, "TankExplodeDamage2")) {
-                                                    buyupgrade("TankExplodeDamage2");
+                                            if (canPayUpgrade("TankExplodeDamage2")) {
+                                                if (isUpgradeEnabled(Yesno.No, "TankExplodeDamage2")) {
+                                                    buyUpgrade("TankExplodeDamage2");
                                                 }
                                             }
                                         } else {
                                             if (random("3")) {
-                                                if (isupgradeenabled(Yesno.Yes, "TankExplodeHardhat1")) {
-                                                    if (canpayupgrade("TankExplodeHardhat2")) {
-                                                        if (isupgradeenabled(Yesno.No, "TankExplodeHardhat2")) {
-                                                            buyupgrade("TankExplodeHardhat2");
+                                                if (isUpgradeEnabled(Yesno.Yes, "TankExplodeHardhat1")) {
+                                                    if (canPayUpgrade("TankExplodeHardhat2")) {
+                                                        if (isUpgradeEnabled(Yesno.No, "TankExplodeHardhat2")) {
+                                                            buyUpgrade("TankExplodeHardhat2");
                                                         }
                                                     }
                                                 } else {
-                                                    if (canpayupgrade("TankExplodeHardhat1")) {
-                                                        if (isupgradeenabled(Yesno.No, "TankExplodeHardhat1")) {
-                                                            buyupgrade("TankExplodeHardhat1");
+                                                    if (canPayUpgrade("TankExplodeHardhat1")) {
+                                                        if (isUpgradeEnabled(Yesno.No, "TankExplodeHardhat1")) {
+                                                            buyUpgrade("TankExplodeHardhat1");
                                                         }
                                                     }
                                                 }
                                             } else {
-                                                if (isupgradeenabled(Yesno.Yes, "TankExplodeSlow1")) {
-                                                    if (canpayupgrade("TankExplodeSlow2")) {
-                                                        if (isupgradeenabled(Yesno.No, "TankExplodeSlow2")) {
-                                                            buyupgrade("TankExplodeSlow2");
+                                                if (isUpgradeEnabled(Yesno.Yes, "TankExplodeSlow1")) {
+                                                    if (canPayUpgrade("TankExplodeSlow2")) {
+                                                        if (isUpgradeEnabled(Yesno.No, "TankExplodeSlow2")) {
+                                                            buyUpgrade("TankExplodeSlow2");
                                                         }
                                                     }
                                                 } else {
-                                                    if (canpayupgrade("TankExplodeSlow1")) {
-                                                        if (isupgradeenabled(Yesno.No, "TankExplodeSlow1")) {
-                                                            buyupgrade("TankExplodeSlow1");
+                                                    if (canPayUpgrade("TankExplodeSlow1")) {
+                                                        if (isUpgradeEnabled(Yesno.No, "TankExplodeSlow1")) {
+                                                            buyUpgrade("TankExplodeSlow1");
                                                         }
                                                     }
                                                 }
                                             }
                                         }
                                     } else {
-                                        if (canpayupgrade("TankExplodeDamage1")) {
-                                            if (isupgradeenabled(Yesno.No, "TankExplodeDamage1")) {
-                                                buyupgrade("TankExplodeDamage1");
+                                        if (canPayUpgrade("TankExplodeDamage1")) {
+                                            if (isUpgradeEnabled(Yesno.No, "TankExplodeDamage1")) {
+                                                buyUpgrade("TankExplodeDamage1");
                                             }
                                         }
                                     }
                                 } else {
-                                    if (canpayupgrade("suicide")) {
-                                        if (isupgradeenabled(Yesno.No, "suicide")) {
-                                            buyupgrade("suicide");
+                                    if (canPayUpgrade("suicide")) {
+                                        if (isUpgradeEnabled(Yesno.No, "suicide")) {
+                                            buyUpgrade("suicide");
                                         }
                                     }
                                 }
@@ -177,62 +177,62 @@ public class AIBotTank
                         } else {
                             // shot & passive & hp upgrades
                             if (random("3")) {
-                                if (canpayupgrade("tankspeed")) {
-                                    if (isupgradeenabled(Yesno.No, "tankspeed")) {
-                                        buyupgrade("tankspeed");
+                                if (canPayUpgrade("tankspeed")) {
+                                    if (isUpgradeEnabled(Yesno.No, "tankspeed")) {
+                                        buyUpgrade("tankspeed");
                                     }
                                 }
                             } else {
                                 // passive or hp
                                 if (random("3")) {
-                                    if (isupgradeenabled(Yesno.No, "addHealth1")) {
-                                        if (canpayupgrade("addHealth1")) {
-                                            buyupgrade("addHealth1");
+                                    if (isUpgradeEnabled(Yesno.No, "addHealth1")) {
+                                        if (canPayUpgrade("addHealth1")) {
+                                            buyUpgrade("addHealth1");
                                         }
                                     } else {
-                                        if (isupgradeenabled(Yesno.No, "addHealth2")) {
-                                            if (canpayupgrade("addHealth2")) {
-                                                buyupgrade("addHealth2");
+                                        if (isUpgradeEnabled(Yesno.No, "addHealth2")) {
+                                            if (canPayUpgrade("addHealth2")) {
+                                                buyUpgrade("addHealth2");
                                             }
                                         } else {
-                                            if (isupgradeenabled(Yesno.No, "addHealth3")) {
-                                                if (canpayupgrade("addHealth3")) {
-                                                    buyupgrade("addHealth3");
+                                            if (isUpgradeEnabled(Yesno.No, "addHealth3")) {
+                                                if (canPayUpgrade("addHealth3")) {
+                                                    buyUpgrade("addHealth3");
                                                 }
                                             }
                                         }
                                     }
                                 } else {
-                                    if (isupgradeenabled(Yesno.Yes, "TankShotSpeed")) {
+                                    if (isUpgradeEnabled(Yesno.Yes, "TankShotSpeed")) {
                                         // SHOTS
                                         if (random("2")) {
-                                            if (isupgradeenabled(Yesno.Yes, "TankShotAOE")) {
-                                                if (canpayupgrade("TankShotSpeed2")) {
-                                                    if (isupgradeenabled(Yesno.No, "TankShotSpeed2")) {
-                                                        buyupgrade("TankShotSpeed2");
+                                            if (isUpgradeEnabled(Yesno.Yes, "TankShotAOE")) {
+                                                if (canPayUpgrade("TankShotSpeed2")) {
+                                                    if (isUpgradeEnabled(Yesno.No, "TankShotSpeed2")) {
+                                                        buyUpgrade("TankShotSpeed2");
                                                     }
                                                 }
                                             } else {
-                                                if (canpayupgrade("TankShotAOE")) {
-                                                    buyupgrade("TankShotAOE");
+                                                if (canPayUpgrade("TankShotAOE")) {
+                                                    buyUpgrade("TankShotAOE");
                                                 }
                                             }
-                                            if (isupgradeenabled(Yesno.Yes, "TankShotHoming")) {
-                                                if (canpayupgrade("TankShotSpeed2")) {
-                                                    if (isupgradeenabled(Yesno.No, "TankShotSpeed2")) {
-                                                        buyupgrade("TankShotSpeed2");
+                                            if (isUpgradeEnabled(Yesno.Yes, "TankShotHoming")) {
+                                                if (canPayUpgrade("TankShotSpeed2")) {
+                                                    if (isUpgradeEnabled(Yesno.No, "TankShotSpeed2")) {
+                                                        buyUpgrade("TankShotSpeed2");
                                                     }
                                                 }
                                             } else {
-                                                if (canpayupgrade("TankShotHoming")) {
-                                                    buyupgrade("TankShotHoming");
+                                                if (canPayUpgrade("TankShotHoming")) {
+                                                    buyUpgrade("TankShotHoming");
                                                 }
                                             }
                                         }
                                     } else {
-                                        if (canpayupgrade("TankShotSpeed")) {
-                                            if (isupgradeenabled(Yesno.No, "TankShotSpeed")) {
-                                                buyupgrade("TankShotSpeed");
+                                        if (canPayUpgrade("TankShotSpeed")) {
+                                            if (isUpgradeEnabled(Yesno.No, "TankShotSpeed")) {
+                                                buyUpgrade("TankShotSpeed");
                                             }
                                         }
                                     }
@@ -240,17 +240,17 @@ public class AIBotTank
                             }
                         }
                     } else {
-                        if (canpayupgrade("LifeSteal")) {
-                            buyupgrade("LifeSteal");
+                        if (canPayUpgrade("LifeSteal")) {
+                            buyUpgrade("LifeSteal");
                         }
                     }
                     // all better now
-                    if (checkcharactervalue(CharactervaluesCheckable.HealthMinusDotPercentage, 100.0D, Valuecompare.Equal, Targetself.Self)) {
+                    if (checkCharacterValue(CharactervaluesCheckable.HealthMinusDotPercentage, 100.0D, Valuecompare.Equal, Targetself.Self)) {
                         if (timer(Timeunits.Seconds, 1.0D, Yesno.No)) {
                             if (random("2")) {
-                                adjustcounter("lane", "1", Valueadjust.Set);
+                                adjustCounter("lane", "1", Valueadjust.Set);
                             } else {
-                                adjustcounter("lane", "2", Valueadjust.Set);
+                                adjustCounter("lane", "2", Valueadjust.Set);
                             }
                         }
                         sequence3();
@@ -259,149 +259,149 @@ public class AIBotTank
             }
         }
         // Move Away From Target
-        if (getboolequals("MoveAwayFromTarget", Yesno.Yes)) {
-            setbool("ForceWaypointMovement", Flagtoggle.No);
-            if (directiontoenemybase(Forwardbackward.BACKWARD)||isinnamedarea("AREANEUTRALS", Ownenemy.OWN_TEAM, Targetself.Self)) {
-                if (istargetposition(Yesno.Yes, Offsetposition.VERTICALEQUAL)) {
-                    if (istargetposition(Yesno.Yes, Offsetposition.BELOW)||timer(Timeunits.Seconds, 3.0D, Yesno.No)) {
-                        setbool("jump", Flagtoggle.Yes);
+        if (getBoolEquals("MoveAwayFromTarget", Yesno.Yes)) {
+            setBool("ForceWaypointMovement", Flagtoggle.No);
+            if (directionToEnemyBase(Forwardbackward.BACKWARD)||isInNamedArea("AREANEUTRALS", Ownenemy.OWN_TEAM, Targetself.Self)) {
+                if (isTargetPosition(Yesno.Yes, Offsetposition.VERTICALEQUAL)) {
+                    if (isTargetPosition(Yesno.Yes, Offsetposition.BELOW)||timer(Timeunits.Seconds, 3.0D, Yesno.No)) {
+                        setBool("jump", Flagtoggle.Yes);
                     }
                 }
-                setbool("GoForward", Flagtoggle.Yes);
-                if (isinarea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS, CollisonGroups.INVINCIBLE_OBSTACLES, CollisonGroups.DESTROYABLE_OBSTACLES), Yesno.No, EnumSet.of(Teams.OWN_TEAM, Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.04D, 0.0D, 0.08D, 0.05D, Yesno.No, Yesno.Yes)||istargetposition(Yesno.Yes, Offsetposition.BELOW)) {
-                    setbool("jump", Flagtoggle.Yes);
+                setBool("GoForward", Flagtoggle.Yes);
+                if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS, CollisonGroups.INVINCIBLE_OBSTACLES, CollisonGroups.DESTROYABLE_OBSTACLES), Yesno.No, EnumSet.of(Teams.OWN_TEAM, Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.04D, 0.0D, 0.08D, 0.05D, Yesno.No, Yesno.Yes)||isTargetPosition(Yesno.Yes, Offsetposition.BELOW)) {
+                    setBool("jump", Flagtoggle.Yes);
                 }
             } else {
-                setbool("GoBack", Flagtoggle.Yes);
+                setBool("GoBack", Flagtoggle.Yes);
             }
-            setbool("MoveAwayFromTarget", Flagtoggle.No);
+            setBool("MoveAwayFromTarget", Flagtoggle.No);
         }
         // Move Towards Target
-        if (getboolequals("MoveTowardsTarget", Yesno.Yes)) {
-            setbool("ForceWaypointMovement", Flagtoggle.No);
-            if (istargetposition(Yesno.Yes, Offsetposition.BACK)) {
-                setbool("GoBack", Flagtoggle.Yes);
+        if (getBoolEquals("MoveTowardsTarget", Yesno.Yes)) {
+            setBool("ForceWaypointMovement", Flagtoggle.No);
+            if (isTargetPosition(Yesno.Yes, Offsetposition.BACK)) {
+                setBool("GoBack", Flagtoggle.Yes);
             } else {
-                if (istargetposition(Yesno.Yes, Offsetposition.BELOW)) {
+                if (isTargetPosition(Yesno.Yes, Offsetposition.BELOW)) {
                     // greens
-                    if (isinarea(Yesno.Yes, EnumSet.of(CollisonGroups.INVINCIBLE_OBSTACLES), Yesno.Yes, EnumSet.of(Teams.OWN_TEAM, Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.0D, -0.07D, 0.01D, 0.06D, Yesno.Yes, Yesno.No)) {
-                        setbool("DownJump", Flagtoggle.Yes);
+                    if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.INVINCIBLE_OBSTACLES), Yesno.Yes, EnumSet.of(Teams.OWN_TEAM, Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.0D, -0.07D, 0.01D, 0.06D, Yesno.Yes, Yesno.No)) {
+                        setBool("DownJump", Flagtoggle.Yes);
                     }
                 }
-                if (istargetposition(Yesno.Yes, Offsetposition.VERTICALEQUAL)) {
-                    if (istargetposition(Yesno.Yes, Offsetposition.ABOVE)) {
-                        setbool("jump", Flagtoggle.Yes);
+                if (isTargetPosition(Yesno.Yes, Offsetposition.VERTICALEQUAL)) {
+                    if (isTargetPosition(Yesno.Yes, Offsetposition.ABOVE)) {
+                        setBool("jump", Flagtoggle.Yes);
                     }
                 } else {
-                    if (istargetposition(Yesno.Yes, Offsetposition.FRONT)) {
-                        setbool("GoForward", Flagtoggle.Yes);
-                        if ((isinarea(Yesno.Yes, EnumSet.of(CollisonGroups.INVINCIBLE_OBSTACLES, CollisonGroups.DESTROYABLE_OBSTACLES), Yesno.No, EnumSet.of(Teams.OWN_TEAM, Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.04D, 0.0D, 0.08D, 0.05D, Yesno.No, Yesno.No)||isinarea(Yesno.Yes, EnumSet.of(CollisonGroups.CREEPS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.0D, 0.0D, 0.16D, 0.02D, Yesno.No, Yesno.No))||isnextwaypointposition(Offsetposition.ABOVE)) {
-                            setbool("jump", Flagtoggle.Yes);
+                    if (isTargetPosition(Yesno.Yes, Offsetposition.FRONT)) {
+                        setBool("GoForward", Flagtoggle.Yes);
+                        if ((isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.INVINCIBLE_OBSTACLES, CollisonGroups.DESTROYABLE_OBSTACLES), Yesno.No, EnumSet.of(Teams.OWN_TEAM, Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.04D, 0.0D, 0.08D, 0.05D, Yesno.No, Yesno.No)||isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.CREEPS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.0D, 0.0D, 0.16D, 0.02D, Yesno.No, Yesno.No))||isNextWaypointPosition(Offsetposition.ABOVE)) {
+                            setBool("jump", Flagtoggle.Yes);
                         }
                     }
                 }
             }
-            setbool("MoveTowardsTarget", Flagtoggle.No);
+            setBool("MoveTowardsTarget", Flagtoggle.No);
         }
         // Handle Movement
-        if (getboolequals("CantMove", Yesno.No)) {
-            setbool("HasMoved", Flagtoggle.No);
-            if (getboolequals("GoBack", Yesno.Yes)) {
-                setbool("GoBack", Flagtoggle.No);
-                if ((getboolequals("WaypointMovement", Yesno.No)||isonground(Yesno.Yes, Targetself.Self))||timer(Timeunits.Seconds, 0.5D, Yesno.No)) {
-                    pressstick(Directions.BACKWARD, 0.1D);
-                    setbool("HasMoved", Flagtoggle.Yes);
+        if (getBoolEquals("CantMove", Yesno.No)) {
+            setBool("HasMoved", Flagtoggle.No);
+            if (getBoolEquals("GoBack", Yesno.Yes)) {
+                setBool("GoBack", Flagtoggle.No);
+                if ((getBoolEquals("WaypointMovement", Yesno.No)||isOnGround(Yesno.Yes, Targetself.Self))||timer(Timeunits.Seconds, 0.5D, Yesno.No)) {
+                    pressStick(Directions.BACKWARD, 0.1D);
+                    setBool("HasMoved", Flagtoggle.Yes);
                 }
             } else {
-                if (getboolequals("GoForward", Yesno.Yes)) {
-                    pressstick(Directions.FORWARD, 0.1D);
-                    setbool("HasMoved", Flagtoggle.Yes);
-                    setbool("GoForward", Flagtoggle.No);
+                if (getBoolEquals("GoForward", Yesno.Yes)) {
+                    pressStick(Directions.FORWARD, 0.1D);
+                    setBool("HasMoved", Flagtoggle.Yes);
+                    setBool("GoForward", Flagtoggle.No);
                 } else {
                     // at regen area
-                    if (isinnamedarea("AREAHOME", Ownenemy.OWN_TEAM, Targetself.Self)) {
+                    if (isInNamedArea("AREAHOME", Ownenemy.OWN_TEAM, Targetself.Self)) {
                     } else {
-                        if (checkcounter("state", "1", Valuecompare.Equal)||checkcounter("state", "10", Valuecompare.Equal)) {
-                            if (directiontoenemybase(Forwardbackward.FORWARD)) {
-                                pressstick(Directions.BACKWARD, 0.1D);
+                        if (checkCounter("state", "1", Valuecompare.Equal)||checkCounter("state", "10", Valuecompare.Equal)) {
+                            if (directionToEnemyBase(Forwardbackward.FORWARD)) {
+                                pressStick(Directions.BACKWARD, 0.1D);
                             } else {
                                 // check enemies
-                                if (isinarea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.0D, 0.0D, 0.16D, 0.02D, Yesno.No, Yesno.No)) {
+                                if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.0D, 0.0D, 0.16D, 0.02D, Yesno.No, Yesno.No)) {
                                     if (random("3")) {
-                                        setbool("DownJump", Flagtoggle.Yes);
+                                        setBool("DownJump", Flagtoggle.Yes);
                                     } else {
-                                        setbool("jump", Flagtoggle.Yes);
+                                        setBool("jump", Flagtoggle.Yes);
                                     }
                                 }
                                 // check walls
-                                if (isinarea(Yesno.Yes, EnumSet.of(CollisonGroups.INVINCIBLE_OBSTACLES, CollisonGroups.DESTROYABLE_OBSTACLES), Yesno.No, EnumSet.of(Teams.OWN_TEAM, Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.04D, 0.08D, 0.08D, 0.05D, Yesno.No, Yesno.No)) {
-                                    setbool("jump", Flagtoggle.Yes);
+                                if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.INVINCIBLE_OBSTACLES, CollisonGroups.DESTROYABLE_OBSTACLES), Yesno.No, EnumSet.of(Teams.OWN_TEAM, Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.04D, 0.08D, 0.08D, 0.05D, Yesno.No, Yesno.No)) {
+                                    setBool("jump", Flagtoggle.Yes);
                                 }
                             }
                         }
                     }
                 }
             }
-            if (getboolequals("GoDown", Yesno.Yes)) {
-                pressstick(Directions.DOWN, 0.1D);
-                setbool("GoDown", Flagtoggle.No);
+            if (getBoolEquals("GoDown", Yesno.Yes)) {
+                pressStick(Directions.DOWN, 0.1D);
+                setBool("GoDown", Flagtoggle.No);
             } else {
-                if (getboolequals("GoUp", Yesno.Yes)) {
-                    pressstick(Directions.UP, 0.1D);
-                    setbool("GoUp", Flagtoggle.No);
+                if (getBoolEquals("GoUp", Yesno.Yes)) {
+                    pressStick(Directions.UP, 0.1D);
+                    setBool("GoUp", Flagtoggle.No);
                 }
             }
         }
         // JUMPIN
-        if (getboolequals("DownJump", Yesno.No)) {
-            if (isinnamedarea("NODOWNJUMP", Ownenemy.OWN_TEAM, Targetself.Self)) {
+        if (getBoolEquals("DownJump", Yesno.No)) {
+            if (isInNamedArea("NODOWNJUMP", Ownenemy.OWN_TEAM, Targetself.Self)) {
             } else {
-                if (getboolequals("jump", Yesno.Yes)) {
-                    setbool("jump", Flagtoggle.No);
+                if (getBoolEquals("jump", Yesno.Yes)) {
+                    setBool("jump", Flagtoggle.No);
                     if (timer(Timeunits.Seconds, 0.4D, Yesno.No)) {
                     } else {
-                        pressbutton(Buttons.FACE_BOTTOM, 0.1D);
+                        pressButton(Buttons.FACE_BOTTOM, 0.1D);
                     }
                 }
             }
         } else {
-            setbool("DownJump", Flagtoggle.No);
+            setBool("DownJump", Flagtoggle.No);
             // downjump
-            pressbutton(Buttons.SHOULDER_LEFT, 0.1D);
+            pressButton(Buttons.SHOULDER_LEFT, 0.1D);
         }
     }
 
     @Script.Sequence(blocking = false)
     void sequence0() {
-        setbool("hasBitten", Flagtoggle.Yes);
-        setbool("MoveTowardsTarget", Flagtoggle.Yes);
-        pressbutton(Buttons.FACE_RIGHT, 0.1D);
+        setBool("hasBitten", Flagtoggle.Yes);
+        setBool("MoveTowardsTarget", Flagtoggle.Yes);
+        pressButton(Buttons.FACE_RIGHT, 0.1D);
         wait(4.1D);
-        setbool("hasBitten", Flagtoggle.No);
+        setBool("hasBitten", Flagtoggle.No);
     }
 
     @Script.Sequence(blocking = false)
     void sequence1() {
-        setbool("Exploding", Flagtoggle.Yes);
-        pressbutton(Buttons.FACE_TOP, 0.1D);
+        setBool("Exploding", Flagtoggle.Yes);
+        pressButton(Buttons.FACE_TOP, 0.1D);
         wait(2.0D);
-        setbool("Exploding", Flagtoggle.No);
+        setBool("Exploding", Flagtoggle.No);
     }
 
     @Script.Sequence(blocking = false)
     void sequence2() {
-        selecttarget(EnumSet.of(TargetGroups.CREEPS), EnumSet.of(Teams.ENEMY_TEAM), "", Yesno.No, 0.0D, 0.0D, 0.4D, 0.4D, Valuecompare2 .GreaterOrEqual, 0.0D, DistanceCheck.NONE, Yesno.No, Yesno.No);
-        setbool("Exploding", Flagtoggle.Yes);
-        pressbutton(Buttons.FACE_TOP, 0.1D);
+        selectTarget(EnumSet.of(TargetGroups.CREEPS), EnumSet.of(Teams.ENEMY_TEAM), "", Yesno.No, 0.0D, 0.0D, 0.4D, 0.4D, Valuecompare2 .GreaterOrEqual, 0.0D, DistanceCheck.NONE, Yesno.No, Yesno.No);
+        setBool("Exploding", Flagtoggle.Yes);
+        pressButton(Buttons.FACE_TOP, 0.1D);
         wait(2.0D);
-        setbool("Exploding", Flagtoggle.No);
+        setBool("Exploding", Flagtoggle.No);
     }
 
     @Script.Sequence(blocking = false)
     void sequence3() {
         wait(2.0D);
         // advanceToFrontline (3)
-        adjustcounter("setState", "3", Valueadjust.Set);
+        adjustCounter("setState", "3", Valueadjust.Set);
     }
 
 }

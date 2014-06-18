@@ -9,17 +9,17 @@ public class FN_CreepLevelling
 
     public void onTick() {
         if (once()) {
-            if (checkgametime(360.0D, Valuecompare.Greater)) {
-                enableupgrade(Yesno.Yes, "CreepLevel1");
-                adjustcharactervalue(CharactervaluesAdjustable.HealthPercentage, 100.0D, Valueadjust.Set);
+            if (checkGameTime(360.0D, Valuecompare.Greater)) {
+                enableUpgrade(Yesno.Yes, "CreepLevel1");
+                adjustCharacterValue(CharactervaluesAdjustable.HealthPercentage, 100.0D, Valueadjust.Set);
             }
-            if (checkgametime(720.0D, Valuecompare.Greater)) {
-                enableupgrade(Yesno.Yes, "CreepLevel2");
-                adjustcharactervalue(CharactervaluesAdjustable.HealthPercentage, 100.0D, Valueadjust.Set);
+            if (checkGameTime(720.0D, Valuecompare.Greater)) {
+                enableUpgrade(Yesno.Yes, "CreepLevel2");
+                adjustCharacterValue(CharactervaluesAdjustable.HealthPercentage, 100.0D, Valueadjust.Set);
             }
-            if (checkgametime(1080.0D, Valuecompare.Greater)) {
-                enableupgrade(Yesno.Yes, "CreepLevel3");
-                adjustcharactervalue(CharactervaluesAdjustable.HealthPercentage, 100.0D, Valueadjust.Set);
+            if (checkGameTime(1080.0D, Valuecompare.Greater)) {
+                enableUpgrade(Yesno.Yes, "CreepLevel3");
+                adjustCharacterValue(CharactervaluesAdjustable.HealthPercentage, 100.0D, Valueadjust.Set);
             }
         }
     }

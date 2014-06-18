@@ -8,28 +8,28 @@ public class Brute
 
 
     public void onTick() {
-        executebehaviourtree("StatusEffects");
-        executebehaviourtree("HeroCode");
-        if (isupgradeenabled(Yesno.Yes, "BruteStampReset")) {
+        executeBehaviourTree("StatusEffects");
+        executeBehaviourTree("HeroCode");
+        if (isUpgradeEnabled(Yesno.Yes, "BruteStampReset")) {
             if (random("3")) {
-                if (isupgradeenabled(Yesno.No, "BruteStampDoreset")) {
-                    enableupgrade(Yesno.Yes, "BruteStampDoreset");
+                if (isUpgradeEnabled(Yesno.No, "BruteStampDoreset")) {
+                    enableUpgrade(Yesno.Yes, "BruteStampDoreset");
                 }
             } else {
-                if (isupgradeenabled(Yesno.Yes, "BruteStampDoreset")) {
-                    enableupgrade(Yesno.No, "BruteStampDoreset");
+                if (isUpgradeEnabled(Yesno.Yes, "BruteStampDoreset")) {
+                    enableUpgrade(Yesno.No, "BruteStampDoreset");
                 }
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "BruteStampIgnoreAir")) {
+        if (isUpgradeEnabled(Yesno.Yes, "BruteStampIgnoreAir")) {
         } else {
-            if (isonground(Yesno.Yes, Targetself.Self)) {
-                if (isupgradeenabled(Yesno.Yes, "BruteStampInAir")) {
-                    enableupgrade(Yesno.No, "BruteStampInAir");
+            if (isOnGround(Yesno.Yes, Targetself.Self)) {
+                if (isUpgradeEnabled(Yesno.Yes, "BruteStampInAir")) {
+                    enableUpgrade(Yesno.No, "BruteStampInAir");
                 }
             } else {
-                if (isupgradeenabled(Yesno.No, "BruteStampInAir")) {
-                    enableupgrade(Yesno.Yes, "BruteStampInAir");
+                if (isUpgradeEnabled(Yesno.No, "BruteStampInAir")) {
+                    enableUpgrade(Yesno.Yes, "BruteStampInAir");
                 }
             }
         }

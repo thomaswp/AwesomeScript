@@ -8,152 +8,152 @@ public class Commando
 
 
     public void onTick() {
-        executebehaviourtree("HeroCode");
-        executebehaviourtree("StatusEffects");
+        executeBehaviourTree("HeroCode");
+        executeBehaviourTree("StatusEffects");
         // stimpack
-        if (isupgradeenabled(Yesno.Yes, "CommandoStimActive")) {
+        if (isUpgradeEnabled(Yesno.Yes, "CommandoStimActive")) {
             // speedupgrade
-            if (isupgradeenabled(Yesno.Yes, "CommandoStimpackMovement1")) {
-                enableupgrade(Yesno.Yes, "CommandoStimSpeedOn1");
+            if (isUpgradeEnabled(Yesno.Yes, "CommandoStimpackMovement1")) {
+                enableUpgrade(Yesno.Yes, "CommandoStimSpeedOn1");
             }
             // Attackspeedupgrade
-            if (isupgradeenabled(Yesno.Yes, "CommandoStimpackAttackspeed2")) {
-                enableupgrade(Yesno.Yes, "CommandoStimOn2");
+            if (isUpgradeEnabled(Yesno.Yes, "CommandoStimpackAttackspeed2")) {
+                enableUpgrade(Yesno.Yes, "CommandoStimOn2");
             } else {
-                if (isupgradeenabled(Yesno.Yes, "CommandoStimpackAttackspeed2")) {
-                    enableupgrade(Yesno.Yes, "CommandoStimOn1");
+                if (isUpgradeEnabled(Yesno.Yes, "CommandoStimpackAttackspeed2")) {
+                    enableUpgrade(Yesno.Yes, "CommandoStimOn1");
                 } else {
-                    enableupgrade(Yesno.Yes, "CommandoStimOn0");
+                    enableUpgrade(Yesno.Yes, "CommandoStimOn0");
                 }
             }
-            playanimation("STIM", AnimationLocation.FOLLOW_CHARACTER, 0.0D, 0.0D, 1.0D, 0.5D, Yesno.No, Teams.OWN_TEAM);
+            playAnimation("STIM", AnimationLocation.FOLLOW_CHARACTER, 0.0D, 0.0D, 1.0D, 0.5D, Yesno.No, Teams.OWN_TEAM);
         } else {
-            enableupgrade(Yesno.No, "CommandoStimOn0");
-            enableupgrade(Yesno.No, "CommandoStimOn1");
-            enableupgrade(Yesno.No, "CommandoStimOn2");
-            enableupgrade(Yesno.No, "CommandoStimSpeedOn1");
+            enableUpgrade(Yesno.No, "CommandoStimOn0");
+            enableUpgrade(Yesno.No, "CommandoStimOn1");
+            enableUpgrade(Yesno.No, "CommandoStimOn2");
+            enableUpgrade(Yesno.No, "CommandoStimSpeedOn1");
         }
-        if (isupgradeenabled(Yesno.Yes, "CommandoStimpack")) {
-            if (isupgradeenabled(Yesno.No, "CommandoSwitchStance")) {
-                if (isupgradeenabled(Yesno.Yes, "CommandoStimpackAttackspeed2")) {
-                    if (isupgradeenabled(Yesno.Yes, "CommandoStimpackDamagereduction1")) {
-                        if (checkcharactervalue(CharactervaluesCheckable.Health, 21.0D, Valuecompare.LessOrEqual, Targetself.Self)) {
-                            if (isupgradeenabled(Yesno.No, "CommandoBlockStim")) {
-                                enableupgrade(Yesno.Yes, "CommandoBlockStim");
+        if (isUpgradeEnabled(Yesno.Yes, "CommandoStimpack")) {
+            if (isUpgradeEnabled(Yesno.No, "CommandoSwitchStance")) {
+                if (isUpgradeEnabled(Yesno.Yes, "CommandoStimpackAttackspeed2")) {
+                    if (isUpgradeEnabled(Yesno.Yes, "CommandoStimpackDamagereduction1")) {
+                        if (checkCharacterValue(CharactervaluesCheckable.Health, 21.0D, Valuecompare.LessOrEqual, Targetself.Self)) {
+                            if (isUpgradeEnabled(Yesno.No, "CommandoBlockStim")) {
+                                enableUpgrade(Yesno.Yes, "CommandoBlockStim");
                             }
                         } else {
-                            if (isupgradeenabled(Yesno.Yes, "CommandoBlockStim")) {
-                                enableupgrade(Yesno.No, "CommandoBlockStim");
+                            if (isUpgradeEnabled(Yesno.Yes, "CommandoBlockStim")) {
+                                enableUpgrade(Yesno.No, "CommandoBlockStim");
                             }
                         }
                     } else {
-                        if (checkcharactervalue(CharactervaluesCheckable.Health, 36.0D, Valuecompare.LessOrEqual, Targetself.Self)) {
-                            if (isupgradeenabled(Yesno.No, "CommandoBlockStim")) {
-                                enableupgrade(Yesno.Yes, "CommandoBlockStim");
+                        if (checkCharacterValue(CharactervaluesCheckable.Health, 36.0D, Valuecompare.LessOrEqual, Targetself.Self)) {
+                            if (isUpgradeEnabled(Yesno.No, "CommandoBlockStim")) {
+                                enableUpgrade(Yesno.Yes, "CommandoBlockStim");
                             }
                         } else {
-                            if (isupgradeenabled(Yesno.Yes, "CommandoBlockStim")) {
-                                enableupgrade(Yesno.No, "CommandoBlockStim");
+                            if (isUpgradeEnabled(Yesno.Yes, "CommandoBlockStim")) {
+                                enableUpgrade(Yesno.No, "CommandoBlockStim");
                             }
                         }
                     }
                 } else {
-                    if (isupgradeenabled(Yesno.Yes, "CommandoStimpackAttackspeed1")) {
-                        if (isupgradeenabled(Yesno.Yes, "CommandoStimpackDamagereduction1")) {
-                            if (checkcharactervalue(CharactervaluesCheckable.Health, 11.0D, Valuecompare.LessOrEqual, Targetself.Self)) {
-                                if (isupgradeenabled(Yesno.No, "CommandoBlockStim")) {
-                                    enableupgrade(Yesno.Yes, "CommandoBlockStim");
+                    if (isUpgradeEnabled(Yesno.Yes, "CommandoStimpackAttackspeed1")) {
+                        if (isUpgradeEnabled(Yesno.Yes, "CommandoStimpackDamagereduction1")) {
+                            if (checkCharacterValue(CharactervaluesCheckable.Health, 11.0D, Valuecompare.LessOrEqual, Targetself.Self)) {
+                                if (isUpgradeEnabled(Yesno.No, "CommandoBlockStim")) {
+                                    enableUpgrade(Yesno.Yes, "CommandoBlockStim");
                                 }
                             } else {
-                                if (isupgradeenabled(Yesno.Yes, "CommandoBlockStim")) {
-                                    enableupgrade(Yesno.No, "CommandoBlockStim");
+                                if (isUpgradeEnabled(Yesno.Yes, "CommandoBlockStim")) {
+                                    enableUpgrade(Yesno.No, "CommandoBlockStim");
                                 }
                             }
                         } else {
-                            if (checkcharactervalue(CharactervaluesCheckable.Health, 26.0D, Valuecompare.LessOrEqual, Targetself.Self)) {
-                                if (isupgradeenabled(Yesno.No, "CommandoBlockStim")) {
-                                    enableupgrade(Yesno.Yes, "CommandoBlockStim");
+                            if (checkCharacterValue(CharactervaluesCheckable.Health, 26.0D, Valuecompare.LessOrEqual, Targetself.Self)) {
+                                if (isUpgradeEnabled(Yesno.No, "CommandoBlockStim")) {
+                                    enableUpgrade(Yesno.Yes, "CommandoBlockStim");
                                 }
                             } else {
-                                if (isupgradeenabled(Yesno.Yes, "CommandoBlockStim")) {
-                                    enableupgrade(Yesno.No, "CommandoBlockStim");
+                                if (isUpgradeEnabled(Yesno.Yes, "CommandoBlockStim")) {
+                                    enableUpgrade(Yesno.No, "CommandoBlockStim");
                                 }
                             }
                         }
                     } else {
-                        if (isupgradeenabled(Yesno.Yes, "CommandoStimpackDamagereduction1")) {
+                        if (isUpgradeEnabled(Yesno.Yes, "CommandoStimpackDamagereduction1")) {
                         } else {
-                            if (checkcharactervalue(CharactervaluesCheckable.Health, 16.0D, Valuecompare.LessOrEqual, Targetself.Self)) {
-                                if (isupgradeenabled(Yesno.No, "CommandoBlockStim")) {
-                                    enableupgrade(Yesno.Yes, "CommandoBlockStim");
+                            if (checkCharacterValue(CharactervaluesCheckable.Health, 16.0D, Valuecompare.LessOrEqual, Targetself.Self)) {
+                                if (isUpgradeEnabled(Yesno.No, "CommandoBlockStim")) {
+                                    enableUpgrade(Yesno.Yes, "CommandoBlockStim");
                                 }
                             } else {
-                                if (isupgradeenabled(Yesno.Yes, "CommandoBlockStim")) {
-                                    enableupgrade(Yesno.No, "CommandoBlockStim");
+                                if (isUpgradeEnabled(Yesno.Yes, "CommandoBlockStim")) {
+                                    enableUpgrade(Yesno.No, "CommandoBlockStim");
                                 }
                             }
                         }
                     }
                 }
             } else {
-                if (isupgradeenabled(Yesno.Yes, "CommandoBlockStim")) {
-                    enableupgrade(Yesno.No, "CommandoBlockStim");
+                if (isUpgradeEnabled(Yesno.Yes, "CommandoBlockStim")) {
+                    enableUpgrade(Yesno.No, "CommandoBlockStim");
                 }
             }
         }
         // stimdurationonkillsupgrade
-        if (isupgradeenabled(Yesno.Yes, "CommandoStimpackReset1")) {
-            if (checkcounter("stimkills", "6", Valuecompare.Less)) {
-                if ((((onkill(MissionTarget.CREEP, Teamswithnumbers.OWN_TEAM, "", MissionTarget.HERO, Teamswithnumbers.ENEMY_TEAM, "", Valuecompare.Greater, "0", "")||onkill(MissionTarget.HERO, Teamswithnumbers.OWN_TEAM, "", MissionTarget.HERO, Teamswithnumbers.ENEMY_TEAM, "", Valuecompare.Greater, "0", ""))||onkill(MissionTarget.WORM, Teamswithnumbers.NEUTRAL_TEAM, "", MissionTarget.HERO, Teamswithnumbers.ENEMY_TEAM, "", Valuecompare.Greater, "0", ""))||onkill(MissionTarget.HERO, Teamswithnumbers.ENEMY_TEAM, "", MissionTarget.HERO, Teamswithnumbers.ENEMY_TEAM, "", Valuecompare.Greater, "0", ""))||onkill(MissionTarget.SELF, Teamswithnumbers.OWN_TEAM, "", MissionTarget.HERO, Teamswithnumbers.ENEMY_TEAM, "", Valuecompare.Greater, "0", "")) {
-                    adjustcounter("stimkills", "1", Valueadjust.Add);
+        if (isUpgradeEnabled(Yesno.Yes, "CommandoStimpackReset1")) {
+            if (checkCounter("stimkills", "6", Valuecompare.Less)) {
+                if ((((onKill(MissionTarget.CREEP, Teamswithnumbers.OWN_TEAM, "", MissionTarget.HERO, Teamswithnumbers.ENEMY_TEAM, "", Valuecompare.Greater, "0", "")||onKill(MissionTarget.HERO, Teamswithnumbers.OWN_TEAM, "", MissionTarget.HERO, Teamswithnumbers.ENEMY_TEAM, "", Valuecompare.Greater, "0", ""))||onKill(MissionTarget.WORM, Teamswithnumbers.NEUTRAL_TEAM, "", MissionTarget.HERO, Teamswithnumbers.ENEMY_TEAM, "", Valuecompare.Greater, "0", ""))||onKill(MissionTarget.HERO, Teamswithnumbers.ENEMY_TEAM, "", MissionTarget.HERO, Teamswithnumbers.ENEMY_TEAM, "", Valuecompare.Greater, "0", ""))||onKill(MissionTarget.SELF, Teamswithnumbers.OWN_TEAM, "", MissionTarget.HERO, Teamswithnumbers.ENEMY_TEAM, "", Valuecompare.Greater, "0", "")) {
+                    adjustCounter("stimkills", "1", Valueadjust.Add);
                 }
             }
         }
         // stimdurationonkillsupgrade
-        if (checkcounter("stimkills", "3", Valuecompare.Equal)) {
-            enableupgrade(Yesno.Yes, "CommandoStimKill3");
+        if (checkCounter("stimkills", "3", Valuecompare.Equal)) {
+            enableUpgrade(Yesno.Yes, "CommandoStimKill3");
         } else {
-            if (checkcounter("stimkills", "2", Valuecompare.Equal)) {
-                enableupgrade(Yesno.Yes, "CommandoStimKill2");
+            if (checkCounter("stimkills", "2", Valuecompare.Equal)) {
+                enableUpgrade(Yesno.Yes, "CommandoStimKill2");
             } else {
-                if (checkcounter("stimkills", "1", Valuecompare.Equal)) {
-                    enableupgrade(Yesno.Yes, "CommandoStimKill1");
+                if (checkCounter("stimkills", "1", Valuecompare.Equal)) {
+                    enableUpgrade(Yesno.Yes, "CommandoStimKill1");
                 }
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "CommandoAirstrikeSplit1")) {
+        if (isUpgradeEnabled(Yesno.Yes, "CommandoAirstrikeSplit1")) {
             if (once()) {
                 sequence0();
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "CommandoAirstrikeSplit1")) {
-            if (isupgradeenabled(Yesno.Yes, "CommandoAirstrikeActivated")) {
+        if (isUpgradeEnabled(Yesno.Yes, "CommandoAirstrikeSplit1")) {
+            if (isUpgradeEnabled(Yesno.Yes, "CommandoAirstrikeActivated")) {
                 sequence1();
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "CommandoAirstrikeSplit1")) {
-            if (getboolequals("AirstrikeToggle", Yesno.Yes)) {
-                enableupgrade(Yesno.Yes, "CommandoAirstrikeToggle");
+        if (isUpgradeEnabled(Yesno.Yes, "CommandoAirstrikeSplit1")) {
+            if (getBoolEquals("AirstrikeToggle", Yesno.Yes)) {
+                enableUpgrade(Yesno.Yes, "CommandoAirstrikeToggle");
             } else {
-                enableupgrade(Yesno.No, "CommandoAirstrikeToggle");
+                enableUpgrade(Yesno.No, "CommandoAirstrikeToggle");
             }
         }
     }
 
     @Script.Sequence(blocking = false)
     void sequence0() {
-        enableupgrade(Yesno.No, "CommandoAirstrikeActivated");
+        enableUpgrade(Yesno.No, "CommandoAirstrikeActivated");
         wait(0.2D);
-        setbool("AirstrikeToggle", Flagtoggle.Yes);
+        setBool("AirstrikeToggle", Flagtoggle.Yes);
     }
 
     @Script.Sequence(blocking = false)
     void sequence1() {
-        setbool("AirstrikeToggle", Flagtoggle.Toggle);
+        setBool("AirstrikeToggle", Flagtoggle.Toggle);
         wait(0.2D);
-        enableupgrade(Yesno.No, "CommandoAirstrikeReset");
+        enableUpgrade(Yesno.No, "CommandoAirstrikeReset");
         wait(0.8D);
-        enableupgrade(Yesno.No, "CommandoAirstrikeActivated");
+        enableUpgrade(Yesno.No, "CommandoAirstrikeActivated");
     }
 
 }

@@ -8,30 +8,30 @@ public class Jetter
 
 
     public void onTick() {
-        executebehaviourtree("HeroCode");
-        executebehaviourtree("StatusEffects");
-        if (isupgradeenabled(Yesno.No, "GroundingOn")) {
-            if (isinnamedarea("NoFlyZone", Ownenemy.OWN_TEAM, Targetself.Self)) {
-                if (getboolequals("JetOn", Yesno.Yes)) {
-                    enableupgrade(Yesno.No, "JetterJet");
-                    setbool("JetOn", Flagtoggle.No);
+        executeBehaviourTree("HeroCode");
+        executeBehaviourTree("StatusEffects");
+        if (isUpgradeEnabled(Yesno.No, "GroundingOn")) {
+            if (isInNamedArea("NoFlyZone", Ownenemy.OWN_TEAM, Targetself.Self)) {
+                if (getBoolEquals("JetOn", Yesno.Yes)) {
+                    enableUpgrade(Yesno.No, "JetterJet");
+                    setBool("JetOn", Flagtoggle.No);
                 }
             } else {
-                if (getboolequals("JetOn", Yesno.No)) {
-                    enableupgrade(Yesno.Yes, "JetterJet");
-                    setbool("JetOn", Flagtoggle.Yes);
+                if (getBoolEquals("JetOn", Yesno.No)) {
+                    enableUpgrade(Yesno.Yes, "JetterJet");
+                    setBool("JetOn", Flagtoggle.Yes);
                 }
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "JetterTimebubbleSpeedup")) {
-            if (isupgradeenabled(Yesno.Yes, "JetterTimebubbleDuration")) {
-                if (isupgradeenabled(Yesno.No, "JetterTimebubbleSpeedupAndDuration1")) {
-                    enableupgrade(Yesno.Yes, "JetterTimebubbleSpeedupAndDuration1");
+        if (isUpgradeEnabled(Yesno.Yes, "JetterTimebubbleSpeedup")) {
+            if (isUpgradeEnabled(Yesno.Yes, "JetterTimebubbleDuration")) {
+                if (isUpgradeEnabled(Yesno.No, "JetterTimebubbleSpeedupAndDuration1")) {
+                    enableUpgrade(Yesno.Yes, "JetterTimebubbleSpeedupAndDuration1");
                 }
             }
-            if (isupgradeenabled(Yesno.Yes, "JetterTimebubbleDuration2")) {
-                if (isupgradeenabled(Yesno.No, "JetterTimebubbleSpeedupAndDuration2")) {
-                    enableupgrade(Yesno.Yes, "JetterTimebubbleSpeedupAndDuration2");
+            if (isUpgradeEnabled(Yesno.Yes, "JetterTimebubbleDuration2")) {
+                if (isUpgradeEnabled(Yesno.No, "JetterTimebubbleSpeedupAndDuration2")) {
+                    enableUpgrade(Yesno.Yes, "JetterTimebubbleSpeedupAndDuration2");
                 }
             }
         }

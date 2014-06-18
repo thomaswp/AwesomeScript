@@ -9,61 +9,61 @@ public class Summoner
 
 
     public void onTick() {
-        executebehaviourtree("HeroCode");
-        executebehaviourtree("StatusEffects");
-        if (isupgradeenabled(Yesno.Yes, "Shocking")) {
-            enableupgrade(Yesno.No, "Shocking");
-            if (isupgradeenabled(Yesno.Yes, "SummonerShotSolar1")) {
-                if (ischaracterinarea(EnumSet.of(TargetReceiveGroups.PLAYERS, TargetReceiveGroups.CREEPS), EnumSet.of(Teams.OWN_TEAM), "", CharactervaluesCheckable.HealthPercentage, Valuecompare.Less, 100.0D, "", 0.1D, 0.0D, 0.16D, 0.1D, Yesno.No)) {
-                    adjustcharactervalue(CharactervaluesAdjustable.Gold, 1.0D, Valueadjust.Add);
+        executeBehaviourTree("HeroCode");
+        executeBehaviourTree("StatusEffects");
+        if (isUpgradeEnabled(Yesno.Yes, "Shocking")) {
+            enableUpgrade(Yesno.No, "Shocking");
+            if (isUpgradeEnabled(Yesno.Yes, "SummonerShotSolar1")) {
+                if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.PLAYERS, TargetReceiveGroups.CREEPS), EnumSet.of(Teams.OWN_TEAM), "", CharactervaluesCheckable.HealthPercentage, Valuecompare.Less, 100.0D, "", 0.1D, 0.0D, 0.16D, 0.1D, Yesno.No)) {
+                    adjustCharacterValue(CharactervaluesAdjustable.Gold, 1.0D, Valueadjust.Add);
                 }
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "PassiveSummonerCoinHeal")) {
-            if (checkcharactervalue(CharactervaluesCheckable.HealthPercentage, 100.0D, Valuecompare.Less, Targetself.Self)) {
-                if (ongoldcollected(MissionTarget.SELF, Teamswithnumbers.OWN_TEAM, "", GoldPickupType.PICKUP, Valuecompare.GreaterOrEqual, "1", "")) {
-                    adjustcharactervalue(CharactervaluesAdjustable.Health, 5.0D, Valueadjust.Add);
-                    playanimation("health", AnimationLocation.FOLLOW_CHARACTER, 0.0D, 0.0D, 1.0D, 0.0D, Yesno.No, Teams.OWN_TEAM);
+        if (isUpgradeEnabled(Yesno.Yes, "PassiveSummonerCoinHeal")) {
+            if (checkCharacterValue(CharactervaluesCheckable.HealthPercentage, 100.0D, Valuecompare.Less, Targetself.Self)) {
+                if (onGoldCollected(MissionTarget.SELF, Teamswithnumbers.OWN_TEAM, "", GoldPickupType.PICKUP, Valuecompare.GreaterOrEqual, "1", "")) {
+                    adjustCharacterValue(CharactervaluesAdjustable.Health, 5.0D, Valueadjust.Add);
+                    playAnimation("health", AnimationLocation.FOLLOW_CHARACTER, 0.0D, 0.0D, 1.0D, 0.0D, Yesno.No, Teams.OWN_TEAM);
                 }
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "StealthPowerup")) {
-            emitmessageinarea("StealthON", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 1.0D, 1.0D, Yesno.Yes, Yesno.No);
+        if (isUpgradeEnabled(Yesno.Yes, "StealthPowerup")) {
+            emitMessageInArea("StealthON", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 1.0D, 1.0D, Yesno.Yes, Yesno.No);
         }
-        if (isupgradeenabled(Yesno.Yes, "SummonerDroneKill")) {
+        if (isUpgradeEnabled(Yesno.Yes, "SummonerDroneKill")) {
             sequence0();
         }
-        if (isupgradeenabled(Yesno.Yes, "SummonerDroneBlind")) {
+        if (isUpgradeEnabled(Yesno.Yes, "SummonerDroneBlind")) {
             if (once()) {
-                emitmessageinarea("SummonerDroneBlind", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 1.0D, 1.0D, Yesno.Yes, Yesno.No);
+                emitMessageInArea("SummonerDroneBlind", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 1.0D, 1.0D, Yesno.Yes, Yesno.No);
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "SummonerDroneFaster1")) {
+        if (isUpgradeEnabled(Yesno.Yes, "SummonerDroneFaster1")) {
             if (once()) {
-                emitmessageinarea("SummonerDroneFaster1", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 1.0D, 1.0D, Yesno.Yes, Yesno.No);
+                emitMessageInArea("SummonerDroneFaster1", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 1.0D, 1.0D, Yesno.Yes, Yesno.No);
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "SummonerDroneFaster2")) {
+        if (isUpgradeEnabled(Yesno.Yes, "SummonerDroneFaster2")) {
             if (once()) {
-                emitmessageinarea("SummonerDroneFaster2", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 1.0D, 1.0D, Yesno.Yes, Yesno.No);
+                emitMessageInArea("SummonerDroneFaster2", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 1.0D, 1.0D, Yesno.Yes, Yesno.No);
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "SummonerDroneDamage1")) {
+        if (isUpgradeEnabled(Yesno.Yes, "SummonerDroneDamage1")) {
             if (once()) {
-                emitmessageinarea("SummonerDroneDamage1", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 1.0D, 1.0D, Yesno.Yes, Yesno.No);
+                emitMessageInArea("SummonerDroneDamage1", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 1.0D, 1.0D, Yesno.Yes, Yesno.No);
             }
         }
-        if (isupgradeenabled(Yesno.Yes, "SummonerDroneDamage2")) {
+        if (isUpgradeEnabled(Yesno.Yes, "SummonerDroneDamage2")) {
             if (once()) {
-                emitmessageinarea("SummonerDroneDamage2", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 1.0D, 1.0D, Yesno.Yes, Yesno.No);
+                emitMessageInArea("SummonerDroneDamage2", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 1.0D, 1.0D, Yesno.Yes, Yesno.No);
             }
         }
     }
 
     @Script.Sequence(blocking = false)
     void sequence0() {
-        emitmessageinarea("DronesKill", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 1.0D, 1.0D, Yesno.Yes, Yesno.No);
-        enableupgrade(Yesno.No, "SummonerDroneKill");
+        emitMessageInArea("DronesKill", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 1.0D, 1.0D, Yesno.Yes, Yesno.No);
+        enableUpgrade(Yesno.No, "SummonerDroneKill");
     }
 
 }

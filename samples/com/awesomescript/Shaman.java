@@ -9,22 +9,22 @@ public class Shaman
 
 
     public void onTick() {
-        executebehaviourtree("HeroCode");
-        executebehaviourtree("StatusEffects");
-        if ((isupgradeenabled(Yesno.Yes, "ShamanSpiritDuration1")&&isupgradeenabled(Yesno.Yes, "ShamanSpiritOn"))&&checkcharacterflag(Characterflags.IsStealth, Yesno.Yes, Targetself.Self)) {
-            enableupgrade(Yesno.Yes, "ShamanNoCollisionOn");
+        executeBehaviourTree("HeroCode");
+        executeBehaviourTree("StatusEffects");
+        if ((isUpgradeEnabled(Yesno.Yes, "ShamanSpiritDuration1")&&isUpgradeEnabled(Yesno.Yes, "ShamanSpiritOn"))&&checkCharacterFlag(Characterflags.IsStealth, Yesno.Yes, Targetself.Self)) {
+            enableUpgrade(Yesno.Yes, "ShamanNoCollisionOn");
         } else {
-            enableupgrade(Yesno.No, "ShamanNoCollisionOn");
+            enableUpgrade(Yesno.No, "ShamanNoCollisionOn");
         }
-        if (ischaracterinarea(EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teams.OWN_TEAM), "CreepShamanWall", CharactervaluesCheckable.Health, Valuecompare.GreaterOrEqual, 0.0D, "", 0.0D, 0.0D, 0.4D, 0.4D, Yesno.No)&&isupgradeenabled(Yesno.Yes, "ShamanWallBuff2")) {
-            enableupgrade(Yesno.Yes, "ShamanWallBuff2On");
-            enableupgrade(Yesno.Yes, "ShamanWallBuff1On");
+        if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teams.OWN_TEAM), "CreepShamanWall", CharactervaluesCheckable.Health, Valuecompare.GreaterOrEqual, 0.0D, "", 0.0D, 0.0D, 0.4D, 0.4D, Yesno.No)&&isUpgradeEnabled(Yesno.Yes, "ShamanWallBuff2")) {
+            enableUpgrade(Yesno.Yes, "ShamanWallBuff2On");
+            enableUpgrade(Yesno.Yes, "ShamanWallBuff1On");
         } else {
-            if (ischaracterinarea(EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teams.OWN_TEAM), "CreepShamanWall", CharactervaluesCheckable.Health, Valuecompare.GreaterOrEqual, 0.0D, "", 0.0D, 0.0D, 0.4D, 0.4D, Yesno.No)&&isupgradeenabled(Yesno.Yes, "ShamanWallBuff1")) {
-                enableupgrade(Yesno.Yes, "ShamanWallBuff1On");
+            if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teams.OWN_TEAM), "CreepShamanWall", CharactervaluesCheckable.Health, Valuecompare.GreaterOrEqual, 0.0D, "", 0.0D, 0.0D, 0.4D, 0.4D, Yesno.No)&&isUpgradeEnabled(Yesno.Yes, "ShamanWallBuff1")) {
+                enableUpgrade(Yesno.Yes, "ShamanWallBuff1On");
             } else {
-                enableupgrade(Yesno.No, "ShamanWallBuff2On");
-                enableupgrade(Yesno.No, "ShamanWallBuff1On");
+                enableUpgrade(Yesno.No, "ShamanWallBuff2On");
+                enableUpgrade(Yesno.No, "ShamanWallBuff1On");
             }
         }
     }

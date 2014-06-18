@@ -8,21 +8,21 @@ public class Heavy
 
 
     public void onTick() {
-        executebehaviourtree("HeroCode");
-        executebehaviourtree("StatusEffects");
-        if (getboolequals("siegemode", Yesno.Yes)) {
-            if (isinnamedarea("SecretArea", Ownenemy.OWN_TEAM, Targetself.Self)) {
-                if (isupgradeenabled(Yesno.No, "EnableJumppad")) {
-                    enableupgrade(Yesno.Yes, "EnableJumppad");
+        executeBehaviourTree("HeroCode");
+        executeBehaviourTree("StatusEffects");
+        if (getBoolEquals("siegemode", Yesno.Yes)) {
+            if (isInNamedArea("SecretArea", Ownenemy.OWN_TEAM, Targetself.Self)) {
+                if (isUpgradeEnabled(Yesno.No, "EnableJumppad")) {
+                    enableUpgrade(Yesno.Yes, "EnableJumppad");
                 }
             } else {
-                if (isupgradeenabled(Yesno.Yes, "EnableJumppad")) {
-                    enableupgrade(Yesno.No, "EnableJumppad");
+                if (isUpgradeEnabled(Yesno.Yes, "EnableJumppad")) {
+                    enableUpgrade(Yesno.No, "EnableJumppad");
                 }
             }
         } else {
-            if (isupgradeenabled(Yesno.Yes, "EnableJumppad")) {
-                enableupgrade(Yesno.No, "EnableJumppad");
+            if (isUpgradeEnabled(Yesno.Yes, "EnableJumppad")) {
+                enableUpgrade(Yesno.No, "EnableJumppad");
             }
         }
     }

@@ -12,27 +12,27 @@ public class MyScript extends Script {
 	protected void onTick() {
 		
 		//comment
-		adjustcharactervalue(CharactervaluesAdjustable.HealthPercentage, 12, Valueadjust.Set);
+		adjustCharacterValue(CharactervaluesAdjustable.HealthPercentage, 12, Valueadjust.Set);
 		/*
 		 * block ><
 		 * blocity
 		 * block 
 		 */
-		adjustcounter("moo", "3", Valueadjust.Add);
+		adjustCounter("moo", "3", Valueadjust.Add);
 		//c1
 		
-		isinarea(Yesno.Yes, EnumSet.of(CollisonGroups.CREEPS, CollisonGroups.DESTROYABLE_OBSTACLES), 
+		isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.CREEPS, CollisonGroups.DESTROYABLE_OBSTACLES), 
 				Yesno.No, null, "name", 
 				0, 0, 10, 10, Yesno.Yes, Yesno.No);
 		
 		things();
 		
-		if (aregoldcoinsinarea(5, Valuecompare.Less, 4, 10, 20, 20, Yesno.Yes) &&
-				checkclass(Targetself.Self, "me") &&
-				checkclass(Targetself.Target, "boo")) { //c2
+		if (areGoldCoinsInArea(5, Valuecompare.Less, 4, 10, 20, 20, Yesno.Yes) &&
+				checkClass(Targetself.Self, "me") &&
+				checkClass(Targetself.Target, "boo")) { //c2
 			//c3
 			log("Hello", "counter1", "bool1");
-		} else if (checkcharacterflag(Characterflags.IsBlinded, Yesno.No, Targetself.Target)) {
+		} else if (checkCharacterFlag(Characterflags.IsBlinded, Yesno.No, Targetself.Target)) {
 			log("Hello2", "counter1", "bool1");
 		} else {
 			log("Hello", "counter1", "bool1");
@@ -45,18 +45,18 @@ public class MyScript extends Script {
 	}
 
 	void things2() {
-		adjustcounter("a1", "b2", Valueadjust.Add);
+		adjustCounter("a1", "b2", Valueadjust.Add);
 	}
 	
 	void things() {
-		adjustcounter("a", "b", Valueadjust.Add);
+		adjustCounter("a", "b", Valueadjust.Add);
 		things2();
 	}
 	
 	@Sequence( blocking = true )
 	void blockingThings() {
-		adjustcounter("c", "d", Valueadjust.Add);
-		adjustcounter("e", "f", Valueadjust.Add);
+		adjustCounter("c", "d", Valueadjust.Add);
+		adjustCounter("e", "f", Valueadjust.Add);
 	}
 	
 	public static void main(String[] args) {
