@@ -33,15 +33,6 @@ public class StatusEffects
                 }
                 setBool("CocoonHalfDealed", Flagtoggle.Yes);
             }
-            if (getBoolEquals("CocoonExplodeChecked", Yesno.No)) {
-                if (hasUpgrade("Butterfly", Teamswithnumbers.ZERO_TEAM, "ButterflyCocoonExplode1")) {
-                    enableUpgrade(Yesno.Yes, "ButterflyCocoonExploding1");
-                    if (hasUpgrade("Butterfly", Teamswithnumbers.ZERO_TEAM, "ButterflyCocoonExplode2")) {
-                        enableUpgrade(Yesno.Yes, "ButterflyCocoonExploding2");
-                    }
-                }
-                setBool("CocoonExplodeChecked", Flagtoggle.Yes);
-            }
         } else {
             if (isUpgradeEnabled(Yesno.Yes, "CocoonOne")) {
                 setBool("WasCocooned", Flagtoggle.Yes);
@@ -55,22 +46,12 @@ public class StatusEffects
                     }
                     setBool("CocoonHalfDealed", Flagtoggle.Yes);
                 }
-                if (getBoolEquals("CocoonExplodeChecked", Yesno.No)) {
-                    if (hasUpgrade("Butterfly", Teamswithnumbers.ONE_TEAM, "ButterflyCocoonExplode1")) {
-                        enableUpgrade(Yesno.Yes, "ButterflyCocoonExploding1");
-                        if (hasUpgrade("Butterfly", Teamswithnumbers.ONE_TEAM, "ButterflyCocoonExplode2")) {
-                            enableUpgrade(Yesno.Yes, "ButterflyCocoonExploding2");
-                        }
-                    }
-                    setBool("CocoonExplodeChecked", Flagtoggle.Yes);
-                }
             } else {
                 if (getBoolEquals("WasCocooned", Yesno.Yes)) {
                     setBool("WasCocooned", Flagtoggle.No);
                     enableUpgrade(Yesno.No, "ButterflyCocoonExploding1");
                     enableUpgrade(Yesno.No, "ButterflyCocoonExploding2");
                 }
-                setBool("CocoonExplodeChecked", Flagtoggle.No);
                 setBool("CocoonHalfDealed", Flagtoggle.No);
                 setBool("CocoonTotemChecked", Flagtoggle.No);
             }
@@ -85,6 +66,15 @@ public class StatusEffects
             if (isUpgradeEnabled(Yesno.Yes, "StealthPowerupActive")) {
                 enableUpgrade(Yesno.No, "StealthPowerupActive");
             }
+        }
+        if (isUpgradeEnabled(Yesno.Yes, "StealthPowerupActive")) {
+            if (getBoolEquals("StealthCounter", Yesno.No)) {
+                playAnimation("HUD_EYEOVERLAY", AnimationLocation.HUD, 0.0D, 0.0D, 1.0D, 0.0D, Yesno.No, Teams.OWN_TEAM);
+                setBool("StealthCounter", Flagtoggle.Yes);
+            }
+        } else {
+            setBool("StealthCounter", Flagtoggle.No);
+            stopAnimation("HUD_EYEOVERLAY");
         }
     }
 

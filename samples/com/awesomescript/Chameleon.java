@@ -13,14 +13,14 @@ public class Chameleon
         executeBehaviourTree("StatusEffects");
         if (getBoolEquals("stealth", Yesno.No)) {
             if (isUpgradeEnabled(Yesno.Yes, "ChameleonHitLifesteal1")) {
-                if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS, CollisonGroups.DESTROYABLE_OBSTACLES), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.0D, 0.0D, 0.16D, 0.16D, Yesno.No, Yesno.No)) {
+                if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS, CollisonGroups.DESTROYABLE_OBSTACLES), Yesno.No, Yesno.Yes, EnumSet.of(Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.0D, 0.0D, 0.16D, 0.16D, Yesno.No, Yesno.No)) {
                     if (isUpgradeEnabled(Yesno.Yes, "ChameleonHitLifesteal2")) {
                         if (timer(Timeunits.Seconds, 0.2D, Yesno.No)) {
-                            adjustCharacterValue(CharactervaluesAdjustable.Health, 1.0D, Valueadjust.Add);
+                            adjustCharacterValue(CharactervaluesAdjustable.Health, 10.0D, Valueadjust.Add);
                         }
                     } else {
                         if (timer(Timeunits.Seconds, 0.4D, Yesno.No)) {
-                            adjustCharacterValue(CharactervaluesAdjustable.Health, 1.0D, Valueadjust.Add);
+                            adjustCharacterValue(CharactervaluesAdjustable.Health, 10.0D, Valueadjust.Add);
                         }
                     }
                 }
@@ -110,6 +110,23 @@ public class Chameleon
             enableUpgrade(Yesno.Yes, "ChameleonStealthOffActive");
         } else {
             enableUpgrade(Yesno.No, "ChameleonStealthOffActive");
+        }
+        if (isUpgradeEnabled(Yesno.Yes, "StealthLeon")) {
+            if (isUpgradeEnabled(Yesno.Yes, "ChameleonStealthCloneWalk")) {
+                if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.PLAYERS), EnumSet.of(Teams.ENEMY_TEAM), "", Yesno.No, Yesno.No, Yesno.No, CharactervaluesCheckable.HealthPercentage, Valuecompare.Less, 50.0D, "", 0.0D, 0.0D, 1.0D, 1.0D, Yesno.No)) {
+                    enableUpgrade(Yesno.Yes, "ChameleonStealthEnemyNearOn");
+                } else {
+                    enableUpgrade(Yesno.No, "ChameleonStealthEnemyNearOn");
+                }
+            }
+        } else {
+            enableUpgrade(Yesno.No, "ChameleonStealthEnemyNearOn");
+        }
+        if (isUpgradeEnabled(Yesno.Yes, "ChameleonStealthEnemyNearOn")) {
+            // show overlay animation when sprint starts
+            playAnimation("SPRINTSTART", AnimationLocation.FOLLOW_CHARACTER, 0.0D, 0.0D, 1.0D, -100.0D, Yesno.No, Teams.OWN_TEAM);
+        } else {
+            stopAnimation("SPRINTSTART");
         }
     }
 

@@ -621,6 +621,9 @@ public class Maw
                 emitMessageInArea("MawTurretDamage2", EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 15.0D, 15.0D, Yesno.Yes, Yesno.No);
             }
         }
+        if (onKill(MissionTarget.SELF, Teamswithnumbers.OWN_TEAM, "", "", MissionTarget.CREEP, Teamswithnumbers.ENEMY_TEAM, "CreepCowboyBull", "", Valuecompare.Greater, "0", "")) {
+            playSound("MawKillBull");
+        }
     }
 
     @Script.Sequence(blocking = false)

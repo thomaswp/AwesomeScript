@@ -12,7 +12,7 @@ public class Spy
         executeBehaviourTree("StatusEffects");
         executeBehaviourTree("HeroCode");
         if (getBoolEquals("initspy", Yesno.No)) {
-            if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teams.OWN_TEAM), "CreepSpyBooth", CharactervaluesCheckable.Health, Valuecompare.GreaterOrEqual, 0.0D, "", 0.0D, 0.0D, 150.0D, 150.0D, Yesno.No)) {
+            if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teams.OWN_TEAM), "CreepSpyBooth", Yesno.No, Yesno.Yes, Yesno.Yes, CharactervaluesCheckable.Health, Valuecompare.GreaterOrEqual, 0.0D, "", 0.0D, 0.0D, 150.0D, 150.0D, Yesno.No)) {
                 sequence0();
             } else {
                 if (isUpgradeEnabled(Yesno.Yes, "SpyBooth")) {
@@ -24,9 +24,6 @@ public class Spy
             if (isUpgradeEnabled(Yesno.Yes, "SpyBooth")) {
                 enableUpgrade(Yesno.Yes, "SpyBoothEnable");
             }
-        }
-        if (isUpgradeEnabled(Yesno.Yes, "SpyBoothIsPlaced")) {
-            enableUpgrade(Yesno.No, "SpyBoothTeleportOn");
         }
         if (isUpgradeEnabled(Yesno.Yes, "SpyBoothRemoveIt")) {
             sequence1();

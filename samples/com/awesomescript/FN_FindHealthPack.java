@@ -53,7 +53,7 @@ public class FN_FindHealthPack
                     // center
                     if (isInNamedArea("AREACENTER", Ownenemy.OWN_TEAM, Targetself.Self)) {
                         if (isPickupAtWaypoint("CENTERHP", Ownenemy.OWN_TEAM)) {
-                            if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 0.35D, 0.35D, Yesno.No, Yesno.No)||checkCharacterValue(CharactervaluesCheckable.HealthPercentage, 65.0D, Valuecompare.Greater, Targetself.Self)) {
+                            if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, Yesno.Yes, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 0.35D, 0.35D, Yesno.No, Yesno.No)||checkCharacterValue(CharactervaluesCheckable.HealthPercentage, 65.0D, Valuecompare.Greater, Targetself.Self)) {
                                 selectDestWaypoint("CENTERHP", Ownenemy.OWN_TEAM);
                             } else {
                                 if (checkCharacterValue(CharactervaluesCheckable.HealthPercentage, 50.0D, Valuecompare.Less, Targetself.Self)) {

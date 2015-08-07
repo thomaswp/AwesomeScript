@@ -15,12 +15,12 @@ public class FN_CheckToSwitchLane
                 if (timer(Timeunits.Seconds, 2.0D, Yesno.No)) {
                     log("CHECK TO SWITCH", "", "");
                     // I am on a lane
-                    if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.CREEPS), Yesno.No, EnumSet.of(Teams.OWN_TEAM, Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 1.0D, 0.3D, Yesno.No, Yesno.No)) {
+                    if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.CREEPS), Yesno.No, Yesno.Yes, EnumSet.of(Teams.OWN_TEAM, Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 1.0D, 0.3D, Yesno.No, Yesno.No)) {
                         if (getBoolEquals("SupportMode", Yesno.Yes)) {
                             // Friendlies close?
-                            if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, EnumSet.of(Teams.OWN_TEAM), "", 0.0D, 0.0D, 1.5D, 0.3D, Yesno.No, Yesno.No)) {
+                            if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, Yesno.Yes, EnumSet.of(Teams.OWN_TEAM), "", 0.0D, 0.0D, 1.5D, 0.3D, Yesno.No, Yesno.No)) {
                             } else {
-                                if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, EnumSet.of(Teams.OWN_TEAM), "", 0.0D, -1.6D, 10.0D, 2.0D, Yesno.No, Yesno.No)||isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, EnumSet.of(Teams.OWN_TEAM), "", 0.0D, 1.6D, 10.0D, 2.0D, Yesno.No, Yesno.No)) {
+                                if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, Yesno.Yes, EnumSet.of(Teams.OWN_TEAM), "", 0.0D, -1.6D, 10.0D, 2.0D, Yesno.No, Yesno.No)||isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, Yesno.Yes, EnumSet.of(Teams.OWN_TEAM), "", 0.0D, 1.6D, 10.0D, 2.0D, Yesno.No, Yesno.No)) {
                                     log("Switch Lane!", "", "");
                                     // Switch!
                                     if (checkCounter("lane", "1", Valuecompare.Equal)) {
@@ -60,8 +60,8 @@ public class FN_CheckToSwitchLane
                                         adjustCounter("setState", "3", Valueadjust.Set);
                                     } else {
                                         // Enemies close?
-                                        if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 1.5D, 0.3D, Yesno.No, Yesno.No)) {
-                                            if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, -1.6D, 10.0D, 2.0D, Yesno.No, Yesno.No)||isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 1.6D, 10.0D, 2.0D, Yesno.No, Yesno.No)) {
+                                        if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, Yesno.Yes, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 1.5D, 0.3D, Yesno.No, Yesno.No)) {
+                                            if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, Yesno.Yes, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, -1.6D, 10.0D, 2.0D, Yesno.No, Yesno.No)||isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, Yesno.Yes, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 1.6D, 10.0D, 2.0D, Yesno.No, Yesno.No)) {
                                             } else {
                                                 log("Switch Lane!", "", "");
                                                 // Switch!
@@ -75,7 +75,7 @@ public class FN_CheckToSwitchLane
                                                 setBool("IgnoreEnemies", Flagtoggle.Yes);
                                             }
                                         }
-                                        if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teams.OWN_TEAM), "CreepPusher", CharactervaluesCheckable.Health, Valuecompare.Greater, 0.0D, "0", 0.0D, -1.6D, 10.0D, 2.0D, Yesno.No)||isCharacterInArea(EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teams.OWN_TEAM), "CreepPusher", CharactervaluesCheckable.Health, Valuecompare.Greater, 0.0D, "0", 0.0D, 1.6D, 10.0D, 2.0D, Yesno.No)) {
+                                        if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teams.OWN_TEAM), "CreepPusher", Yesno.No, Yesno.No, Yesno.Yes, CharactervaluesCheckable.Health, Valuecompare.Greater, 0.0D, "0", 0.0D, -1.6D, 10.0D, 2.0D, Yesno.No)||isCharacterInArea(EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teams.OWN_TEAM), "CreepPusher", Yesno.No, Yesno.No, Yesno.Yes, CharactervaluesCheckable.Health, Valuecompare.Greater, 0.0D, "0", 0.0D, 1.6D, 10.0D, 2.0D, Yesno.No)) {
                                             log("Switch Lane!", "", "");
                                             // Switch!
                                             if (checkCounter("lane", "1", Valuecompare.Equal)) {
@@ -91,8 +91,8 @@ public class FN_CheckToSwitchLane
                                 }
                             } else {
                                 // Enemies close?
-                                if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 1.5D, 0.3D, Yesno.No, Yesno.No)) {
-                                    if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.PLAYERS), EnumSet.of(Teams.ENEMY_TEAM), "Summoner", CharactervaluesCheckable.Health, Valuecompare.Greater, 0.0D, "0", -1.6D, 0.0D, 5.0D, 2.0D, Yesno.No)||isCharacterInArea(EnumSet.of(TargetReceiveGroups.PLAYERS), EnumSet.of(Teams.ENEMY_TEAM), "Summoner", CharactervaluesCheckable.Health, Valuecompare.Greater, 0.0D, "0", 1.6D, 0.0D, 5.0D, 2.0D, Yesno.No)) {
+                                if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, Yesno.Yes, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 1.5D, 0.3D, Yesno.No, Yesno.No)) {
+                                    if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.PLAYERS), EnumSet.of(Teams.ENEMY_TEAM), "Summoner", Yesno.No, Yesno.No, Yesno.Yes, CharactervaluesCheckable.Health, Valuecompare.Greater, 0.0D, "0", -1.6D, 0.0D, 5.0D, 2.0D, Yesno.No)||isCharacterInArea(EnumSet.of(TargetReceiveGroups.PLAYERS), EnumSet.of(Teams.ENEMY_TEAM), "Summoner", Yesno.No, Yesno.No, Yesno.Yes, CharactervaluesCheckable.Health, Valuecompare.Greater, 0.0D, "0", 1.6D, 0.0D, 5.0D, 2.0D, Yesno.No)) {
                                         log("Switch Lane!", "", "");
                                         // Switch!
                                         if (checkCounter("lane", "1", Valuecompare.Equal)) {
@@ -105,7 +105,7 @@ public class FN_CheckToSwitchLane
                                         setBool("IgnoreEnemies", Flagtoggle.Yes);
                                     }
                                 } else {
-                                    if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, -1.6D, 10.0D, 2.0D, Yesno.No, Yesno.No)||isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 1.6D, 10.0D, 2.0D, Yesno.No, Yesno.No)) {
+                                    if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, Yesno.Yes, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, -1.6D, 10.0D, 2.0D, Yesno.No, Yesno.No)||isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, Yesno.Yes, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 1.6D, 10.0D, 2.0D, Yesno.No, Yesno.No)) {
                                         log("Switch Lane!", "", "");
                                         // Switch!
                                         if (checkCounter("lane", "1", Valuecompare.Equal)) {
@@ -118,7 +118,7 @@ public class FN_CheckToSwitchLane
                                         setBool("IgnoreEnemies", Flagtoggle.Yes);
                                     } else {
                                         if (directionToEnemyBase(Forwardbackward.FORWARD)) {
-                                            selectTarget(EnumSet.of(TargetGroups.PLAYERS, TargetGroups.CREEPS), EnumSet.of(Teams.ENEMY_TEAM), "", Yesno.No, -5.0D, 0.0D, 10.0D, 2.0D, Valuecompare2 .GreaterOrEqual, 0.0D, DistanceCheck.NONE, Yesno.No, Yesno.No);
+                                            selectTarget(EnumSet.of(TargetGroups.PLAYERS, TargetGroups.CREEPS), EnumSet.of(Teams.ENEMY_TEAM), "", Yesno.No, Yesno.No, -5.0D, 0.0D, 10.0D, 2.0D, Valuecompare2 .GreaterOrEqual, 0.0D, DistanceCheck.NONE, Yesno.No, Yesno.No);
                                             if (hasTarget(Yesno.Yes)) {
                                                 // chaseBattle (4)
                                                 adjustCounter("setState", "4", Valueadjust.Set);

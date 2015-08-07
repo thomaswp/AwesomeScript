@@ -16,11 +16,11 @@ public class Shaman
         } else {
             enableUpgrade(Yesno.No, "ShamanNoCollisionOn");
         }
-        if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teams.OWN_TEAM), "CreepShamanWall", CharactervaluesCheckable.Health, Valuecompare.GreaterOrEqual, 0.0D, "", 0.0D, 0.0D, 0.4D, 0.4D, Yesno.No)&&isUpgradeEnabled(Yesno.Yes, "ShamanWallBuff2")) {
+        if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teams.OWN_TEAM), "CreepShamanWall", Yesno.No, Yesno.Yes, Yesno.Yes, CharactervaluesCheckable.Health, Valuecompare.GreaterOrEqual, 0.0D, "", 0.0D, 0.0D, 0.5D, 0.5D, Yesno.No)&&isUpgradeEnabled(Yesno.Yes, "ShamanWallBuff2")) {
             enableUpgrade(Yesno.Yes, "ShamanWallBuff2On");
             enableUpgrade(Yesno.Yes, "ShamanWallBuff1On");
         } else {
-            if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teams.OWN_TEAM), "CreepShamanWall", CharactervaluesCheckable.Health, Valuecompare.GreaterOrEqual, 0.0D, "", 0.0D, 0.0D, 0.4D, 0.4D, Yesno.No)&&isUpgradeEnabled(Yesno.Yes, "ShamanWallBuff1")) {
+            if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teams.OWN_TEAM), "CreepShamanWall", Yesno.No, Yesno.Yes, Yesno.Yes, CharactervaluesCheckable.Health, Valuecompare.GreaterOrEqual, 0.0D, "", 0.0D, 0.0D, 0.5D, 0.5D, Yesno.No)&&isUpgradeEnabled(Yesno.Yes, "ShamanWallBuff1")) {
                 enableUpgrade(Yesno.Yes, "ShamanWallBuff1On");
             } else {
                 enableUpgrade(Yesno.No, "ShamanWallBuff2On");

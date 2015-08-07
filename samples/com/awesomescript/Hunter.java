@@ -19,8 +19,14 @@ public class Hunter
             adjustCounter("InCombat", "2", Valueadjust.Set);
         }
         if (isUpgradeEnabled(Yesno.Yes, "HunterShotBounty")) {
-            if (onKill(MissionTarget.SELF, Teamswithnumbers.OWN_TEAM, "", MissionTarget.HERO, Teamswithnumbers.ENEMY_TEAM, "", Valuecompare.Greater, "0", "")) {
+            if (onKill(MissionTarget.SELF, Teamswithnumbers.OWN_TEAM, "", "", MissionTarget.HERO, Teamswithnumbers.ENEMY_TEAM, "", "", Valuecompare.Equal, "1", "")) {
                 adjustCharacterValue(CharactervaluesAdjustable.Gold, 50.0D, Valueadjust.Add);
+            }
+            if (onKill(MissionTarget.SELF, Teamswithnumbers.OWN_TEAM, "", "", MissionTarget.HERO, Teamswithnumbers.ENEMY_TEAM, "", "", Valuecompare.Equal, "2", "")) {
+                adjustCharacterValue(CharactervaluesAdjustable.Gold, 100.0D, Valueadjust.Add);
+            }
+            if (onKill(MissionTarget.SELF, Teamswithnumbers.OWN_TEAM, "", "", MissionTarget.HERO, Teamswithnumbers.ENEMY_TEAM, "", "", Valuecompare.Equal, "3", "")) {
+                adjustCharacterValue(CharactervaluesAdjustable.Gold, 150.0D, Valueadjust.Add);
             }
         }
         if (isUpgradeEnabled(Yesno.Yes, "HUNTERSPEED")) {
@@ -41,7 +47,7 @@ public class Hunter
         }
         if (isOnGround(Yesno.Yes, Targetself.Self)) {
             // check walls
-            if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.INVINCIBLE_OBSTACLES, CollisonGroups.DESTROYABLE_OBSTACLES), Yesno.No, EnumSet.of(Teams.OWN_TEAM, Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.04D, 0.0D, 0.06D, 0.05D, Yesno.No, Yesno.Yes)) {
+            if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.INVINCIBLE_OBSTACLES, CollisonGroups.DESTROYABLE_OBSTACLES), Yesno.No, Yesno.Yes, EnumSet.of(Teams.OWN_TEAM, Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.04D, 0.0D, 0.06D, 0.05D, Yesno.No, Yesno.Yes)) {
                 enableUpgrade(Yesno.No, "HunterJetpackOn");
                 enableUpgrade(Yesno.Yes, "HunterJump");
             } else {

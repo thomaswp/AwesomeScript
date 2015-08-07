@@ -28,8 +28,8 @@ public class AIBull
                     }
                 }
             }
-            if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teams.ENEMY_TEAM), "CreepBull", CharactervaluesCheckable.Health, Valuecompare.Less, 0.0D, "", 0.1D, 0.0D, 0.05D, 0.05D, Yesno.No)||isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.INVINCIBLE_OBSTACLES, CollisonGroups.DESTROYABLE_OBSTACLES), Yesno.No, EnumSet.of(Teams.OWN_TEAM, Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.08D, 0.0D, 0.01D, 0.02D, Yesno.No, Yesno.No)) {
-                if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.INVINCIBLE_OBSTACLES, CollisonGroups.DESTROYABLE_OBSTACLES), Yesno.Yes, EnumSet.of(Teams.OWN_TEAM, Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.08D, 0.0D, 0.01D, 0.02D, Yesno.No, Yesno.No)) {
+            if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.CREEPS), EnumSet.of(Teams.ENEMY_TEAM), "CreepBull", Yesno.No, Yesno.No, Yesno.Yes, CharactervaluesCheckable.Health, Valuecompare.Less, 0.0D, "", 0.1D, 0.0D, 0.05D, 0.05D, Yesno.No)||isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.INVINCIBLE_OBSTACLES, CollisonGroups.DESTROYABLE_OBSTACLES), Yesno.No, Yesno.Yes, EnumSet.of(Teams.OWN_TEAM, Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.08D, 0.0D, 0.01D, 0.02D, Yesno.No, Yesno.No)) {
+                if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.INVINCIBLE_OBSTACLES, CollisonGroups.DESTROYABLE_OBSTACLES), Yesno.Yes, Yesno.Yes, EnumSet.of(Teams.OWN_TEAM, Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.08D, 0.0D, 0.01D, 0.02D, Yesno.No, Yesno.No)) {
                 } else {
                     if (isUpgradeEnabled(Yesno.Yes, "CowboyBullCooldown")) {
                         // turn on wall
@@ -61,7 +61,7 @@ public class AIBull
                 }
             }
         }
-        if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.06D, 0.0D, 1.4D, 0.1D, Yesno.Yes, Yesno.No)) {
+        if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS), Yesno.No, Yesno.Yes, EnumSet.of(Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.06D, 0.0D, 1.4D, 0.1D, Yesno.Yes, Yesno.No)) {
             setBool("start", Flagtoggle.Yes);
         }
     }

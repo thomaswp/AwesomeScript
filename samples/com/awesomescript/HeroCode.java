@@ -79,12 +79,6 @@ public class HeroCode
                 }
             }
         }
-        // Shop indicator
-        if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.NAMED_AREAS), Yesno.No, EnumSet.of(Teams.OWN_TEAM), "HealArea", 0.0D, 0.0D, 0.55D, 0.3D, Yesno.No, Yesno.No)) {
-            if (timer(Timeunits.Seconds, 1.0D, Yesno.No)) {
-                playAnimation("BB_shop_button_active", AnimationLocation.HUD, 0.0D, -0.17D, 1.0D, 0.0D, Yesno.No, Teams.OWN_TEAM);
-            }
-        }
         // tell everyone I'm freeing creeps
         if (isInNamedArea("FREECREEPS", Ownenemy.OWN_TEAM, Targetself.Self)) {
             emitMessageInArea("ImFreeingCreeps", EnumSet.of(TargetReceiveGroups.PLAYERS), EnumSet.of(Teamswithtarget.OWN_TEAM), 0.0D, 0.0D, 20.0D, 20.0D, Yesno.Yes, Yesno.No);
@@ -158,12 +152,6 @@ public class HeroCode
         if (timer(Timeunits.Seconds, 2.0D, Yesno.No)) {
             adjustCharacterValue(CharactervaluesAdjustable.GoldWithoutXp, 1.0D, Valueadjust.Add);
         }
-        // Solartree
-        if (timer(Timeunits.Seconds, 3.53D, Yesno.No)) {
-            if (isUpgradeEnabled(Yesno.Yes, "Coinregen1")) {
-                adjustCharacterValue(CharactervaluesAdjustable.GoldWithoutXp, 1.0D, Valueadjust.Add);
-            }
-        }
         // Never hold for more than one tick
         if (isUpgradeEnabled(Yesno.Yes, "Hold")) {
             enableUpgrade(Yesno.No, "Hold");
@@ -176,12 +164,6 @@ public class HeroCode
                     enableUpgrade(Yesno.Yes, "CowboyGrenadeMoreAndFlash");
                 }
             }
-        }
-        if (isUpgradeEnabled(Yesno.Yes, "ShootPenalty")) {
-            sequence3();
-        }
-        if (isUpgradeEnabled(Yesno.Yes, "BlazerShootPenalty")) {
-            sequence4();
         }
         if (checkGameTime(900.0D, Valuecompare.GreaterOrEqual)) {
             if (isUpgradeEnabled(Yesno.No, "HealthKill10")) {
@@ -253,7 +235,7 @@ public class HeroCode
                 }
             }
         }
-        if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.PLAYERS), EnumSet.of(Teams.ENEMY_TEAM), "", CharactervaluesCheckable.Health, Valuecompare.GreaterOrEqual, 0.0D, "", 0.0D, 0.0D, 1.0D, 1.0D, Yesno.No)) {
+        if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.PLAYERS), EnumSet.of(Teams.ENEMY_TEAM), "", Yesno.No, Yesno.No, Yesno.Yes, CharactervaluesCheckable.Health, Valuecompare.GreaterOrEqual, 0.0D, "", 0.0D, 0.0D, 1.0D, 1.0D, Yesno.No)) {
             enableUpgrade(Yesno.Yes, "TurnPetOff");
         } else {
             enableUpgrade(Yesno.No, "TurnPetOff");
@@ -265,13 +247,31 @@ public class HeroCode
                 adjustCounter("Spree", "0", Valueadjust.Set);
                 setBool("StarthealthSet", Flagtoggle.Yes);
             }
-            if (onKill(MissionTarget.SELF, Teamswithnumbers.OWN_TEAM, "", MissionTarget.HERO, Teamswithnumbers.ENEMY_TEAM, "", Valuecompare.Greater, "0", "KillsDone")) {
+            if (onKill(MissionTarget.SELF, Teamswithnumbers.OWN_TEAM, "", "", MissionTarget.HERO, Teamswithnumbers.ENEMY_TEAM, "", "", Valuecompare.Greater, "0", "KillsDone")) {
                 log("KILL!", "KillsDone", "");
                 adjustCounter("Spree", "1", Valueadjust.Add);
                 if (checkCounter("Spree", "3", Valuecompare.GreaterOrEqual)) {
                     if (isUpgradeEnabled(Yesno.No, "HasKillingSpree")) {
                         enableUpgrade(Yesno.Yes, "HasKillingSpree");
                     }
+                }
+            }
+        }
+        // Extra Heal on Critters
+        if (isUpgradeEnabled(Yesno.Yes, "COINREGEN1")) {
+            if (onKill(MissionTarget.SELF, Teamswithnumbers.OWN_TEAM, "", "", MissionTarget.CREEP, Teamswithnumbers.NEUTRAL_TEAM, "", "", Valuecompare.GreaterOrEqual, "2", "")) {
+                sequence3();
+            } else {
+                if (onKill(MissionTarget.SELF, Teamswithnumbers.OWN_TEAM, "", "", MissionTarget.CREEP, Teamswithnumbers.NEUTRAL_TEAM, "", "", Valuecompare.GreaterOrEqual, "1", "")) {
+                    sequence4();
+                }
+            }
+        }
+        if (isUpgradeEnabled(Yesno.Yes, "PassiveCoinHeal")||isUpgradeEnabled(Yesno.Yes, "PassiveCoinHeal3")) {
+            if (checkCharacterValue(CharactervaluesCheckable.HealthPercentage, 100.0D, Valuecompare.Less, Targetself.Self)) {
+                if (onGoldCollected(MissionTarget.SELF, Teamswithnumbers.OWN_TEAM, "", GoldPickupType.PICKUP, Valuecompare.GreaterOrEqual, "1", "")) {
+                    adjustCharacterValue(CharactervaluesAdjustable.Health, 50.0D, Valueadjust.Add);
+                    playAnimation("health", AnimationLocation.FOLLOW_CHARACTER, 0.0D, 0.0D, 1.0D, 0.0D, Yesno.No, Teams.OWN_TEAM);
                 }
             }
         }
@@ -290,7 +290,7 @@ public class HeroCode
 
     @Script.Sequence(blocking = false)
     void sequence1() {
-        wait(4.0D);
+        wait(3.0D);
         enableUpgrade(Yesno.No, "ButterflyBuffSpeed1Received");
         enableUpgrade(Yesno.No, "ButterflyBuffAbsorb2");
         enableUpgrade(Yesno.No, "ButterflyBuffShield2");
@@ -310,13 +310,13 @@ public class HeroCode
     @Script.Sequence(blocking = false)
     void sequence3() {
         wait(0.1D);
-        enableUpgrade(Yesno.No, "ShootPenalty");
+        enableUpgrade(Yesno.Yes, "CritterKill2");
     }
 
     @Script.Sequence(blocking = false)
     void sequence4() {
         wait(0.1D);
-        enableUpgrade(Yesno.No, "BlazerShootPenalty");
+        enableUpgrade(Yesno.Yes, "CritterKill");
     }
 
 }

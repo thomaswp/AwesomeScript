@@ -31,43 +31,6 @@ public class FN_Initialization
             }
             if (checkCharacterValue(CharactervaluesCheckable.AISkill, 0.5D, Valuecompare.Greater, Targetself.Self)) {
                 enableUpgrade(Yesno.Yes, "Coinregen1");
-                if (checkCharacterValue(CharactervaluesCheckable.AISkill, 0.7D, Valuecompare.Greater, Targetself.Self)) {
-                    if (checkCharacterValue(CharactervaluesCheckable.AISkill, 0.95D, Valuecompare.Greater, Targetself.Self)) {
-                        if (isUpgradeEnabled(Yesno.Yes, "BotLevel0")) {
-                            if (isUpgradeEnabled(Yesno.Yes, "BotLevel1")) {
-                                if (isUpgradeEnabled(Yesno.Yes, "BotLevel2")) {
-                                    if (isUpgradeEnabled(Yesno.Yes, "BotLevel3")) {
-                                        if (isUpgradeEnabled(Yesno.Yes, "BotLevel4")) {
-                                        } else {
-                                            buyUpgrade("Botlevel4");
-                                        }
-                                    } else {
-                                        buyUpgrade("Botlevel3");
-                                    }
-                                } else {
-                                    buyUpgrade("Botlevel2");
-                                }
-                            } else {
-                                buyUpgrade("Botlevel1");
-                            }
-                        } else {
-                            buyUpgrade("Botlevel0");
-                        }
-                    }
-                } else {
-                    if (isUpgradeEnabled(Yesno.Yes, "BotLevel0")) {
-                        if (isUpgradeEnabled(Yesno.Yes, "BotLevel1")) {
-                            if (isUpgradeEnabled(Yesno.Yes, "BotLevel2")) {
-                            } else {
-                                buyUpgrade("Botlevel2");
-                            }
-                        } else {
-                            buyUpgrade("Botlevel1");
-                        }
-                    } else {
-                        buyUpgrade("Botlevel0");
-                    }
-                }
             }
             setBool("init", Flagtoggle.Yes);
             adjustCounter("EnemiesChecked", "0", Valueadjust.Set);

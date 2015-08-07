@@ -1,7 +1,6 @@
 
 package com.awesomescript;
 
-import java.util.EnumSet;
 
 public class Tank
     extends Script
@@ -17,21 +16,10 @@ public class Tank
             adjustCounter("HpCounter", "0", Valueadjust.Set);
             setBool("Init", Flagtoggle.Yes);
         }
-        if (isUpgradeEnabled(Yesno.Yes, "TankShotHoming")) {
-            if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", 0.0D, 0.0D, 0.3D, 0.3D, Yesno.No, Yesno.No)) {
-                if (isUpgradeEnabled(Yesno.No, "MissileSuperFollow")) {
-                    enableUpgrade(Yesno.Yes, "MissileSuperFollow");
-                }
-            } else {
-                if (isUpgradeEnabled(Yesno.Yes, "MissileSuperFollow")) {
-                    enableUpgrade(Yesno.No, "MissileSuperFollow");
-                }
-            }
-        }
-        if (isUpgradeEnabled(Yesno.Yes, "Salvo")) {
-            enableUpgrade(Yesno.No, "Salvo");
-            if (isUpgradeEnabled(Yesno.Yes, "SalvoUp")) {
-                enableUpgrade(Yesno.No, "SalvoUp");
+        if (isUpgradeEnabled(Yesno.Yes, "TankSalvo")) {
+            enableUpgrade(Yesno.No, "TankSalvo");
+            if (isUpgradeEnabled(Yesno.Yes, "TankSalvoUp")) {
+                enableUpgrade(Yesno.No, "TankSalvoUp");
                 adjustCounter("SalvoNo", "1", Valueadjust.Add);
                 if (isUpgradeEnabled(Yesno.Yes, "TankShotSalvo")||isUpgradeEnabled(Yesno.Yes, "TankShotFatPete")) {
                     if (checkCounter("SalvoNo", "3", Valuecompare.Greater)) {
@@ -50,41 +38,41 @@ public class Tank
                 }
             }
             if (checkCounter("SalvoNo", "0", Valuecompare.Equal)) {
-                enableUpgrade(Yesno.No, "Salvo1");
-                enableUpgrade(Yesno.No, "Salvo2");
-                enableUpgrade(Yesno.No, "Salvo3");
+                enableUpgrade(Yesno.No, "TankShotSalvo1");
+                enableUpgrade(Yesno.No, "TankShotSalvo2");
+                enableUpgrade(Yesno.No, "TankShotSalvo3");
             }
             if (checkCounter("SalvoNo", "1", Valuecompare.Equal)) {
                 if (isUpgradeEnabled(Yesno.Yes, "TankShotSalvo")||isUpgradeEnabled(Yesno.Yes, "TankShotBarrage2")) {
-                    enableUpgrade(Yesno.Yes, "Salvo1");
-                    enableUpgrade(Yesno.No, "Salvo2");
-                    enableUpgrade(Yesno.No, "Salvo3");
+                    enableUpgrade(Yesno.Yes, "TankShotSalvo1");
+                    enableUpgrade(Yesno.No, "TankShotSalvo2");
+                    enableUpgrade(Yesno.No, "TankShotSalvo3");
                 } else {
-                    enableUpgrade(Yesno.No, "Salvo1");
-                    enableUpgrade(Yesno.No, "Salvo2");
-                    enableUpgrade(Yesno.No, "Salvo3");
+                    enableUpgrade(Yesno.No, "TankShotSalvo1");
+                    enableUpgrade(Yesno.No, "TankShotSalvo2");
+                    enableUpgrade(Yesno.No, "TankShotSalvo3");
                 }
             }
             if (checkCounter("SalvoNo", "2", Valuecompare.Equal)) {
                 if (isUpgradeEnabled(Yesno.Yes, "TankShotSalvo")||isUpgradeEnabled(Yesno.Yes, "TankShotBarrage3")) {
-                    enableUpgrade(Yesno.No, "Salvo1");
-                    enableUpgrade(Yesno.Yes, "Salvo2");
-                    enableUpgrade(Yesno.No, "Salvo3");
+                    enableUpgrade(Yesno.No, "TankShotSalvo1");
+                    enableUpgrade(Yesno.Yes, "TankShotSalvo2");
+                    enableUpgrade(Yesno.No, "TankShotSalvo3");
                 } else {
-                    enableUpgrade(Yesno.No, "Salvo1");
-                    enableUpgrade(Yesno.No, "Salvo2");
-                    enableUpgrade(Yesno.No, "Salvo3");
+                    enableUpgrade(Yesno.No, "TankShotSalvo1");
+                    enableUpgrade(Yesno.No, "TankShotSalvo2");
+                    enableUpgrade(Yesno.No, "TankShotSalvo3");
                 }
             }
             if (checkCounter("SalvoNo", "3", Valuecompare.Equal)) {
                 if (isUpgradeEnabled(Yesno.Yes, "TankShotFatPete")||isUpgradeEnabled(Yesno.Yes, "TankShotSalvo")) {
-                    enableUpgrade(Yesno.No, "Salvo1");
-                    enableUpgrade(Yesno.No, "Salvo2");
-                    enableUpgrade(Yesno.Yes, "Salvo3");
+                    enableUpgrade(Yesno.No, "TankShotSalvo1");
+                    enableUpgrade(Yesno.No, "TankShotSalvo2");
+                    enableUpgrade(Yesno.Yes, "TankShotSalvo3");
                 } else {
-                    enableUpgrade(Yesno.No, "Salvo1");
-                    enableUpgrade(Yesno.No, "Salvo2");
-                    enableUpgrade(Yesno.No, "Salvo3");
+                    enableUpgrade(Yesno.No, "TankShotSalvo1");
+                    enableUpgrade(Yesno.No, "TankShotSalvo2");
+                    enableUpgrade(Yesno.No, "TankShotSalvo3");
                 }
             }
         }
@@ -94,7 +82,6 @@ public class Tank
                 // Maxhp up bij lifesteal upgrade
                 if (isUpgradeEnabled(Yesno.Yes, "TankBiteMaxHP1")) {
                     setBool("TankBiteHitDone", Flagtoggle.Yes);
-                    log("Extra Leven!", "", "");
                     if (isUpgradeEnabled(Yesno.Yes, "TankBiteMaxHP2")) {
                         if (checkCounter("HpGained", "5", Valuecompare.Equal)) {
                             adjustCounter("HpGained", "1", Valueadjust.Add);

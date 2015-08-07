@@ -42,7 +42,7 @@ public class Assassin
                 enableUpgrade(Yesno.Yes, "AssassinStrikeSpdActivate5");
             }
         }
-        if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.NAMED_AREAS), Yesno.No, null, "healarea", 0.0D, 0.0D, 0.0D, 0.0D, Yesno.No, Yesno.No)) {
+        if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.NAMED_AREAS), Yesno.No, Yesno.Yes, null, "healarea", 0.0D, 0.0D, 0.0D, 0.0D, Yesno.No, Yesno.No)) {
             enableUpgrade(Yesno.Yes, "AssassinLightningcharges1");
             enableUpgrade(Yesno.Yes, "AssassinLightningcharges2");
             enableUpgrade(Yesno.Yes, "AssassinLightningcharges3");
@@ -53,7 +53,7 @@ public class Assassin
                 enableUpgrade(Yesno.Yes, "AssassinLightningcharges5");
             }
         }
-        if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.NAMED_AREAS), Yesno.No, null, "startarea", 0.0D, 0.0D, 0.0D, 0.0D, Yesno.No, Yesno.No)) {
+        if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.NAMED_AREAS), Yesno.No, Yesno.Yes, null, "startarea", 0.0D, 0.0D, 0.0D, 0.0D, Yesno.No, Yesno.No)) {
             enableUpgrade(Yesno.Yes, "AssassinLightningcharges1");
             enableUpgrade(Yesno.Yes, "AssassinLightningcharges2");
             enableUpgrade(Yesno.Yes, "AssassinLightningcharges3");

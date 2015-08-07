@@ -11,8 +11,8 @@ public class FN_LookingForHealthPacks
     public void onTick() {
         if (getBoolEquals("LookingForHealthPacks", Yesno.Yes)) {
             if (checkCharacterValue(CharactervaluesCheckable.HealthMinusDotPercentage, 75.0D, Valuecompare.Less, Targetself.Self)) {
-                if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.PLAYERS), EnumSet.of(Teams.OWN_TEAM), "Summoner", CharactervaluesCheckable.HealthPercentage, Valuecompare.GreaterOrEqual, 60.0D, "1", 0.0D, 0.0D, 1.0D, 1.0D, Yesno.No)) {
-                    selectTarget(EnumSet.of(TargetGroups.PLAYERS), EnumSet.of(Teams.OWN_TEAM), "Summoner", Yesno.No, 0.0D, 0.0D, 1.0D, 1.0D, Valuecompare2 .GreaterOrEqual, 60.0D, DistanceCheck.NONE, Yesno.No, Yesno.Yes);
+                if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.PLAYERS), EnumSet.of(Teams.OWN_TEAM), "Summoner", Yesno.No, Yesno.No, Yesno.Yes, CharactervaluesCheckable.HealthPercentage, Valuecompare.GreaterOrEqual, 60.0D, "1", 0.0D, 0.0D, 1.0D, 1.0D, Yesno.No)) {
+                    selectTarget(EnumSet.of(TargetGroups.PLAYERS), EnumSet.of(Teams.OWN_TEAM), "Summoner", Yesno.No, Yesno.No, 0.0D, 0.0D, 1.0D, 1.0D, Valuecompare2 .GreaterOrEqual, 60.0D, DistanceCheck.NONE, Yesno.No, Yesno.Yes);
                     if (hasTarget(Yesno.Yes)) {
                         adjustCounter("state", "3", Valueadjust.Set);
                         selectTargetWaypoint();
@@ -44,7 +44,7 @@ public class FN_LookingForHealthPacks
                         // center
                         if (isInNamedArea("AREACENTER", Ownenemy.OWN_TEAM, Targetself.Self)) {
                             if (isPickupAtWaypoint("CENTERHP", Ownenemy.OWN_TEAM)) {
-                                if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 0.35D, 0.35D, Yesno.No, Yesno.No)||checkCharacterValue(CharactervaluesCheckable.HealthPercentage, 65.0D, Valuecompare.Greater, Targetself.Self)) {
+                                if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, Yesno.Yes, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 0.35D, 0.35D, Yesno.No, Yesno.No)||checkCharacterValue(CharactervaluesCheckable.HealthPercentage, 65.0D, Valuecompare.Greater, Targetself.Self)) {
                                     selectDestWaypoint("CENTERHP", Ownenemy.OWN_TEAM);
                                     setBool("FoundHealthPack", Flagtoggle.Yes);
                                 }

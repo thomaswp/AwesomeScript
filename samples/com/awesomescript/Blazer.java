@@ -10,8 +10,10 @@ public class Blazer
     public void onTick() {
         executeBehaviourTree("HeroCode");
         executeBehaviourTree("StatusEffects");
+        // Achievements die specifiek voor Coco zijn
+        executeBehaviourTree("BlazerAchievements");
         if (isOnGround(Yesno.Yes, Targetself.Self)) {
-            if (timer(Timeunits.Seconds, 0.1D, null)) {
+            if (timer(Timeunits.Seconds, 0.1D, Yesno.No)) {
                 if (random("4")) {
                     if (isUpgradeEnabled(Yesno.No, "DoFlip")) {
                         enableUpgrade(Yesno.Yes, "DoFlip");

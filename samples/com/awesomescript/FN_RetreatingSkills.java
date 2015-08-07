@@ -17,7 +17,7 @@ public class FN_RetreatingSkills
                         // bubble
                         if (isUpgradeEnabled(Yesno.Yes, "TimeBubble")) {
                             // enemy close
-                            if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS, CollisonGroups.DESTROYABLE_OBSTACLES, CollisonGroups.PROJECTILES), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 0.4D, 0.4D, Yesno.Yes, Yesno.No)) {
+                            if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS, CollisonGroups.DESTROYABLE_OBSTACLES, CollisonGroups.PROJECTILES), Yesno.No, Yesno.Yes, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 0.4D, 0.4D, Yesno.Yes, Yesno.No)) {
                                 // BUBBLE
                                 pressButton(Buttons.FACE_TOP, 0.0D);
                             }
@@ -32,11 +32,11 @@ public class FN_RetreatingSkills
                                 if (isUpgradeEnabled(Yesno.Yes, "dash")) {
                                     if (directionToEnemyBase(Forwardbackward.BACKWARD)) {
                                         // enemy in nearby -> dash skill
-                                        if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.DESTROYABLE_OBSTACLES), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 0.6D, 0.4D, Yesno.Yes, Yesno.No)) {
-                                            selectTarget(EnumSet.of(TargetGroups.DESTROYABLE_OBSTACLES), EnumSet.of(Teams.ENEMY_TEAM), "", Yesno.No, 0.0D, 0.0D, 0.6D, 0.4D, Valuecompare2 .GreaterOrEqual, 0.0D, DistanceCheck.NONE, Yesno.Yes, Yesno.No);
+                                        if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.DESTROYABLE_OBSTACLES), Yesno.No, Yesno.Yes, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 0.6D, 0.4D, Yesno.Yes, Yesno.No)) {
+                                            selectTarget(EnumSet.of(TargetGroups.DESTROYABLE_OBSTACLES), EnumSet.of(Teams.ENEMY_TEAM), "", Yesno.No, Yesno.No, 0.0D, 0.0D, 0.6D, 0.4D, Valuecompare2 .GreaterOrEqual, 0.0D, DistanceCheck.NONE, Yesno.Yes, Yesno.No);
                                             if (hasTarget(Yesno.Yes)) {
                                             } else {
-                                                selectTarget(EnumSet.of(TargetGroups.PLAYERS), EnumSet.of(Teams.ENEMY_TEAM), "", Yesno.No, 0.0D, 0.0D, 0.6D, 0.4D, Valuecompare2 .GreaterOrEqual, 0.0D, DistanceCheck.NONE, Yesno.Yes, Yesno.No);
+                                                selectTarget(EnumSet.of(TargetGroups.PLAYERS), EnumSet.of(Teams.ENEMY_TEAM), "", Yesno.No, Yesno.No, 0.0D, 0.0D, 0.6D, 0.4D, Valuecompare2 .GreaterOrEqual, 0.0D, DistanceCheck.NONE, Yesno.Yes, Yesno.No);
                                             }
                                             if (isTargetPosition(Yesno.Yes, Offsetposition.BELOW)) {
                                                 setBool("GoUp", Flagtoggle.Yes);
@@ -51,12 +51,12 @@ public class FN_RetreatingSkills
                                 } else {
                                     // bull
                                     if (isUpgradeEnabled(Yesno.Yes, "bull")) {
-                                        if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.PLAYERS), EnumSet.of(Teams.ENEMY_TEAM), "", CharactervaluesCheckable.HealthMinusDot, Valuecompare.GreaterOrEqual, 0.0D, "", -0.3D, 0.0D, 0.6D, 0.6D, Yesno.No)) {
+                                        if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.PLAYERS), EnumSet.of(Teams.ENEMY_TEAM), "", Yesno.No, Yesno.No, Yesno.Yes, CharactervaluesCheckable.HealthMinusDot, Valuecompare.GreaterOrEqual, 0.0D, "", -0.3D, 0.0D, 0.6D, 0.6D, Yesno.No)) {
                                             if (timer(Timeunits.Seconds, 6.0D, Yesno.No)) {
                                                 sequence0();
                                             }
                                         } else {
-                                            if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.PLAYERS), EnumSet.of(Teams.ENEMY_TEAM), "", CharactervaluesCheckable.HealthMinusDot, Valuecompare.GreaterOrEqual, 0.0D, "", -0.3D, 0.0D, 0.6D, 0.6D, Yesno.No)) {
+                                            if (isCharacterInArea(EnumSet.of(TargetReceiveGroups.PLAYERS), EnumSet.of(Teams.ENEMY_TEAM), "", Yesno.No, Yesno.No, Yesno.Yes, CharactervaluesCheckable.HealthMinusDot, Valuecompare.GreaterOrEqual, 0.0D, "", -0.3D, 0.0D, 0.6D, 0.6D, Yesno.No)) {
                                                 pressButton(Buttons.FACE_TOP, 0.1D);
                                             }
                                         }
@@ -68,7 +68,7 @@ public class FN_RetreatingSkills
                                             // Blaze to escape
                                             if (isUpgradeEnabled(Yesno.Yes, "Blaze")) {
                                                 if (timer(Timeunits.Seconds, 1.0D, Yesno.No)) {
-                                                    if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", -0.2D, 0.0D, 1.0D, 0.6D, Yesno.Yes, Yesno.No)) {
+                                                    if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS), Yesno.No, Yesno.Yes, EnumSet.of(Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", -0.2D, 0.0D, 1.0D, 0.6D, Yesno.Yes, Yesno.No)) {
                                                         pressButton(Buttons.FACE_RIGHT, 0.0D);
                                                     }
                                                 }
@@ -76,7 +76,7 @@ public class FN_RetreatingSkills
                                                 // Trap to escape
                                                 if (isUpgradeEnabled(Yesno.Yes, "Trap")) {
                                                     if (timer(Timeunits.Seconds, 1.0D, Yesno.No)) {
-                                                        if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", -0.2D, 0.0D, 1.0D, 0.6D, Yesno.Yes, Yesno.No)) {
+                                                        if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS, CollisonGroups.CREEPS), Yesno.No, Yesno.Yes, EnumSet.of(Teams.ENEMY_TEAM, Teams.NEUTRAL_TEAM), "", -0.2D, 0.0D, 1.0D, 0.6D, Yesno.Yes, Yesno.No)) {
                                                             pressButton(Buttons.FACE_RIGHT, 0.0D);
                                                         }
                                                     }
@@ -84,13 +84,13 @@ public class FN_RetreatingSkills
                                                     // Explode!
                                                     if (isUpgradeEnabled(Yesno.Yes, "suicide")) {
                                                         if (checkCharacterValue(CharactervaluesCheckable.HealthPercentage, 10.0D, Valuecompare.Less, Targetself.Self)) {
-                                                            if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 1.0D, 1.0D, Yesno.No, Yesno.No)) {
-                                                                if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 0.4D, 0.4D, Yesno.No, Yesno.No)) {
+                                                            if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, Yesno.Yes, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 1.0D, 1.0D, Yesno.No, Yesno.No)) {
+                                                                if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.PLAYERS), Yesno.No, Yesno.Yes, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 0.4D, 0.4D, Yesno.No, Yesno.No)) {
                                                                     sequence1();
                                                                 }
                                                             } else {
                                                                 if (checkCharacterValue(CharactervaluesCheckable.HealthPercentage, 90.0D, Valuecompare.Greater, Targetself.Self)) {
-                                                                    if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.CREEPS), Yesno.No, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 0.4D, 0.4D, Yesno.No, Yesno.No)) {
+                                                                    if (isInArea(Yesno.Yes, EnumSet.of(CollisonGroups.CREEPS), Yesno.No, Yesno.Yes, EnumSet.of(Teams.ENEMY_TEAM), "", 0.0D, 0.0D, 0.4D, 0.4D, Yesno.No, Yesno.No)) {
                                                                         sequence2();
                                                                     }
                                                                 }

@@ -103,7 +103,6 @@ public abstract class MethodNode extends Node {
 	public void readXmlArgs(org.w3c.dom.Node node) {
 		super.readXmlArgs(node);
 		String args[] = new String[method.parameters.size()];
-		int successes = 0;
 		for (org.w3c.dom.Node child : XmlUtils.iterate(node.getChildNodes())) {
 			if (!(child instanceof Element)) continue;
 			String name = child.getNodeName();
@@ -112,12 +111,18 @@ public abstract class MethodNode extends Node {
 				for (int i = 0; i < args.length; i++) {
 					if (method.parameters.get(i).name.equals(id)) {
 						args[i] = child.getTextContent();
-						successes++;
 					}
 				}
 			}
 		}
-		if (successes < args.length) System.err.println("Not enough args for " + method.name + ": " + successes + " < " + args.length);
-		for (String arg : args) arguments.add(arg == null ? "" : arg);
+		for (int i = 0; i < args.length; i++) {
+			String arg = args[i];
+			if (arg == null) {
+				Parameter param = method.parameters.get(i);
+				arg = param.defaultValue;
+				if (arg == null && "float".equals(param.type)) arg = "0";
+			}
+			arguments.add(arg == null ? "" : arg);
+		}
 	}
 }

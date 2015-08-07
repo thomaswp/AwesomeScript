@@ -11,6 +11,7 @@ public class Parameter {
 	public String type;
 	public Enumeration values;
 	public boolean multiselect;
+	public String defaultValue;
 	
 	public void write(JMethod method, JCodeModel model) {
 		String name = getParameterName(this.name);

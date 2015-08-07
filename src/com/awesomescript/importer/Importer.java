@@ -107,6 +107,11 @@ public class Importer {
 				if (multiselectNode != null) {
 					parameter.multiselect = multiselectNode.getNodeValue().equalsIgnoreCase("true");
 				}
+				
+				Node defaultValueNode = attributes.getNamedItem("defaultvalue");
+				if (defaultValueNode != null) {
+					parameter.defaultValue = defaultValueNode.getNodeValue();
+				}
 			}
 		}
 	}
